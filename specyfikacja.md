@@ -175,3 +175,47 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Użytkownik ma możliwość przeliczania wartości kryptowalut na dane waluty tradycyjne, za pomocą dostarczonego przez platformę kalkulatora. |
 
+
+
+---
+
+### 4. Wymagania niefunkcjonalne
+
+| ID:        | 1                                                            |
+| ---------- | ------------------------------------------------------------ |
+| Nazwa:     | Aktualność informacji                                        |
+| Priorytet: | WYSOKI                                                       |
+| Opis:      | Prezentowane użytkownikowi dane na temat kryptowalut powinny być w miarę możliwości często aktualizowane. |
+
+| ID:        | 2                                                            |
+| ---------- | ------------------------------------------------------------ |
+| Nazwa:     | Podział odpowiedzialności systemu                            |
+| Priorytet: | WYSOKI                                                       |
+| Opis:      | Platforma ma być podzielona na część frontendową i backendową. Komunikacja pomiędzy tymi elementami powinna w głównej mierze odbywać się przez interfejsy lub klasy przeznaczone realizowaniu tej komunikacji. |
+
+| ID:        | 3                                                            |
+| ---------- | ------------------------------------------------------------ |
+| Nazwa:     | Łatwość obsługi                                              |
+| Priorytet: | WYSOKI                                                       |
+| Opis:      | Główną zaletą platformy ma być łatwość obsługi, umożliwiająca sprawne przeprowadzanie przez użytkownika przeglądu informacji i kalkulacji cen. |
+
+| ID:        | 4                                                            |
+| ---------- | ------------------------------------------------------------ |
+| Nazwa:     | Przejrzystość interfejsu                                     |
+| Priorytet: | WYSOKI                                                       |
+| Opis:      | Interfejs graficzny użytkownika powinien charakteryzować się przejrzystością eliminując konieczność zapoznawania użytkownika z dodatkowymi instrukcjami obsługi. |
+
+| ID:        | 5                                                            |
+| ---------- | ------------------------------------------------------------ |
+| Nazwa:     | Responsywność interfejsu graficznego                         |
+| Priorytet: | WYSOKI                                                       |
+| Opis:      | Platforma powinna być dostosowana do wyświetlania zawartości na urządzeniach niezależnie od rozdzielczości wyświetlacza, zachowując w jak największym stopniu przejrzystość i intuicyjność interfejsu. |
+
+| ID:        | 6                                                            |
+| ---------- | ------------------------------------------------------------ |
+| Nazwa:     | Szata graficzna interfejsu                                   |
+| Priorytet: | ŚREDNI                                                       |
+| Opis:      | Wskazane jest zaprojektowanie szaty graficznej interfejsu pod kątem wyraźnego zaznaczania istotnych informacji (np. kolor zielony - wzrost ceny), ale również zastosowania gamy barw i proporcji elementów sprawiających wrażenie spójnego, przyjaznego wizerunku platformy. |
+
+
+
