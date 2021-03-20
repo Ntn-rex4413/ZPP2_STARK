@@ -114,54 +114,61 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 | ID:        | 4                                                            |
 | ---------- | ------------------------------------------------------------ |
+| Nazwa:     | Podawanie informacji o czasie ostatniej aktualizacji kursu   |
+| Priorytet: | WYSOKI                                                       |
+| Rola:      | WSZYSCY                                                      |
+| Opis:      | W ramach wyświetlania szczegółowych danych dotyczących konkretnej kryptowaluty (wymaganie ID: 3) wyświetlana jest również informacja o czasie ostatniego zaktualizowania informacji na jej temat. |
+
+| ID:        | 5                                                            |
+| ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Utworzenie konta                                             |
 | Priorytet: | WYSOKI                                                       |
 | Rola:      | Użytkownicy tymczasowi                                       |
 | Opis:      | Osoba odwiedzająca platformę ma możliwość utworzenia konta (zarejestrowania się) tym samym zmieniając swoją rolę i uzyskując dostęp do wszystkich funkcjonalności platformy. |
 
-|  ID:    | 5 |
+|  ID:    | 6 |
 | ---- | ---- |
 |Nazwa:      | Logowanie użytkownika |
 |Priorytet:     | WYSOKI |
 |Rola:      | Użytkownicy zarejestrowani |
-|Opis:      | Na podstawie danych dostarczonych podczas rejestracji (wymaganie ID: 3) użytkownik ma możliwość zalogowania się do aplikacji. |
+|Opis:      | Na podstawie danych dostarczonych podczas rejestracji (wymaganie ID: 5) użytkownik ma możliwość zalogowania się do aplikacji. |
 
-| ID:        | 6                                                            |
+| ID:        | 7                                                            |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Dodanie kryptowaluty do listy obserwowanych                  |
 | Priorytet: | WYSOKI                                                       |
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Z poziomu przeglądania/wyszukiwania kryptowalut platformy użytkownik zalogowany ma możliwość dodawania wybranych przez siebie kryptowalut do listy obserwowanych. |
 
-| ID:        | 7                                                            |
+| ID:        | 8                                                            |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Usunięcie kryptowaluty z listy obserwowanych                 |
 | Priorytet: | WYSOKI                                                       |
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Użytkownik zalogowany ma możliwość usuwania pozycji z listy obserwowanych kryptowalut. |
 
-| ID:        | 8                                                            |
+| ID:        | 9                                                            |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Zmiana kolejności pozycji na liście obserwowanych            |
 | Priorytet: | ŚREDNI                                                       |
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | W celu lepszego dostosowania formy wyświetlanych informacji użytkownik ma możliwość zmiany kolejności kryptowalut wyświetlanych na liście obserwowanych. |
 
-| ID:        | 9                                                            |
+| ID:        | 10                                                           |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Konfiguracja i włączenie powiadomień mailowych               |
 | Priorytet: | WYSOKI                                                       |
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Po wyborze określonej kryptowaluty z listy obserwowanych użytkownik ma możliwość wyboru i włączania/wyłączania powiadomień mailowych o zmianach jej wartości. Użytkownik ma możliwość określenia rodzaju i skali zmian, o których chce być powiadomiony oraz dopuszczalnej częstotliwości otrzymywania powiadomień. |
 
-| ID:        | 10                                                           |
+| ID:        | 11                                                           |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Przeliczanie kryptowalut na inne                             |
 | Priorytet: | WYSOKI                                                       |
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Użytkownik ma możliwość przeliczania wartości kryptowalut na inne, za pomocą dostarczonego przez platformę kalkulatora. |
 
-| ID:        | 11                                                           |
+| ID:        | 12                                                           |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Przeliczanie kryptowalut na waluty tradycyjne                |
 | Priorytet: | ŚREDNI                                                       |
