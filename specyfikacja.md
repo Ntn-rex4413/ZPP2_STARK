@@ -69,6 +69,10 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | ------ | ------------------------------------------------------------ |
 | Opis:  | Kolekcja kryptowalut wybranych przez użytkownika jako "obserwowanych". Stanowi przykład "listy szybkiego dostępu" - wyświetlanej zaraz po wejściu użytkownika zalogowanego na stronę. Wybór pozycji z tej listy ma kierować użytkownika do panelu podglądu informacji o danej kryptowalucie. |
 
+| Nazwa: | Kalkulator walutowy                                          |
+| ------ | ------------------------------------------------------------ |
+| Opis:  | Wewnętrzny serwis platformy, umożliwiający przeliczanie wartości kryptowalut względem innych kryptowalut bądź walut tradycyjnych, w oparciu o aktualne kursy kupna i sprzedaży. |
+
 
 
 #### 2.2. Aktorzy biznesowi
@@ -163,3 +167,4 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | Priorytet: | ŚREDNI                                                       |
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Użytkownik ma możliwość przeliczania wartości kryptowalut na dane waluty tradycyjne, za pomocą dostarczonego przez platformę kalkulatora. |
+
