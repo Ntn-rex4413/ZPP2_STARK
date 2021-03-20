@@ -43,3 +43,12 @@ Po wyszukaniu na platformie danej kryptowaluty użytkownikowi prezentowane będz
 Użytkownicy posiadający konto będą ponadto mogli skonfigurować dostosowane do swoich potrzeb powiadomienia wysyłane w formie mailowej, związane z określonymi przez siebie ruchami określonych kryptowalut, jak na przykład przekroczenie pewnego progu cenowego.
 
 Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub konta Google, w połączeniu z prostym w obsłudze, intuicyjnym interfejsem prezentującym w przejrzysty sposób interesujące użytkownika informacje mają uczynić projektowaną platformę efektywnym narzędziem porównawczym ułatwiającym użytkownikowi podejmowanie decyzji inwestycyjnych na rynku kryptowalut.
+
+#### 1.2. Słownik pojęć
+
+- **Kryptowaluta** - pojęcie funkcjonujące w platformie, stanowi reprezentację wszystkich informacji związanych z kryptowalutą obecną na rynku,
+- **Lista obserwowanych** - pojęcie funkcjonujące w platformie, jest bytem grupującym kryptowaluty dodane przez użytkownika do osobistej listy "szybkiego dostępu",
+- **Platforma** - strona internetowa posiadająca opisaną funkcjonalność,
+- **Użytkownik tymczasowy** - osoba odwiedzające stronę, nie posiadająca konta,
+- **Użytkownik zalogowany** - osoba korzystająca z platformy, zalogowana na konto utworzone w procesie rejestracji,
+
