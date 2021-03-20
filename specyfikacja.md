@@ -225,3 +225,17 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 
 
+---
+
+### 5. Model systemu
+
+#### 5.1. Diagram przypadków użycia
+
+
+
+#### 5.2. Diagram przepływu danych
+
+
+
+#### 5.3. Opis architektury i technologii projektu
+
