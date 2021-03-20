@@ -52,3 +52,21 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 - **Użytkownik tymczasowy** - osoba odwiedzające stronę, nie posiadająca konta,
 - **Użytkownik zalogowany** - osoba korzystająca z platformy, zalogowana na konto utworzone w procesie rejestracji,
 
+
+
+---
+
+### 2. Model procesów biznesowych
+
+#### 2.1. Obiekty biznesowe
+
+| Nazwa: | Kryptowaluta                                                 |
+| ------ | ------------------------------------------------------------ |
+| Opis:  | Zestawienie informacji dotyczących pojedynczej kryptowaluty. Posiada sygnaturę (skrótową nazwę jednoznacznie identyfikującą ją na rynku), pełną nazwę, wartość pojedynczej jednostki, wolumen, wartości najniższą i najwyższą odnotowane w przeciągu ostatnich 24 godzin od chwili podglądu. |
+
+| Nazwa: | Lista obserwowanych                                          |
+| ------ | ------------------------------------------------------------ |
+| Opis:  | Kolekcja kryptowalut wybranych przez użytkownika jako "obserwowanych". Stanowi przykład "listy szybkiego dostępu" - wyświetlanej zaraz po wejściu użytkownika zalogowanego na stronę. Wybór pozycji z tej listy ma kierować użytkownika do panelu podglądu informacji o danej kryptowalucie. |
+
+
+
