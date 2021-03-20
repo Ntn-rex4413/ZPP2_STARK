@@ -246,3 +246,10 @@ Widoki (interfejs użytkownika) wykonane z wykorzystaniem HTML i CSS (biblioteka
 Główne API dostarczające dane aplikacji: Alpha Vantage. 
 
 Backend: silnik aplikacji wykonany w języku C#. Odpowiedzialny za komunikację z API serwisów  dostarczających informacje o kursach kryptowalut, selekcję oraz formatowanie danych i komunikację z bazą danych
+
+Przewidywane implementacje wzorców projektowych:
+
+- **Factory** - pozwala na stworzenie systemu dynamicznie tworzącego i dostarczającego instancje klas,
+- **Adapter** - pozwala na działanie dwóch kolidujących interfejsów, potencjalnie przydatny w ramach opracowywania mechanizmów komunikacji frontendu programu z backendem,
+- **Decorator** - pozwala na rozwinięcie klasy bez ingerencji w jej implementację, potencjalne wykorzystanie w przypadku wprowadzania dodatkowych funkcjonalności w trakcie pracy nad projektem,
+- **Observer** - pozwala na nadzorowanie zmian stanu obiektów i powiadamianie o nich obiektów zależnych, potencjalne wykorzystanie w ramach opracowywania systemu powiadomień użytkownika o zmianach kursów,
