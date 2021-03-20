@@ -70,3 +70,13 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 
 
+#### 2.2. Aktorzy biznesowi
+
+| Nazwa: | Użytkownik tymczasowy                                        |
+| ------ | ------------------------------------------------------------ |
+| Opis:  | Użytkownik platformy, odwiedzający stronę, nie posiadający konta. Dane na temat jego wizyty nie są zapisywane. Może przeglądać udostępniane przez platformę zasoby, nie ma jednak możliwości utworzenia osobistej listy obserwowanych kryptowalut i dodawania do niej pozycji, jak i otrzymywania powiadomień. |
+
+| Nazwa: | Użytkownik zalogowany                                        |
+| ------ | ------------------------------------------------------------ |
+| Opis:  | Użytkownik platformy, posiadający konto, na którym jest obecnie zalogowany. Posiada dostęp do wszystkich funkcjonalności platformy; może przeglądać udostępniane przez platformę zasoby, edytować osobistą listę obserwowanych kryptowalut oraz konfigurować funkcję otrzymywania powiadomień. |
+
