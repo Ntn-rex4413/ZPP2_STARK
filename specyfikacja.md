@@ -235,7 +235,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 #### 5.2. Diagram przepływu danych
 
-
+![](./docimages/spec_dfd_v1.png)
 
 #### 5.3. Opis architektury i technologii projektu
 
