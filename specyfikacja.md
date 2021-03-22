@@ -231,7 +231,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 #### 5.1. Diagram przypadków użycia
 
-
+![](./docimages/spec_ucd_v1.png)
 
 #### 5.2. Diagram przepływu danych
 
