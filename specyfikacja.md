@@ -241,7 +241,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 ![](./docimages/spec_dfd_v1.png)
 
-<div style="text-align: center"> Rysunek 2. - Diagram przypadków użycia </div>
+<div style="text-align: center"> Rysunek 2. - Diagram przepływu danych </div>
 
 
 
