@@ -233,9 +233,17 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 ![](./docimages/spec_ucd_v1.png)
 
+<div style="text-align: center"> Rysunek 1. - Diagram przypadków użycia </div>
+
+
+
 #### 5.2. Diagram przepływu danych
 
 ![](./docimages/spec_dfd_v1.png)
+
+<div style="text-align: center"> Rysunek 2. - Diagram przypadków użycia </div>
+
+
 
 #### 5.3. Opis architektury i technologii projektu
 
