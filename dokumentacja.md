@@ -16,3 +16,9 @@ Użytkownicy posiadający konto będą ponadto mogli skonfigurować dostosowane 
 
 Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub konta Google, w połączeniu z prostym w obsłudze, intuicyjnym interfejsem prezentującym w przejrzysty sposób interesujące użytkownika informacje mają uczynić projektowaną platformę efektywnym narzędziem porównawczym ułatwiającym użytkownikowi podejmowanie decyzji inwestycyjnych na rynku kryptowalut.
 
+#### Skład zespołu i podział zadań
+
+- Boryczko Jan - modele danych, mechanizmy komunikacji frontend-backend,
+- Goc Michał - design i implementacja frontendu,
+- Jodkowski Natan - frontend, dokumentacja projektu,
+- Mysłajek Łukasz - backend, pobieranie danych z API cryptocompare,
