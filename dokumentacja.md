@@ -33,3 +33,21 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 [//do wprowadzenia ze specyfikacja.md]
 
+
+
+### 4. Projekt systemu
+
+#### Statyczna struktura budowanego systemu
+
+[//diagram klas]
+
+[//specyfikacja bazy danych]
+
+[//diagram encji bazy danych]
+
+#### Struktura komponentowa budowanego projektu
+
+[//diagram komponentów]
+
+[//diagram instalacji / deployment diagram]
+
