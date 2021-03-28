@@ -22,3 +22,14 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 - Goc Michał - design i implementacja frontendu,
 - Jodkowski Natan - frontend, dokumentacja projektu,
 - Mysłajek Łukasz - backend, pobieranie danych z API cryptocompare,
+
+
+
+### 2. Specyfikacja wymagań funkcjonalnych
+
+[//do wprowadzenia ze specyfikacja.md]
+
+### 3.Specyfikacja wymagań niefunkcjonalnych
+
+[//do wprowadzenia ze specyfikacja.md]
+
