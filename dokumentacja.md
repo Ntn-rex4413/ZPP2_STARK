@@ -51,3 +51,10 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 [//diagram instalacji / deployment diagram]
 
+
+
+### 5. Opis wersji systemu
+
+[//struktura katalogowa projektu]
+
+[//instrukcja kompilacji/instalacji]
