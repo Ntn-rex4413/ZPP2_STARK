@@ -14,16 +14,22 @@ namespace STARK_Project.CryptoAPIService
 
     public class CryptoService : ICryptoService
     {
+
         private static readonly string _apiKey = "f55d85f81594925184304042a6bac7d8ee60a570722469d1ba0a3cee4ed6f959";
         private readonly string _baseURL = "https://min-api.cryptocompare.com/";
         private static readonly string _mulitInfoSubUri = "data/pricemultifull";
+
         private HttpClient _client = new HttpClient();
+
         public CryptoService()
         {
             _client.BaseAddress = new Uri(_baseURL);
             _client.DefaultRequestHeaders.Add("Apikey", _apiKey);
         }
-
+        /// <summary>
+        /// Get Info about all cryptocurrency and their conversion into currencies included in CurrencySymbolsEnums
+        /// </summary>
+        /// <returns>return Model about all cryptocurrency</returns>
         public async Task<CryptoModel> GetCryptocurrenciesInfoAsync()
         {
             return await GetCryptoData(
@@ -31,14 +37,23 @@ namespace STARK_Project.CryptoAPIService
                         string.Join(",", Enum.GetNames(typeof(CurrencySymbols)))
                         );
         }
-
+        /// <summary>
+        /// Get Info about all cryptocurrency and their conversion into currencies with specific symbol, included in CurrencySymbolsEnums
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns>return Model  about all cryptocurrency in specific currency</returns>
         public async Task<CryptoModel> GetCryptocurrenciesInfoAsync(CurrencySymbols symbol)
         {
             return await GetCryptoData(
                  string.Join(",", Enum.GetNames(typeof(CryptocurrencySymbols))),
                  symbol.ToString());
         }
-
+        /// <summary>
+        /// Get info about specific cryptocurrency in specific currency
+        /// </summary>
+        /// <param name="cryptoSymbol"></param>
+        /// <param name="currencySymbol"></param>
+        /// <returns>returns Model about cryptocurrency in specific currency</returns>
         public async Task<CryptoInfo> GetCryptocurrencyInfoAsync(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol)
         {
             var data =  await GetCryptoData(

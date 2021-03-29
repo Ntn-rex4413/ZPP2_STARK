@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace STARK_Project.CryptoAPIService
 {
+    /// <summary>
+    /// Interface for crypto API service
+    /// </summary>
     interface ICryptoService
     {
        Task<CryptoInfo> GetCryptocurrencyInfoAsync(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol);

@@ -1,5 +1,8 @@
 ﻿namespace STARK_Project.CryptoApiModel
 {
+    /// <summary>
+    /// General info about cryptocurrency
+    /// </summary>
     public class CryptoInfo
     {
         public string Market { get; set; }

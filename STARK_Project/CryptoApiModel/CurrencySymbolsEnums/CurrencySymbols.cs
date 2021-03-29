@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace STARK_Project.CryptoApiModel.CurrencyEnums
 {
+    /// <summary>
+    /// Currencies symbols
+    /// </summary>
     public enum CurrencySymbols
     {
         PLN,
