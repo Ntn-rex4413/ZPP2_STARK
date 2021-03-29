@@ -10,7 +10,7 @@ namespace STARK_Project.CryptoAPIService
 {
     interface ICryptoService
     {
-       CryptoInfo GetCryptocurrencyInfo(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol);
-        CryptoModel GetCryptocurrenciesInfo();
+       Task<CryptoInfo> GetCryptocurrencyInfoAsync(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol);
+        Task<CryptoModel> GetCryptocurrenciesInfoAsync();
     }
 }
