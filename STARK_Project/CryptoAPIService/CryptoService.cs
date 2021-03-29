@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace STARK_Project.CryptoAPIService
 {
@@ -15,27 +16,69 @@ namespace STARK_Project.CryptoAPIService
     {
         private static readonly string _apiKey = "f55d85f81594925184304042a6bac7d8ee60a570722469d1ba0a3cee4ed6f959";
         private readonly string _baseURL = "https://min-api.cryptocompare.com/";
-        private  HttpClient _client = new HttpClient();
+        private static readonly string _mulitInfoSubUri = "data/pricemultifull";
+        private HttpClient _client = new HttpClient();
         public CryptoService()
         {
+            _client.BaseAddress = new Uri(_baseURL);
             _client.DefaultRequestHeaders.Add("Apikey", _apiKey);
         }
 
         public async Task<CryptoModel> GetCryptocurrenciesInfoAsync()
         {
-            var request = await _client.GetAsync("data/pricemultifull?fsyms=BTC&tsyms=PLN");
-            if (request.IsSuccessStatusCode)
+            return await GetCryptoData(
+                        string.Join(",", Enum.GetNames(typeof(CryptocurrencySymbols))),
+                        string.Join(",", Enum.GetNames(typeof(CurrencySymbols)))
+                        );
+        }
+
+        public async Task<CryptoModel> GetCryptocurrenciesInfoAsync(CurrencySymbols symbol)
+        {
+            return await GetCryptoData(
+                 string.Join(",", Enum.GetNames(typeof(CryptocurrencySymbols))),
+                 symbol.ToString());
+        }
+
+        public async Task<CryptoInfo> GetCryptocurrencyInfoAsync(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol)
+        {
+            var data =  await GetCryptoData(
+           cryptoSymbol.ToString(),
+           currencySymbol.ToString());
+            if(data is null) return null;
+            return data.RAW[cryptoSymbol][currencySymbol];
+           
+        }
+
+
+        private async Task<CryptoModel> GetCryptoData(string cryptoSymbols, string currencySymbols)
+        {
+            var parameters = new List<KeyValuePair<string, string>>
             {
-                var response = await request.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<CryptoModel>(response);
+                new KeyValuePair<string, string>("fsyms", cryptoSymbols),
+                new KeyValuePair<string, string>("tsyms", currencySymbols)
+            };
+            var response = await GetResponse(_mulitInfoSubUri, parameters);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var data = JsonConvert.DeserializeObject<CryptoModel>(await response.Content.ReadAsStringAsync());
                 return data;
             }
             return null;
         }
 
-        public async Task<CryptoInfo> GetCryptocurrencyInfoAsync(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol)
+        private async Task<HttpResponseMessage> GetResponse(string uri, List<KeyValuePair<string, string>> parameters)
         {
-            throw new NotImplementedException();
+            var uriBuilder = new UriBuilder(uri);
+            var query = HttpUtility.ParseQueryString(uriBuilder.Query);
+
+            foreach (var parameter in parameters)
+                query.Add(parameter.Key, parameter.Value);
+
+            uriBuilder.Query = query.ToString();
+
+            return await _client.GetAsync(uriBuilder.Uri);
         }
     }
 }
+

@@ -12,5 +12,6 @@ namespace STARK_Project.CryptoAPIService
     {
        Task<CryptoInfo> GetCryptocurrencyInfoAsync(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol);
         Task<CryptoModel> GetCryptocurrenciesInfoAsync();
+        Task<CryptoModel> GetCryptocurrenciesInfoAsync(CurrencySymbols symbol);
     }
 }
