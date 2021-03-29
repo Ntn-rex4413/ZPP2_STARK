@@ -10,7 +10,7 @@
         public string ToSymbol { get; set; }
         public float Price { get; set; }
         public float LastUpdate { get; set; }
-        public float Volume25Hour { get; set; }
+        public float Volume24Hour { get; set; }
         public float Change24Hour { get; set; }
         public float ChangePCT24Hour { get; set; }
         public float ChangeDay { get; set; }
