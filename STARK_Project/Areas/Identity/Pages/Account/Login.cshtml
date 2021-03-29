@@ -47,7 +47,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <div asp-validation-summary="All" class="text-danger"></div>
-                                    <form class="user">
+                                    <form class="user" id="account" method="post">
                                         <div class="form-group">
                                             <input asp-for="Input.Email" class="form-control form-control-user" placeholder="Enter Email Address..." />
                                             <span asp-validation-for="Input.Email" class="text-danger"></span>
@@ -67,24 +67,27 @@
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-user btn-block">Log in</button>
                                         </div>
-                                        <hr>
+
+                                    </form>
+                                    <hr>
+                                    <form class="user">
                                         <a href="" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
                                         <a href="" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                         </a>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" asp-area="Identity" asp-page="/Account/ForgotPassword">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" asp-area="Identity" asp-page="/Account/Register">Create an Account!</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                                    </div>
+                                    </form> 
+                                        <hr>
+                                        <div class="text-center">
+                                            <a class="small" asp-area="Identity" asp-page="/Account/ForgotPassword">Forgot Password?</a>
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="small" asp-area="Identity" asp-page="/Account/Register">Create an Account!</a>
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="small" id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                                        </div>
                                 </div>
                             </div>
                         </div>
