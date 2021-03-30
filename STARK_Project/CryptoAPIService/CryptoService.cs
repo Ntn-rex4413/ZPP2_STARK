@@ -4,6 +4,7 @@ using STARK_Project.CryptoApiModel.CurrencyEnums;
 using STARK_Project.CryptoApiModel.CurrencySymbolsEnums;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -72,7 +73,7 @@ namespace STARK_Project.CryptoAPIService
                 new KeyValuePair<string, string>("fsyms", cryptoSymbols),
                 new KeyValuePair<string, string>("tsyms", currencySymbols)
             };
-            var response = await GetResponse(_mulitInfoSubUri, parameters);
+            var response = await GetResponse(_baseURL + _mulitInfoSubUri, parameters);
 
             if (response.IsSuccessStatusCode)
             {
@@ -91,7 +92,7 @@ namespace STARK_Project.CryptoAPIService
                 query.Add(parameter.Key, parameter.Value);
 
             uriBuilder.Query = query.ToString();
-
+            Debug.WriteLine(uriBuilder.Uri);
             return await _client.GetAsync(uriBuilder.Uri);
         }
     }
