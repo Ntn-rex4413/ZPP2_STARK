@@ -116,8 +116,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         LSK,
         RENBTC,
         STORJ,
-        [Description("1INCH")]
-        ONEINCH,
+        _1INCH,
         GLM,
         LRC,
         NANO,
