@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using STARK_Project.CryptoApiModel.CurrencyEnums;
 using STARK_Project.CryptoApiModel.CurrencySymbolsEnums;
@@ -17,9 +18,9 @@ namespace STARK_UnitTests
         {
             var service = new CryptoService();
 
-            var data = service.GetCryptocurrenciesInfoAsync(CurrencySymbols.PLN).Result;
+            var data = service.GetCryptocurrenciesInfoAsync(CurrencySymbols.USD).Result;
 
-            Assert.Equals(data, 200);
+            Assert.AreEqual(Convert.ToSingle(58583.58), data.RAW[CryptocurrencySymbols.BTC][CurrencySymbols.USD].Price);
         }
         /// <summary>
         /// gets one cryptocurrency
@@ -29,9 +30,11 @@ namespace STARK_UnitTests
         {
             var service = new CryptoService();
 
-            var data = service.GetCryptocurrencyInfoAsync(CryptocurrencySymbols.AAVE, CurrencySymbols.PLN).Result;
+            var data = service.GetCryptocurrencyInfoAsync(CryptocurrencySymbols.BTC, CurrencySymbols.USD).Result;
 
-            Assert.Equals(data.Price, 234697.7557);
+            Debug.WriteLine(data.Price);
+
+            Assert.AreEqual(Convert.ToSingle(58587.54), data.Price);
         }
     }
 }
