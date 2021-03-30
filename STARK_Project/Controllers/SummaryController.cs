@@ -11,6 +11,7 @@ namespace STARK_Project.Controllers
         public IActionResult Index()
         {
             return View();
+
         }
     }
 }
