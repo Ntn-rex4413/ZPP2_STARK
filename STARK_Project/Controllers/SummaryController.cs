@@ -12,7 +12,7 @@ namespace STARK_Project.Controllers
 {
     public class SummaryController : Controller
     {
-        private ICryptoService _service;
+        private readonly ICryptoService _service;
         public SummaryController(ICryptoService service)
         {
             _service = service;
@@ -28,7 +28,7 @@ namespace STARK_Project.Controllers
             data.Add(dataEUR);
             data.Add(dataUSD);
 
-            return View();
+            return View(data);
         }
     }
 }
