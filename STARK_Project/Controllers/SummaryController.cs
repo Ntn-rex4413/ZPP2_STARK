@@ -19,6 +19,14 @@ namespace STARK_Project.Controllers
         }
         public IActionResult Index()
         {
+            List<CryptoModel> data = new List<CryptoModel>();
+            var dataPLN = _service.GetCryptocurrenciesInfoAsync(CurrencySymbols.PLN).Result;
+            var dataEUR = _service.GetCryptocurrenciesInfoAsync(CurrencySymbols.EUR).Result;
+            var dataUSD = _service.GetCryptocurrenciesInfoAsync(CurrencySymbols.USD).Result;
+
+            data.Add(dataPLN);
+            data.Add(dataEUR);
+            data.Add(dataUSD);
 
             return View();
         }
