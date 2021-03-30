@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using STARK_Project.CryptoAPIService;
 using STARK_Project.Data;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace STARK_Project
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<ICryptoService, CryptoService>();
             services.AddControllersWithViews();
         }
 
