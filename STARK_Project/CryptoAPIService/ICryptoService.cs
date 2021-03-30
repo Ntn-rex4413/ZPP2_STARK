@@ -11,7 +11,7 @@ namespace STARK_Project.CryptoAPIService
     /// <summary>
     /// Interface for crypto API service
     /// </summary>
-    interface ICryptoService
+    public interface ICryptoService
     {
        Task<CryptoInfo> GetCryptocurrencyInfoAsync(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol);
         Task<CryptoModel> GetCryptocurrenciesInfoAsync();
