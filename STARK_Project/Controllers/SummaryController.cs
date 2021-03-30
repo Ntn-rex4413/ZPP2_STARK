@@ -17,16 +17,9 @@ namespace STARK_Project.Controllers
         {
             _service = service;
         }
-        public IActionResult Index()
+        public IActionResult Index(string currency)
         {
-            List<CryptoModel> data = new List<CryptoModel>();
-            var dataPLN = _service.GetCryptocurrenciesInfoAsync(CurrencySymbols.PLN).Result;
-            var dataEUR = _service.GetCryptocurrenciesInfoAsync(CurrencySymbols.EUR).Result;
-            var dataUSD = _service.GetCryptocurrenciesInfoAsync(CurrencySymbols.USD).Result;
-
-            data.Add(dataPLN);
-            data.Add(dataEUR);
-            data.Add(dataUSD);
+            var data = _service.GetCryptocurrenciesInfoAsync(Enum.Parse<CurrencySymbols>(currency)).Result;
 
             return View(data);
         }
