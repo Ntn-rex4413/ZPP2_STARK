@@ -57,7 +57,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         HOT,
         CAKE,
         EGLD,
-        GRD,
+        GRT,
         DCR,
         DASH,
         TFUEL,
