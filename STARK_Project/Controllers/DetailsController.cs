@@ -18,6 +18,9 @@ namespace STARK_Project.Controllers
         }
         public IActionResult Index(string cryptocurrency, string currency)
         {
+            cryptocurrency ??= "BTC";
+            currency ??= "PLN"; //can change to default global later
+
             var data = _service.GetCryptocurrencyInfoAsync(Enum.Parse<CryptocurrencySymbols>(cryptocurrency),
                 Enum.Parse<CurrencySymbols>(currency)).Result;
             return View(data);
