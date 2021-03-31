@@ -17,10 +17,8 @@ namespace STARK_Project.Controllers
         {
             _service = service;
         }
-        public IActionResult Index(string currency = null)
+        public IActionResult Index(string currency = "PLN")
         {
-            currency ??= "PLN"; //can change to global default later
-
             var data = _service.GetCryptocurrenciesInfoAsync(Enum.Parse<CurrencySymbols>(currency)).Result;
 
             return View(data);
