@@ -68,6 +68,8 @@ namespace STARK_Project.CryptoAPIService
 
         private async Task<CryptoModel> GetCryptoData(string cryptoSymbols, string currencySymbols)
         {
+            cryptoSymbols = cryptoSymbols.Replace("_", "");
+            currencySymbols = currencySymbols.Replace("_", "");
             var parameters = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("fsyms", cryptoSymbols),
