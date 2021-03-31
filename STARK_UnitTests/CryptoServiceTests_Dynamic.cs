@@ -8,13 +8,13 @@ using STARK_Project.CryptoAPIService;
 namespace STARK_UnitTests
 {
     [TestClass]
-    public class CryptoServiceTests
+    public class CryptoServiceTests_Dynamic
     {
         /// <summary>
         /// gets all cryptocurrencies
         /// </summary>
         [TestMethod]
-        public void CryptocurrencySummary_Returns200_IsTrue()
+        public void CryptocurrencySummary_ReturnsCorrectValue_IsTrue()
         {
             var service = new CryptoService();
 
@@ -26,7 +26,7 @@ namespace STARK_UnitTests
         /// gets one cryptocurrency
         /// </summary>
         [TestMethod]
-        public void CryptocurrencyDetails_CorrectData_IsTrue()
+        public void CryptocurrencyDetails_ReturnsCorrectValue_IsTrue()
         {
             var service = new CryptoService();
 
