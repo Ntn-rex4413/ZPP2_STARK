@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
@@ -116,6 +117,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         LSK,
         RENBTC,
         STORJ,
+        [EnumMember(Value = "1INCH")]
         _1INCH,
         GLM,
         LRC,
