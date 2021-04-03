@@ -1,4 +1,6 @@
-﻿@{
+﻿@model STARK_Project.Controllers.CurrencyDummy 
+
+@{
     ViewData["Title"] = "Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
@@ -25,7 +27,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center mb-4">
-        <i class="fab fa-bitcoin fa-3x mr-4" style="color: orange;"></i><h1 class="h3 mb-0 font-weight-bold text-gray-800 mr-4">BITCOIN</h1>
+        <i class="fab fa-bitcoin fa-3x mr-4" style="color: orange;"></i><h1 class="h3 mb-0 font-weight-bold text-gray-800 mr-4">@Model.Name.ToUpper()</h1>
     </div>
     <div class="d-sm-flex align-items-center mb-4">
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-4">
