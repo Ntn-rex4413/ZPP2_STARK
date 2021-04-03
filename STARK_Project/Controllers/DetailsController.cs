@@ -8,9 +8,11 @@ namespace STARK_Project.Controllers
 {
     public class DetailsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string currencyName)
         {
-            return View();
+            // temp code - to be updated
+            STARK_Project.Controllers.CurrencyDummy currency = new CurrencyDummy { Name = currencyName };
+            return View(currency);
         }
     }
 }
