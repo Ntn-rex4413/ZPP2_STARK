@@ -1,4 +1,4 @@
-﻿@model STARK_Project.Controllers.CurrencyDummy 
+﻿@model STARK_Project.Controllers.CurrencyDummy
 
 @{
     ViewData["Title"] = "Summary";
@@ -75,7 +75,15 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Zmiana w %
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">+ 5%</div>
+                            @if (Model.ChangePercentage < 0)
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.ChangePercentage%</div>
+                            }
+                            else
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.ChangePercentage%</div>
+                            }
+                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">+ 5%</div>*@
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-percent fa-2x text-gray-300"></i>
