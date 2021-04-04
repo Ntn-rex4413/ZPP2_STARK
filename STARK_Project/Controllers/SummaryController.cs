@@ -25,5 +25,9 @@ namespace STARK_Project.Controllers
     public class CurrencyDummy
     {
         public string Name { get; set; }
+        public double UnitPrice { get; set; }
+        public double ChangePercentage { get; set; }
+        public double ChangePrice { get; set; }
+        public DateTime LastUpdated { get; set; }
     }
 }
