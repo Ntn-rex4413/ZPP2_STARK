@@ -11,7 +11,14 @@ namespace STARK_Project.Controllers
         public IActionResult Index(string currencyName)
         {
             // temp code - to be updated
-            STARK_Project.Controllers.CurrencyDummy currency = new CurrencyDummy { Name = currencyName };
+            IEnumerable<CurrencyDummy> availableCurrencies = new List<CurrencyDummy>
+            {
+                new CurrencyDummy{Name="Bitcoin", UnitPrice= 42360.27, ChangePercentage=-2, ChangePrice=2000, LastUpdated=DateTime.Now},
+                new CurrencyDummy{Name="Ethereum", UnitPrice = 1234.56, ChangePercentage=4, ChangePrice=1200, LastUpdated=DateTime.Now}
+            };
+
+            CurrencyDummy currency = availableCurrencies.Where(x => x.Name == currencyName).First();
+
             return View(currency);
         }
     }
