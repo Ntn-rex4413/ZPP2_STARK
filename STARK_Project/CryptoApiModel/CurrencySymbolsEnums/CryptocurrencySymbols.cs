@@ -93,7 +93,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         RSR,
         DENT,
         SC,
-        CSHB,
+        CHSB,
         FTM,
         ANKR,
         CEL,
