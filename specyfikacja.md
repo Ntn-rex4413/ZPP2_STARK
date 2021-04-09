@@ -251,7 +251,7 @@ Frontend: wykonany na platformie ASP.NET, zgodnie ze wzorcem MVC (Model-View-Con
 
 Widoki (interfejs użytkownika) wykonane z wykorzystaniem HTML i CSS (biblioteka Bootstrap) komunikujące się z kontrolerami za pomocą składni Razor (integracji C# wewnątrz strony html,  w plikach .cshtml). 
 
-Główne API dostarczające dane aplikacji: Alpha Vantage. 
+Główne API dostarczające dane aplikacji: CryptoCompare.
 
 Backend: silnik aplikacji wykonany w języku C#. Odpowiedzialny za komunikację z API serwisów  dostarczających informacje o kursach kryptowalut, selekcję oraz formatowanie danych i komunikację z bazą danych
 
