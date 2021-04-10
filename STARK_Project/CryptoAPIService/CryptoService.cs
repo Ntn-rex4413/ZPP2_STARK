@@ -22,8 +22,8 @@ namespace STARK_Project.CryptoAPIService
 
         private HttpClient _client = new HttpClient();
 
-        public static Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
-        public static Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
+        public Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
+        public Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
 
         public CryptoService()
         {
