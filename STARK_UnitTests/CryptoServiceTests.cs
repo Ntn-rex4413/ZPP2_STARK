@@ -24,5 +24,15 @@ namespace STARK_UnitTests
 
             Assert.AreEqual(26, data.RAW.Count);
         }
+
+        [TestMethod]
+        public void CryptocurrenciesNames_ContainsAllValues_IsTrue()
+        {
+            var service = new CryptoService();
+
+            var data = service.GetCryptocurrencies();
+
+            Assert.AreEqual(26, data.Count);
+        }
     }
 }
