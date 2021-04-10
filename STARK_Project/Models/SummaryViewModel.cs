@@ -8,8 +8,8 @@ namespace STARK_Project.Models
 {
     public class SummaryViewModel
     {
-        public CryptoModel CryptoModel { get; }
-        public Dictionary<string, string> Cryptocurrencies { get; }
-        public Dictionary<string, string> Currencies { get; }
+        public CryptoModel CryptoModel { get; set; }
+        public Dictionary<string, string> Cryptocurrencies { get; set; }
+        public Dictionary<string, string> Currencies { get; set; }
     }
 }
