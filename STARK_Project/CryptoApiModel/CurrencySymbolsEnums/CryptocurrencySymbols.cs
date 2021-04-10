@@ -28,6 +28,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         XRP,
         [Description("Uniswap")]
         UNI,
+        [Description("Litecoin")]
         LTC,
         THETA,
         LINK,
