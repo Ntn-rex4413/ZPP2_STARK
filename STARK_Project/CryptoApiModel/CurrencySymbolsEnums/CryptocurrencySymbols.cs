@@ -24,6 +24,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         ADA,
         [Description("Polkadot")]
         DOT,
+        [Description("XRP")]
         XRP,
         UNI,
         LTC,
