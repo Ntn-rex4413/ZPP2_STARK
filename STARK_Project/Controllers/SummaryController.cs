@@ -19,7 +19,7 @@ namespace STARK_Project.Controllers
         }
         public IActionResult Index(string currency = "PLN")
         {
-            var data = _service.GetCryptocurrenciesInfoAsync(Enum.Parse<CurrencySymbols>(currency)).Result;
+            var data = _service.GetCryptocurrenciesInfoAsync(currency).Result;
 
             return View(data);
         }
