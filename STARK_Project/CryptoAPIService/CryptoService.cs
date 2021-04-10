@@ -22,8 +22,8 @@ namespace STARK_Project.CryptoAPIService
 
         private HttpClient _client = new HttpClient();
 
-        public static Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
-        public static Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
+        public Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
+        public Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
 
         public CryptoService()
         {
@@ -74,6 +74,24 @@ namespace STARK_Project.CryptoAPIService
             CurrenciesNames.Add("PLN", "Polski złoty");
             CurrenciesNames.Add("EUR", "Euro");
             CurrenciesNames.Add("USD", "United States dollar");
+        }
+
+        /// <summary>
+        /// returns cryptocurrencies dictionary
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string,string> GetCryptocurrencies()
+        {
+            return CryptocurrenciesNames;
+        }
+
+        /// <summary>
+        /// return currencies dictionary
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, string> GetCurrencies()
+        {
+            return CurrenciesNames;
         }
 
         /// <summary>
