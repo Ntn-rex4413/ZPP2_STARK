@@ -18,6 +18,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         ETH,
         [Description("Binance Coin")]
         BNB,
+        [Description("Tether")]
         USDT,
         ADA,
         DOT,
