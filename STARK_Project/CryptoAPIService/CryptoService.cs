@@ -77,6 +77,24 @@ namespace STARK_Project.CryptoAPIService
         }
 
         /// <summary>
+        /// returns cryptocurrencies dictionary
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string,string> GetCryptocurrencies()
+        {
+            return CryptocurrenciesNames;
+        }
+
+        /// <summary>
+        /// return currencies dictionary
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, string> GetCurrencies()
+        {
+            return CurrenciesNames;
+        }
+
+        /// <summary>
         /// Get Info about all cryptocurrency and their conversion into currencies included in CurrencySymbolsEnums
         /// </summary>
         /// <returns>return Model about all cryptocurrency</returns>
