@@ -16,27 +16,13 @@ namespace STARK_UnitTests
     public class CryptoServiceTests
     {
         [TestMethod]
-        public void CryptocurrencySymbols_Returns200Values_IsTrue()
-        {
-            var enums = Enum.GetNames(typeof(CryptocurrencySymbols));
-
-            Assert.AreEqual(200, enums.Length);
-        }
-
-        [TestMethod]
-        public void CryptocurrencySummary_Returns200Values_IsTrue()
+        public void CryptocurrencySummary_ReturnsAllValues_IsTrue()
         {
             var service = new CryptoService();
 
-            var data = service.GetCryptocurrenciesInfoAsync(Enum.Parse<CurrencySymbols>("PLN")).Result;
-            var enums = Enum.GetNames(typeof(CryptocurrencySymbols));
-            var result = new List<CryptoInfo>();
-            foreach (var item in enums)
-            {
-                result.Add(data.RAW[Enum.Parse<CryptocurrencySymbols>(item)][CurrencySymbols.PLN]);
-            }
+            var data = service.GetCryptocurrenciesInfoAsync("PLN").Result;
 
-            Assert.AreEqual(200, result.Count);
+            Assert.AreEqual(26, data.RAW.Count);
         }
     }
 }

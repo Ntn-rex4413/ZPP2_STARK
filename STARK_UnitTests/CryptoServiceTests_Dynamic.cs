@@ -18,9 +18,9 @@ namespace STARK_UnitTests
         {
             var service = new CryptoService();
 
-            var data = service.GetCryptocurrenciesInfoAsync(CurrencySymbols.USD).Result;
+            var data = service.GetCryptocurrenciesInfoAsync("USD").Result;
 
-            Assert.AreEqual(Convert.ToSingle(58583.58), data.RAW[CryptocurrencySymbols.BTC][CurrencySymbols.USD].Price);
+            Assert.AreEqual(Convert.ToSingle(58583.58), data.RAW["BTC"]["USD"].Price);
         }
         /// <summary>
         /// gets one cryptocurrency
@@ -30,7 +30,7 @@ namespace STARK_UnitTests
         {
             var service = new CryptoService();
 
-            var data = service.GetCryptocurrencyInfoAsync(CryptocurrencySymbols.BTC, CurrencySymbols.USD).Result;
+            var data = service.GetCryptocurrencyInfoAsync("BTC", "USD").Result;
 
             Debug.WriteLine(data.Price);
 
