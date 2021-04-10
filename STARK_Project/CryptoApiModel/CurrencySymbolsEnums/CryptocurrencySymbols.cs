@@ -16,6 +16,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         BTC,
         [Description("Ethereum")]
         ETH,
+        [Description("Binance Coin")]
         BNB,
         USDT,
         ADA,
