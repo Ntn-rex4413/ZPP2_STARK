@@ -1,4 +1,5 @@
-﻿@model STARK_Project.Models.DetailsViewModel
+﻿@using STARK_Project.Controllers
+@model STARK_Project.Models.DetailsViewModel
  
 @{
     ViewData["Title"] = "Details";
@@ -29,7 +30,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center mb-4">
-        <i class="fab fa-bitcoin fa-3x mr-4" style="color: orange;"></i><h1 class="h3 mb-0 font-weight-bold text-gray-800 mr-4">@Model.FromSymbol.ToUpper()</h1>
+        <i class="fab fa-bitcoin fa-3x mr-4" style="color: orange;"></i><h1 class="h3 mb-0 font-weight-bold text-gray-800 mr-4">@Model.CryptoModel.FromSymbol.ToUpper()</h1>
     </div>
     <div class="d-sm-flex align-items-center mb-4">
         <a href="https://www.binance.com/en/buy-sell-crypto" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-4">
@@ -56,9 +57,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Nazwa @Model.FromSymbol
+                                Nazwa @Model.CryptoModel.FromSymbol
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.Price</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.Price</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -77,13 +78,13 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Change % daily
                             </div>
-                            @if (Model.ChangePCTDay < 0)
+                            @if (Model.CryptoModel.ChangePCTDay < 0)
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.ChangePCTDay%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTDay%</div>
                             }
                             else
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.ChangePCTDay%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTDay%</div>
                             }
                             @*<div class="h5 mb-0 font-weight-bold text-gray-800">+ 5%</div>*@
                         </div>
@@ -107,7 +108,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     @*<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$2137</div>*@
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$@Model.ChangeDay</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$@Model.CryptoModel.ChangeDay</div>
                                 </div>
                                 <div class="col">
                                     @*<div class="progress progress-sm mr-2">
@@ -136,7 +137,7 @@
                                 Aktualizacja
                             </div>
                             @*<div class="h5 mb-0 font-weight-bold text-gray-800">16.03.2021</div>*@
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">@DetailsController.UnixTimeStampToDateTime(Model.LastUpdate)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@DetailsController.UnixTimeStampToDateTime(Model.CryptoModel.LastUpdate)</div>
                         </div>
                         <div class="col-auto">
                             <i class="far fa-clock fa-2x text-gray-300"></i>
