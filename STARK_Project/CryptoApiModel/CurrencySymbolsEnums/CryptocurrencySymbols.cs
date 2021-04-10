@@ -22,6 +22,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         USDT,
         [Description("Cardano")]
         ADA,
+        [Description("Polkadot")]
         DOT,
         XRP,
         UNI,
