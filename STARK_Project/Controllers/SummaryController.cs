@@ -7,6 +7,7 @@ using STARK_Project.CryptoApiModel;
 using STARK_Project.CryptoApiModel.CurrencyEnums;
 using STARK_Project.CryptoApiModel.CurrencySymbolsEnums;
 using STARK_Project.CryptoAPIService;
+using STARK_Project.Models;
 
 namespace STARK_Project.Controllers
 {
@@ -19,7 +20,10 @@ namespace STARK_Project.Controllers
         }
         public IActionResult Index(string currency = "PLN")
         {
-            var data = _service.GetCryptocurrenciesInfoAsync(currency).Result;
+            var data = new SummaryViewModel();
+            data.CryptoModel = _service.GetCryptocurrenciesInfoAsync(currency).Result;
+            data.Cryptocurrencies = _service.GetCryptocurrencies();
+            data.Currencies = _service.GetCurrencies();
 
             return View(data);
         }
