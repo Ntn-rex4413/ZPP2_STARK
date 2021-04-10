@@ -30,6 +30,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         UNI,
         [Description("Litecoin")]
         LTC,
+        [Description("THETA")]
         THETA,
         LINK,
         USDC,
