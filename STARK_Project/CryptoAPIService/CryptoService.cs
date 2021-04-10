@@ -22,6 +22,9 @@ namespace STARK_Project.CryptoAPIService
 
         private HttpClient _client = new HttpClient();
 
+        public static Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
+        public static Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
+
         public CryptoService()
         {
             _client.BaseAddress = new Uri(_baseURL);
@@ -34,20 +37,20 @@ namespace STARK_Project.CryptoAPIService
         public async Task<CryptoModel> GetCryptocurrenciesInfoAsync()
         {
             return await GetCryptoData(
-                        string.Join(",", Enum.GetNames(typeof(CryptocurrencySymbols))),
-                        string.Join(",", Enum.GetNames(typeof(CurrencySymbols)))
+                        string.Join(",", CryptocurrenciesNames.Keys),
+                        string.Join(",", CurrenciesNames.Keys)
                         );
         }
         /// <summary>
         /// Get Info about all cryptocurrency and their conversion into currencies with specific symbol, included in CurrencySymbolsEnums
         /// </summary>
-        /// <param name="symbol"></param>
+        /// <param name="currencySymbol"></param>
         /// <returns>return Model  about all cryptocurrency in specific currency</returns>
-        public async Task<CryptoModel> GetCryptocurrenciesInfoAsync(CurrencySymbols symbol)
+        public async Task<CryptoModel> GetCryptocurrenciesInfoAsync(string currencySymbol)
         {
             return await GetCryptoData(
-                 string.Join(",", Enum.GetNames(typeof(CryptocurrencySymbols))),
-                 symbol.ToString());
+                 string.Join(",", CryptocurrenciesNames.Keys),
+                 currencySymbol.ToString());
         }
         /// <summary>
         /// Get info about specific cryptocurrency in specific currency
@@ -55,7 +58,7 @@ namespace STARK_Project.CryptoAPIService
         /// <param name="cryptoSymbol"></param>
         /// <param name="currencySymbol"></param>
         /// <returns>returns Model about cryptocurrency in specific currency</returns>
-        public async Task<CryptoInfo> GetCryptocurrencyInfoAsync(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol)
+        public async Task<CryptoInfo> GetCryptocurrencyInfoAsync(string cryptoSymbol, string currencySymbol)
         {
             var data =  await GetCryptoData(
            cryptoSymbol.ToString(),
@@ -68,8 +71,7 @@ namespace STARK_Project.CryptoAPIService
 
         private async Task<CryptoModel> GetCryptoData(string cryptoSymbols, string currencySymbols)
         {
-            cryptoSymbols = cryptoSymbols.Replace("_", "");
-            currencySymbols = currencySymbols.Replace("_", "");
+
             var parameters = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("fsyms", cryptoSymbols),

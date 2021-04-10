@@ -12,15 +12,25 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
     /// </summary>
     public enum CryptocurrencySymbols
     {
+        [Description("Bitcoin")]
         BTC,
+        [Description("Ethereum")]
         ETH,
+        [Description("Binance Coin")]
         BNB,
+        [Description("Tether")]
         USDT,
+        [Description("Cardano")]
         ADA,
+        [Description("Polkadot")]
         DOT,
+        [Description("XRP")]
         XRP,
+        [Description("Uniswap")]
         UNI,
+        [Description("Litecoin")]
         LTC,
+        [Description("THETA")]
         THETA,
         LINK,
         USDC,
