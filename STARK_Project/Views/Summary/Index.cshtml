@@ -29,7 +29,7 @@
         <h1 class="h3 mb-0 font-weight-bold text-gray-800 mr-4">Display details about all cryptocurrencies</h1>
     </div>
     <!-- Content Row -->
-    @foreach (var currency in Model)
+    @foreach (var currency in Model.RAW)
     {
         <div class="row">
 
@@ -37,11 +37,12 @@
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-sm-flex align-items-center">
-                        <i class="fab fa-@currency.Name.ToLower() fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">@currency.Name</h6>
+@*                        <i class="fab fa-@currency.Name.ToLower() fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">@currency.Name</h6>*@
+                        <i class="fab fa-bitcoin fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">@currency.Key</h6>
                     </div>
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center">
-                            <a class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm mr-4 nav-link" asp-area="" asp-controller="Details" asp-action="Index" asp-route-currencyName="@currency.Name">
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm mr-4 nav-link" asp-area="" asp-controller="Details" asp-action="Index" asp-route-currencyName="@currency.Key">
                                 <i class="fas fa-info-circle fa-sm text-white-50"></i> Details
                             </a>
                             <a href="https://www.binance.com/en/buy-sell-crypto" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-4 nav-link">
