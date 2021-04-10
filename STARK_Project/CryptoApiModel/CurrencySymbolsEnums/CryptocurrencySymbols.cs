@@ -26,6 +26,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         DOT,
         [Description("XRP")]
         XRP,
+        [Description("Uniswap")]
         UNI,
         LTC,
         THETA,
