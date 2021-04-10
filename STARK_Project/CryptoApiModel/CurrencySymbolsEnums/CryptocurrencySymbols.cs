@@ -20,6 +20,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
         BNB,
         [Description("Tether")]
         USDT,
+        [Description("Cardano")]
         ADA,
         DOT,
         XRP,
