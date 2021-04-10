@@ -12,6 +12,7 @@ namespace STARK_Project.CryptoApiModel.CurrencySymbolsEnums
     /// </summary>
     public enum CryptocurrencySymbols
     {
+        [Description("Bitcoin")]
         BTC,
         ETH,
         BNB,
