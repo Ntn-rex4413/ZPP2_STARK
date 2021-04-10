@@ -75,7 +75,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Zmiana w %
+                                Change % daily
                             </div>
                             @if (Model.ChangePCTDay < 0)
                             {
@@ -102,7 +102,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Zmiana w $
+                                Change $ daily
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
@@ -136,7 +136,7 @@
                                 Aktualizacja
                             </div>
                             @*<div class="h5 mb-0 font-weight-bold text-gray-800">16.03.2021</div>*@
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Nie ma</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@DetailsController.UnixTimeStampToDateTime(Model.LastUpdate)</div>
                         </div>
                         <div class="col-auto">
                             <i class="far fa-clock fa-2x text-gray-300"></i>
