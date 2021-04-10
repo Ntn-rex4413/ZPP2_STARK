@@ -22,11 +22,60 @@ namespace STARK_Project.CryptoAPIService
 
         private HttpClient _client = new HttpClient();
 
+        public static Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
+        public static Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
+
         public CryptoService()
         {
             _client.BaseAddress = new Uri(_baseURL);
             _client.DefaultRequestHeaders.Add("Apikey", _apiKey);
+            InitializeCryptocurrencies();
+            IntializeCurrencies();
         }
+
+        /// <summary>
+        /// add new values to dictionary
+        /// </summary>
+        private void InitializeCryptocurrencies()
+        {
+            CryptocurrenciesNames.Add("BTC", "Bitcoin");
+            CryptocurrenciesNames.Add("LTC", "Litecoin");
+            CryptocurrenciesNames.Add("NMC", "Namecoin");
+            CryptocurrenciesNames.Add("PPC", "Peercoin");
+            CryptocurrenciesNames.Add("DOGE", "Dogecoin");
+            CryptocurrenciesNames.Add("GRC", "Gridcoin");
+            CryptocurrenciesNames.Add("XPM", "Primecoin");
+            CryptocurrenciesNames.Add("XRP", "Ripple");
+            CryptocurrenciesNames.Add("NXT", "Nxt");
+            CryptocurrenciesNames.Add("AUR", "Auracoin");
+            CryptocurrenciesNames.Add("DASH", "Dash");
+            CryptocurrenciesNames.Add("NEO", "NEO");
+            CryptocurrenciesNames.Add("MZC", "MazaCoin");
+            CryptocurrenciesNames.Add("XMR", "Monero");
+            CryptocurrenciesNames.Add("TIT", "Titcoin");
+            CryptocurrenciesNames.Add("XVG", "Verge");
+            CryptocurrenciesNames.Add("XLM", "Stellar");
+            CryptocurrenciesNames.Add("VTC", "Vertcoin");
+            CryptocurrenciesNames.Add("ETH", "Ethereum");
+            CryptocurrenciesNames.Add("ETC", "Ethereum Classic");
+            CryptocurrenciesNames.Add("Nano", "Nano");
+            CryptocurrenciesNames.Add("USDT", "Tether");
+            CryptocurrenciesNames.Add("ZEC", "Zcash");
+            CryptocurrenciesNames.Add("BCH", "Bitcoin Cash");
+            CryptocurrenciesNames.Add("EOS", "EOS.IO");
+            CryptocurrenciesNames.Add("ADA", "Cardano");
+        }
+
+        /// <summary>
+        /// add new values to dictionary
+        /// </summary>
+        private void IntializeCurrencies()
+        {
+            CurrenciesNames.Add("PLN", "Polski złoty");
+            CurrenciesNames.Add("EUR", "Euro");
+            CurrenciesNames.Add("USD", "United States dollar");
+        }
+
         /// <summary>
         /// Get Info about all cryptocurrency and their conversion into currencies included in CurrencySymbolsEnums
         /// </summary>
@@ -34,20 +83,20 @@ namespace STARK_Project.CryptoAPIService
         public async Task<CryptoModel> GetCryptocurrenciesInfoAsync()
         {
             return await GetCryptoData(
-                        string.Join(",", Enum.GetNames(typeof(CryptocurrencySymbols))),
-                        string.Join(",", Enum.GetNames(typeof(CurrencySymbols)))
+                        string.Join(",", CryptocurrenciesNames.Keys),
+                        string.Join(",", CurrenciesNames.Keys)
                         );
         }
         /// <summary>
         /// Get Info about all cryptocurrency and their conversion into currencies with specific symbol, included in CurrencySymbolsEnums
         /// </summary>
-        /// <param name="symbol"></param>
+        /// <param name="currencySymbol"></param>
         /// <returns>return Model  about all cryptocurrency in specific currency</returns>
-        public async Task<CryptoModel> GetCryptocurrenciesInfoAsync(CurrencySymbols symbol)
+        public async Task<CryptoModel> GetCryptocurrenciesInfoAsync(string currencySymbol)
         {
             return await GetCryptoData(
-                 string.Join(",", Enum.GetNames(typeof(CryptocurrencySymbols))),
-                 symbol.ToString());
+                 string.Join(",", CryptocurrenciesNames.Keys),
+                 currencySymbol.ToString());
         }
         /// <summary>
         /// Get info about specific cryptocurrency in specific currency
@@ -55,7 +104,7 @@ namespace STARK_Project.CryptoAPIService
         /// <param name="cryptoSymbol"></param>
         /// <param name="currencySymbol"></param>
         /// <returns>returns Model about cryptocurrency in specific currency</returns>
-        public async Task<CryptoInfo> GetCryptocurrencyInfoAsync(CryptocurrencySymbols cryptoSymbol, CurrencySymbols currencySymbol)
+        public async Task<CryptoInfo> GetCryptocurrencyInfoAsync(string cryptoSymbol, string currencySymbol)
         {
             var data =  await GetCryptoData(
            cryptoSymbol.ToString(),
@@ -68,8 +117,7 @@ namespace STARK_Project.CryptoAPIService
 
         private async Task<CryptoModel> GetCryptoData(string cryptoSymbols, string currencySymbols)
         {
-            cryptoSymbols = cryptoSymbols.Replace("_", "");
-            currencySymbols = currencySymbols.Replace("_", "");
+
             var parameters = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("fsyms", cryptoSymbols),

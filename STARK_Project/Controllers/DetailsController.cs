@@ -16,8 +16,7 @@ namespace STARK_Project.Controllers
 
         public IActionResult Index(string cryptocurrency = "BTC", string currency = "PLN")
         {
-            var data = _service.GetCryptocurrencyInfoAsync(Enum.Parse<CryptocurrencySymbols>(cryptocurrency),
-                Enum.Parse<CurrencySymbols>(currency)).Result;
+            var data = _service.GetCryptocurrencyInfoAsync(cryptocurrency, currency).Result;
             return View(data);
         }
         public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)

@@ -14,6 +14,6 @@ namespace STARK_Project.CryptoApiModel
     {/// <summary>
     ///  Enter cryptocurrency and currency info to get info about this cryptocurrency
     /// </summary>
-        public Dictionary<CryptocurrencySymbols, Dictionary<CurrencySymbols, CryptoInfo>> RAW { get; set; }
+        public Dictionary<string, Dictionary<string, CryptoInfo>> RAW { get; set; }
     }
 }
