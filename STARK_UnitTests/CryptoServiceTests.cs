@@ -34,5 +34,17 @@ namespace STARK_UnitTests
 
             Assert.AreEqual(26, data.Count);
         }
+
+        [TestMethod]
+        public void CryptocurrencySummary_ContainsNoDuplicates_IsTrue()
+        {
+            var service = new CryptoService();
+
+            var data = service.GetCryptocurrenciesInfoAsync("PLN").Result;
+
+            Assert.IsNotNull(data);
+            Assert.AreNotEqual(0, data.RAW.Count);
+            Assert.AreEqual(data.RAW.Count, data.RAW.Distinct().Count());
+        }
     }
 }
