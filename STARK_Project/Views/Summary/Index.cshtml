@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>STARK Creators</title>
+    <title>S.T.A.R.K @ViewData["Title"]</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,7 +29,7 @@
         <h1 class="h3 mb-0 font-weight-bold text-gray-800 mr-4">Display details about all cryptocurrencies</h1>
     </div>
     <!-- Content Row -->
-    @foreach (var currency in Model.RAW)
+    @foreach (var currency in Model.CryptoModel.RAW)
     {
         <div class="row">
 
