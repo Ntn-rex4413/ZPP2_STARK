@@ -165,7 +165,7 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Change $ 1Hr
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.Price</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.ChangeHour</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-plus fa-2x text-gray-300"></i>
@@ -181,18 +181,10 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Change $ 24Hr
                             </div>
-                            @if (Model.CryptoModel.ChangePCTDay < 0)
-                            {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTDay%</div>
-                            }
-                            else
-                            {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTDay%</div>
-                            }
-                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">+ 5%</div>*@
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.Change24Hour</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-plus fa-2x text-gray-300"></i>
@@ -208,22 +200,10 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Change $ daily
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Change $ Daily
                             </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    @*<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$2137</div>*@
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$@Model.CryptoModel.ChangeDay</div>
-                                </div>
-                                <div class="col">
-                                    @*<div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar"
-                                                 style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                 aria-valuemax="100"></div>
-                                        </div>*@
-                                </div>
-                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.ChangeDay</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-plus fa-2x text-gray-300"></i>
@@ -247,7 +227,15 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Change % 1Hr
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.Price</div>
+                            @*@if (Model.CryptoModel.ChangePCTDay < 0)
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTDay%</div>
+                            }
+                            else
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTDay%</div>
+                            }*@
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Missing Data</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-percent fa-2x text-gray-300"></i>
@@ -266,13 +254,13 @@
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 Change % 24Hr
                             </div>
-                            @if (Model.CryptoModel.ChangePCTDay < 0)
+                            @if (Model.CryptoModel.ChangePCT24Hour < 0)
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTDay%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCT24Hour%</div>
                             }
                             else
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTDay%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCT24Hour%</div>
                             }
                             @*<div class="h5 mb-0 font-weight-bold text-gray-800">+ 5%</div>*@
                         </div>
@@ -293,19 +281,15 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Change % daily
                             </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    @*<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$2137</div>*@
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$@Model.CryptoModel.ChangeDay</div>
-                                </div>
-                                <div class="col">
-                                    @*<div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar"
-                                                 style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                 aria-valuemax="100"></div>
-                                        </div>*@
-                                </div>
-                            </div>
+                            @if (Model.CryptoModel.ChangePCTDay < 0)
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTDay%</div>
+                            }
+                            else
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTDay%</div>
+                            }
+                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">+ 5%</div>*@
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-percent fa-2x text-gray-300"></i>
