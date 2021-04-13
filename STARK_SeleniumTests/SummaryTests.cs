@@ -86,5 +86,17 @@ namespace STARK_SeleniumTests
         }
 
 
+        [Test]
+        public void DetailsButton_CorrectlyDisplayed_IsTrue()
+        {
+
+            IWebDriver webDriver = new FirefoxDriver();
+
+            webDriver.Navigate().GoToUrl("https://localhost:44311/");
+
+            IWebElement aurLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[1]"));
+
+            Assert.That(aurLabel.Displayed, Is.True);
+        }
     }
 }
