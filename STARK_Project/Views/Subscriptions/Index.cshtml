@@ -27,35 +27,53 @@
         <h1 class="h3 mb-0 font-weight-bold text-gray-800 mr-4">Display details about all cryptocurrencies</h1>
     </div>
     <!-- Content Row -->
-
-        <div class="row">
-
-            <div class="col-lg-5 mb-4">
-
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3 d-sm-flex align-items-center">
-                        @*                        <i class="fab fa-@currency.Name.ToLower() fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">@currency.Name</h6>*@
-                        <i class="fab fa-bitcoin fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">Nazwa krypto</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-sm-flex align-items-center">
-                            <a class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm mr-4 nav-link" asp-area="" asp-controller="Details" asp-action="Index" asp-route-cryptocurrency="">
-                                <i class="fas fa-info-circle fa-sm text-white-50"></i> Details
-                            </a>
-                            <a href="https://www.binance.com/en/buy-sell-crypto" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-4 nav-link">
-                                <i class="fas fa-money-bill-wave fa-sm text-white-50"></i> Kup / Sprzedaj
-                            </a>
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mr-4 nav-link">
-                                <i class="fas fa-ban fa-sm text-white-50"></i> Odobserwuj
-                            </a>
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm mr-4 nav-link">
-                                <i class="fas fa-sync-alt fa-sm text-white-50"></i> Aktualizuj
-                            </a>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Ilość obserwowanych
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">liczba obserwowanych</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+
+        <div class="col-lg-5 mb-4">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-sm-flex align-items-center">
+                    @*                        <i class="fab fa-@currency.Name.ToLower() fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">@currency.Name</h6>*@
+                    <i class="fab fa-bitcoin fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">Nazwa krypto</h6>
+                </div>
+                <div class="card-body">
+                    <div class="d-sm-flex align-items-center">
+                        <a class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm mr-4 nav-link" asp-area="" asp-controller="Details" asp-action="Index" asp-route-cryptocurrency="">
+                            <i class="fas fa-info-circle fa-sm text-white-50"></i> Details
+                        </a>
+                        <a href="https://www.binance.com/en/buy-sell-crypto" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-4 nav-link">
+                            <i class="fas fa-money-bill-wave fa-sm text-white-50"></i> Kup / Sprzedaj
+                        </a>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mr-4 nav-link">
+                            <i class="fas fa-ban fa-sm text-white-50"></i> Odobserwuj
+                        </a>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm mr-4 nav-link">
+                            <i class="fas fa-sync-alt fa-sm text-white-50"></i> Aktualizuj
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
