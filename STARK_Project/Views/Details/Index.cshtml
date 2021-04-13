@@ -70,9 +70,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Nazwa @Model.CryptoModel.FromSymbol
+                                Cena @Model.CryptoModel.FromSymbol
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.Price</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.Price</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -91,10 +91,10 @@
                             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                                 Lowest today
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">LOWDAY</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.LowDay</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fab fa-buffer fa-2x text-gray-300"></i>
+                            <i class="fab fa-arrow-down fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -112,11 +112,11 @@
                             </div>
                                 <div class="col-auto">
                                     @*<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$2137</div>*@
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">HIGHDAY</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$ @Model.CryptoModel.HighDay</div>
                                 </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-plus fa-2x text-gray-300"></i>
+                            <i class="fas fa-arrow-up fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Change $ 1Hr
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.ChangeHour</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.ChangeHour</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-plus fa-2x text-gray-300"></i>
@@ -175,7 +175,7 @@
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 Change $ 24Hr
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.Change24Hour</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.Change24Hour</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-plus fa-2x text-gray-300"></i>
@@ -194,7 +194,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Change $ Daily
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.ChangeDay</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.ChangeDay</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-plus fa-2x text-gray-300"></i>
@@ -218,15 +218,15 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Change % 1Hr
                             </div>
-                            @*@if (Model.CryptoModel.ChangePCTDay < 0)
+                            @if (Model.CryptoModel.ChangePTCHour < 0)
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTDay%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePTCHour%</div>
                             }
                             else
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTDay%</div>
-                            }*@
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Missing Data</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePTCHour%</div>
+                            }
+                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">Missing Data</div>*@
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-percent fa-2x text-gray-300"></i>
