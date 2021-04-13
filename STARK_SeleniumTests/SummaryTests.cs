@@ -33,5 +33,18 @@ namespace STARK_SeleniumTests
             Assert.That(detailsLabel.Displayed, Is.True);
         }
 
+        [Test]
+        public void AUR_CorrectlyDisplayed_IsTrue()
+        {
+
+            IWebDriver webDriver = new FirefoxDriver();
+
+            webDriver.Navigate().GoToUrl("https://localhost:44311/");
+
+            IWebElement aurLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[11]/div/div/div[1]/h6"));
+
+            Assert.That(aurLabel.Displayed, Is.True);
+        }
+
     }
 }
