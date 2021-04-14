@@ -18,34 +18,34 @@ namespace STARK_SeleniumTests
         [Test]
         public void CryptocurrencyName_Displayed_IsTrue()
         {
-            IWebElement aurLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[1]/h6"));
+            IWebElement label = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[1]/h6"));
 
-            Assert.That(aurLabel.Displayed, Is.True);
+            Assert.That(label.Displayed, Is.True);
         }
 
         [Test]
         public void SubscribeButton_Displayed_IsTrue()
         {
-            IWebElement aurLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[3]"));
+            IWebElement button = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[3]"));
 
-            Assert.That(aurLabel.Displayed, Is.True);
+            Assert.That(button.Displayed, Is.True);
         }
 
         [Test]
         public void BuySellButton_Displayed_IsTrue()
         {
-            IWebElement aurLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[2]"));
+            IWebElement button = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[2]"));
 
-            Assert.That(aurLabel.Displayed, Is.True);
+            Assert.That(button.Displayed, Is.True);
         }
 
 
         [Test]
         public void DetailsButton_Displayed_IsTrue()
         {
-            IWebElement aurLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[1]"));
+            IWebElement button = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[1]"));
 
-            Assert.That(aurLabel.Displayed, Is.True);
+            Assert.That(button.Displayed, Is.True);
         }
     }
 }
