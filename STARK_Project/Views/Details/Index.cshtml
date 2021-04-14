@@ -39,7 +39,20 @@
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4">
             <i class="fas fa-star fa-sm text-white-50"></i> Obserwuj
         </a>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm mr-4">
+        @*DO WYKORZYSTANIA W PRZYPADKU IMPLEMENTACJI ABY ZMINIC PRZYCISK POMIEDZY OBSERWOWANIE A ODOBSERWOWANIEM!!!!!!*@
+        @*@if (NOT ON WATCH)
+            {
+                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4">
+                    <i class="fas fa-star fa-sm text-white-50"></i> Obserwuj
+                </a>
+            }
+            else
+            {
+                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mr-4">
+                     <i class="fas fa-ban fa-sm text-white-50"></i> Odobserwuj
+                 </a>
+            }*@
+        <a href="" type="button" value="Refresh Page" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm mr-4">
             <i class="fas fa-sync-alt fa-sm text-white-50"></i> Aktualizuj
         </a>
     </div>
@@ -50,16 +63,16 @@
     <!-- Content Row -->
     <div class="row">
 
-        <!-- Earnings (Monthly) Card Example -->
+        <!-- Crypto Price -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Nazwa @Model.CryptoModel.FromSymbol
+                                Cena @Model.CryptoModel.FromSymbol
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.CryptoModel.Price</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.Price</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -69,13 +82,191 @@
             </div>
         </div>
 
-        <!-- Earnings (Monthly) Card Example -->
+        <!-- LOW DAY -->
         <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-secondary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                Lowest today
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.LowDay</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-arrow-down fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HIGH DAY -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-dark shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                Highest today
+                            </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.HighDay</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-arrow-up fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Date -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Aktualizacja
+                            </div>
+                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">16.03.2021</div>*@
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@DetailsController.UnixTimeStampToDateTime(Model.CryptoModel.LastUpdate)</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="far fa-clock fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PCT Change -->
+    <div class="row">
+
+        <!-- EChange $ Hour -->
+        <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Change $ 1Hr
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.ChangeHour</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-plus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Change $ 24 Hour -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Change $ 24Hr
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.Change24Hour</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-plus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Change $ Daily -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Change $ Daily
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.ChangeDay</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-plus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change -->
+
+    <div class="row">
+
+        <!-- Change % Hour -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Change % 1Hr
+                            </div>
+                            @if (Model.CryptoModel.ChangePTCHour < 0)
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePTCHour%</div>
+                            }
+                            else
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePTCHour%</div>
+                            }
+                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">Missing Data</div>*@
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-percent fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Change % 24 Hour -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Change % 24Hr
+                            </div>
+                            @if (Model.CryptoModel.ChangePCT24Hour < 0)
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCT24Hour%</div>
+                            }
+                            else
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCT24Hour%</div>
+                            }
+                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">+ 5%</div>*@
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-percent fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Change % Daily -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Change % daily
                             </div>
                             @if (Model.CryptoModel.ChangePCTDay < 0)
@@ -95,61 +286,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Change $ daily
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    @*<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$2137</div>*@
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$@Model.CryptoModel.ChangeDay</div>
-                                </div>
-                                <div class="col">
-                                    @*<div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar"
-                                                 style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                 aria-valuemax="100"></div>
-                                        </div>*@
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-plus fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Aktualizacja
-                            </div>
-                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">16.03.2021</div>*@
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">@DetailsController.UnixTimeStampToDateTime(Model.CryptoModel.LastUpdate)</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="far fa-clock fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
-    <!-- Content Row -->
-
     <div class="row">
 
         <!-- Area Chart -->

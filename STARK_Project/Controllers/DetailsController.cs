@@ -15,7 +15,7 @@ namespace STARK_Project.Controllers
             _service = service;
         }
 
-        public IActionResult Index(string cryptocurrency = "BTC", string currency = "PLN")
+        public IActionResult Index(string cryptocurrency = "BTC", string currency = "USD")
         {
             var data = new DetailsViewModel();
             data.CryptoModel = _service.GetCryptocurrencyInfoAsync(cryptocurrency, currency).Result;
