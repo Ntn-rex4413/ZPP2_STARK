@@ -57,5 +57,14 @@ namespace STARK_SeleniumTests
 
             Assert.AreEqual(26, buttons.Count);
         }
+
+        [TearDown]
+        public void TearDown()
+        {
+            if (webDriver != null)
+            {
+                webDriver.Dispose();
+            }
+        }
     }
 }

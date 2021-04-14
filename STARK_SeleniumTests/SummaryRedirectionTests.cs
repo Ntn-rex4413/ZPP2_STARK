@@ -30,5 +30,14 @@ namespace STARK_SeleniumTests
 
             Assert.AreEqual("BTC", detailsLabel);
         }
+
+        [TearDown]
+        public void TearDown()
+        {
+            if (webDriver != null)
+            {
+                webDriver.Dispose();
+            }
+        }
     }
 }
