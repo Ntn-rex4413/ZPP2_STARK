@@ -11,31 +11,24 @@ namespace STARK_SeleniumTests
 {
     class SummaryRedirectionTests
     {
+        private IWebDriver webDriver;
         [SetUp]
         public void Setup()
         {
-
+            webDriver = new FirefoxDriver();
+            webDriver.Navigate().GoToUrl("https://localhost:44311/");
         }
 
         [Test]
         public void DetailsButton_RedirectsCorrectly_IsTrue()
         {
-            //open browser
-            IWebDriver webDriver = new FirefoxDriver();
-            //navigate to site
-            webDriver.Navigate().GoToUrl("https://localhost:44311/");
+            IWebElement detailsLink = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[1]"));
 
-            //identify details button
-            IWebElement detailsLink = webDriver.FindElement(By.CssSelector("[href*='Details?cryptocurrency=BTC']"));
-
-            //operation
             detailsLink.Click();
 
-            //var detailsLabel = webDriver.FindElement(By.XPath("//div[contains(text(),'Change % Daily')]"));
-            var detailsLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[1]/h1"));
+            var detailsLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[1]/h1")).Text;
 
-            //assertion
-            Assert.That(detailsLabel.Displayed, Is.True);
+            Assert.AreEqual("BTC", detailsLabel);
         }
     }
 }
