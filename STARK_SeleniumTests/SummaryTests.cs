@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -46,6 +48,14 @@ namespace STARK_SeleniumTests
             IWebElement button = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[1]"));
 
             Assert.That(button.Displayed, Is.True);
+        }
+
+        [Test]
+        public void CryptocurrenciesCount_IsCorrect_IsTrue()
+        {
+            List<IWebElement> buttons = webDriver.FindElements(By.LinkText("Details")).ToList();
+
+            Assert.AreEqual(26, buttons.Count);
         }
     }
 }
