@@ -180,7 +180,15 @@
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 Change @Model.CryptoModel.ToSymbol 24Hr
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.Change24Hour</div>
+                            @if (Model.CryptoModel.Change24Hour < 0)
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ToSymbol @Model.CryptoModel.Change24Hour</div>
+                            }
+                            else
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ToSymbol +@Model.CryptoModel.Change24Hour</div>
+                            }
+                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.Change24Hour</div>*@
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-plus fa-2x text-gray-300"></i>
