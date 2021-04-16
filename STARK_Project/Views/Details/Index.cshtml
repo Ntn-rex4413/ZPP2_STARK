@@ -1,6 +1,6 @@
 ﻿@using STARK_Project.Controllers
 @model STARK_Project.Models.DetailsViewModel
- 
+
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -110,7 +110,7 @@
                             <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                 Highest today
                             </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ToSymbol @Model.CryptoModel.HighDay</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ToSymbol @Model.CryptoModel.HighDay</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-arrow-up fa-2x text-gray-300"></i>
@@ -218,7 +218,14 @@
                             @*<div class="h5 mb-0 font-weight-bold text-gray-800">$ @Model.CryptoModel.ChangeDay</div>*@
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-plus fa-2x text-gray-300"></i>
+                            @if (Model.CryptoModel.ChangeDay < 0)
+                            {
+                                <i class="fas fa-minus fa-2x text-gray-300"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-plus fa-2x text-gray-300"></i>
+                            }
                         </div>
                     </div>
                 </div>
