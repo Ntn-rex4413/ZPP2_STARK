@@ -260,14 +260,15 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Change % 1Hr
                             </div>
-                            @if (Model.CryptoModel.ChangePTCHour < 0)
+                            @* CHANGE THIS TO "ChangePCTHour" AFTER IT'S CORRECTED ON BACKEND*@
+                            @*@if (Model.CryptoModel.ChangePTCHour < 0)
                             {
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePTCHour%</div>
                             }
                             else
                             {
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePTCHour%</div>
-                            }
+                            }*@
                             @*<div class="h5 mb-0 font-weight-bold text-gray-800">Missing Data</div>*@
                         </div>
                         <div class="col-auto">
