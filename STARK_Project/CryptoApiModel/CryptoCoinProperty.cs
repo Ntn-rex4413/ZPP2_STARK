@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace STARK_Project.CryptoApiModel
 {
-    public class CryptoCoinList
+    public class CryptoCoinProperty
     {
         public string Symbol { get; set; }
         public string CoinName { get; set; }
