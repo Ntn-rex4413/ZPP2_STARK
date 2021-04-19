@@ -95,7 +95,7 @@ namespace STARK_Project.DBServices
 
         private Task<User> GetUser(User user)
         {
-            return _context.Users.FirstOrDefaultAsync(x => x.Email.Equals(user.Email))
+            return _context.Users.FirstOrDefaultAsync(x => x.Email.Equals(user.Email));
         }
     }
 }
