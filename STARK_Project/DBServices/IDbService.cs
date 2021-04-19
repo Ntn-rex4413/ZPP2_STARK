@@ -8,6 +8,6 @@ namespace STARK_Project.DBServices
 {
     interface IDbService
     {
-        bool AddCryptocurrencyToDatabaseAsync(Cryptocurreny cryptocurreny);
+        Task<bool> AddCryptocurrencyToDatabaseAsync(Cryptocurreny cryptocurreny);
     }
 }

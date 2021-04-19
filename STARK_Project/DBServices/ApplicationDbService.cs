@@ -16,9 +16,19 @@ namespace STARK_Project.DBServices
             _context = context;
         }
 
-        public bool AddCryptocurrencyToDatabaseAsync(Cryptocurreny cryptocurreny)
+        public async Task<bool> AddCryptocurrencyToDatabaseAsync(Cryptocurreny cryptocurreny)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (_context.Cryptocurrenies.Count(x => x.Name.Equals(cryptocurreny.Name)) > 0) return false;
+
+                await _context.Cryptocurrenies.AddAsync(cryptocurreny);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
