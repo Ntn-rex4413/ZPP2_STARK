@@ -8,6 +8,6 @@ namespace STARK_Project.DatabaseModel
 {
     public class User : IdentityUser
     {
-
+        public ICollection<Cryptocurreny> Watchlist { get; set; }
     }
 }
