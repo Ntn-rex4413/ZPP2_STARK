@@ -49,6 +49,16 @@ namespace STARK_Project.DBServices
             }
         }
 
+        public void ClearWatchlist(User user, Cryptocurreny cryptocurreny)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ICollection<Cryptocurreny>> GetWatchlist(User user)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> RemoveFromWatchListAsync(User user, Cryptocurreny cryptocurreny)
         {
             try
