@@ -7,5 +7,8 @@ namespace STARK_Project.DatabaseModel
 {
     public class Cryptocurreny
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Symbol { get; set; }
     }
 }
