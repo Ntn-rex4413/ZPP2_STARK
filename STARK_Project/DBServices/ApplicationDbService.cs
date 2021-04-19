@@ -30,5 +30,10 @@ namespace STARK_Project.DBServices
                 return false;
             }
         }
+
+        public Task<bool> AddToWatchListAsync(User user, Cryptocurreny cryptocurreny)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
