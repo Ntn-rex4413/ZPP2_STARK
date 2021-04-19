@@ -48,5 +48,20 @@ namespace STARK_Project.DBServices
                 return false;
             }
         }
+
+        public async Task<bool> RemoveFromWatchListAsync(User user, Cryptocurreny cryptocurreny)
+        {
+            try
+            {
+                var userToUpdate = await _context.Users.FirstOrDefaultAsync(x => x.Id.Equals(user.Id));
+
+                var coinToDelete = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol.Equals(cryptocurreny.Symbol));
+                 return   userToUpdate.Watchlist.Remove(coinToDelete);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
