@@ -25,6 +25,7 @@ namespace STARK_Project.DBServices
                 if (_context.Cryptocurrenies.Count(x => x.Name.Equals(cryptocurreny.Name)) > 0) return false;
 
                 await _context.Cryptocurrenies.AddAsync(cryptocurreny);
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -55,7 +56,11 @@ namespace STARK_Project.DBServices
             {
                 var toClear = await GetUser(user);
                 if (toClear is null) return false;
-                else toClear.Watchlist.Clear();
+                else
+                {
+                    toClear.Watchlist.Clear();
+                    await _context.SaveChangesAsync();
+                }
                 return true;
             }
             catch (Exception)
@@ -85,7 +90,12 @@ namespace STARK_Project.DBServices
                 var userToUpdate = await GetUser(user);
 
                 var coinToDelete = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol.Equals(cryptocurreny.Symbol));
-                 return   userToUpdate.Watchlist.Remove(coinToDelete);
+                 var result =  userToUpdate.Watchlist.Remove(coinToDelete);
+                if (result)
+                {
+                    _context.SaveChanges();
+                }
+                return result;
             }
             catch (Exception)
             {
