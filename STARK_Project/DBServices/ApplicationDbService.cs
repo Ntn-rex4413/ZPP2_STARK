@@ -18,6 +18,26 @@ namespace STARK_Project.DBServices
             _context = context;
         }
 
+        public async Task<bool> AddCryptocurrenciesToDatabaseAsync(ICollection<Cryptocurreny> cryptocurrencies)
+        {
+            try
+            {
+                var coinList = _context.Cryptocurrenies.ToHashSet(new CoinHash());
+                
+                var toUpdate = new List<Cryptocurreny>();
+                foreach (var coin in cryptocurrencies)
+                    if (!coinList.Contains(coin)) toUpdate.Add(coin);
+                if (toUpdate.Count == 0) return false;
+                await _context.Cryptocurrenies.AddRangeAsync(toUpdate);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public async Task<bool> AddCryptocurrencyToDatabaseAsync(Cryptocurreny cryptocurreny)
         {
             try
