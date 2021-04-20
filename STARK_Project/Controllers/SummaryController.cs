@@ -10,6 +10,7 @@ using STARK_Project.CryptoAPIService;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
 using STARK_Project.Models;
+using System.Diagnostics;
 
 namespace STARK_Project.Controllers
 {
@@ -30,6 +31,15 @@ namespace STARK_Project.Controllers
             data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Currencies = _service.GetCurrencies();
 
+            Debug.WriteLine(_dbService.AddCryptocurrenciesToDatabaseAsync(new List<Cryptocurreny> {
+                new Cryptocurreny {  Name = "Bitcoin",
+                Symbol = "BTC"},
+                new Cryptocurreny
+            {
+                Name = "Litecoin",
+                Symbol = "LTC",
+            }
+            }).Result);
             return View(data);
         }
     }
