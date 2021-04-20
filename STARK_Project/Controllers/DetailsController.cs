@@ -19,7 +19,7 @@ namespace STARK_Project.Controllers
         {
             var data = new DetailsViewModel();
             data.CryptoModel = _service.GetCryptocurrencyInfoAsync(cryptocurrency, currency).Result;
-            data.Cryptocurrencies = _service.GetCryptocurrenciesAsync();
+            data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Currencies = _service.GetCurrencies();
 
             return View(data);
