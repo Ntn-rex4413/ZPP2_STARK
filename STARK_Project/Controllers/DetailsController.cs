@@ -3,6 +3,7 @@ using System;
 using STARK_Project.CryptoApiModel.CurrencyEnums;
 using STARK_Project.CryptoApiModel.CurrencySymbolsEnums;
 using STARK_Project.CryptoAPIService;
+using STARK_Project.DBServices;
 using STARK_Project.Models;
 
 namespace STARK_Project.Controllers
@@ -10,9 +11,11 @@ namespace STARK_Project.Controllers
     public class DetailsController : Controller
     {
         private readonly ICryptoService _service;
-        public DetailsController(ICryptoService service)
+        private readonly IDbService _dbService;
+        public DetailsController(ICryptoService service, IDbService dbService)
         {
             _service = service;
+            _dbService = dbService;
         }
 
         public IActionResult Index(string cryptocurrency = "BTC", string currency = "USD")
