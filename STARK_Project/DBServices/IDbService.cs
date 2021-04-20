@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STARK_Project.DBServices
 {
-    interface IDbService
+    public interface IDbService
     {
         Task<bool> AddCryptocurrencyToDatabaseAsync(Cryptocurreny cryptocurreny);
         Task<bool> AddToWatchListAsync(User user, Cryptocurreny cryptocurreny);
