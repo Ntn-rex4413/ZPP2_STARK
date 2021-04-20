@@ -34,7 +34,7 @@ namespace STARK_Project
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddSingleton<IDbService, ApplicationDbService>();
+            services.AddScoped<IDbService, ApplicationDbService>();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
