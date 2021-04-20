@@ -163,7 +163,7 @@ namespace STARK_Project.Controllers
                 Symbol = "ADA",
             });
 
-
+             
             return View(data);
         }
     }
