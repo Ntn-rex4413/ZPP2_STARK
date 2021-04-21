@@ -43,8 +43,11 @@ namespace STARK_Project.Controllers
             }
             else
             {
-                var watchList = _dbService.GetWatchlist(_user).Result;
-                return View(watchList);
+                var data = new SubscriptionsViewModel();
+                data.WatchedCryptocurrencies = _dbService.GetWatchlist(_user).Result.ToList();
+                data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
+                data.Currencies = _service.GetCurrencies();
+                return View(data);
             }
         }
     }
