@@ -31,15 +31,6 @@ namespace STARK_Project.Controllers
             data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Currencies = _service.GetCurrencies();
 
-            Debug.WriteLine(_dbService.AddCryptocurrenciesToDatabaseAsync(new List<Cryptocurreny> {
-                new Cryptocurreny {  Name = "Bitcoin",
-                Symbol = "BTC"},
-                new Cryptocurreny
-            {
-                Name = "Litecoin",
-                Symbol = "LTC",
-            }
-            }).Result);
             return View(data);
         }
     }
