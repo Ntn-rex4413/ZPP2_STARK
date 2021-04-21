@@ -12,6 +12,7 @@ using STARK_Project.CryptoAPIService;
 using STARK_Project.Data;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
+using STARK_Project.Models;
 
 namespace STARK_Project.Controllers
 {
@@ -45,8 +46,11 @@ namespace STARK_Project.Controllers
             }
             else
             {
-                var watchList = _dbService.GetWatchlist(_user).Result;
-                return View(watchList);
+                var data = new SubscriptionsViewModel();
+                data.WatchedCryptocurrencies = _dbService.GetWatchlist(_user).Result.ToList();
+                data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
+                data.Currencies = _service.GetCurrencies();
+                return View(data);
             }
         }
     }
