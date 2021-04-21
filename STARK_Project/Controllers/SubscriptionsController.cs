@@ -12,6 +12,7 @@ using STARK_Project.CryptoAPIService;
 using STARK_Project.Data;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
+using System.Diagnostics;
 
 namespace STARK_Project.Controllers
 {
@@ -32,10 +33,7 @@ namespace STARK_Project.Controllers
             _service = service;
             _dbService = dbService;
 
-            this.ApplicationDbContext = new ApplicationDbContext();
-            this.UserManager = new UserManager<User>(new UserStore<User>(this.ApplicationDbContext));
-
-            _user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<UserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            //Debug.WriteLine($"Name: {User.FindFirst(ClaimTypes.NameIdentifier).Value}");
         }
         public IActionResult Index()
         {

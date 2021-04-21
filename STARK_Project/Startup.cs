@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using STARK_Project.CryptoAPIService;
 using STARK_Project.Data;
+using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
 using System;
 using System.Collections.Generic;
@@ -33,13 +34,16 @@ namespace STARK_Project
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-
+           
             services.AddScoped<IDbService, ApplicationDbService>();
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<ICryptoService, CryptoService>();
+            services.AddHttpContextAccessor();
+
+            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
