@@ -5,8 +5,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using STARK_Project.CryptoAPIService;
+using STARK_Project.Data;
+using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
 
 namespace STARK_Project.Controllers
@@ -17,23 +21,31 @@ namespace STARK_Project.Controllers
 
         private readonly ICryptoService _service;
         private readonly IDbService _dbService;
-        private string _userEmail;
-        public SubscriptionsController(ICryptoService service, IDbService dbService, IHttpContextAccessor httpContextAccessor)
+
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        protected UserManager<User> UserManager { get; set; }
+
+        private User _user;
+
+        public SubscriptionsController(ICryptoService service, IDbService dbService)
         {
             _service = service;
             _dbService = dbService;
 
-            _userEmail = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email).Value;
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<User>(new UserStore<User>(this.ApplicationDbContext));
+
+            _user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<UserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
         }
         public IActionResult Index()
         {
-            if (_userEmail == null)
+            if (_user == null)
             {
                 return RedirectToAction("Index", "Summary");
             }
             else
             {
-                var watchList = _dbService.GetWatchlist(_userEmail).Result;
+                var watchList = _dbService.GetWatchlist(_user).Result;
                 return View(watchList);
             }
         }
