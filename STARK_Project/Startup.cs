@@ -34,7 +34,8 @@ namespace STARK_Project
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-           
+            services.AddHttpContextAccessor();
+
             services.AddScoped<IDbService, ApplicationDbService>();
             services.AddScoped<ICryptoService, CryptoService>();
             services.AddHttpContextAccessor();

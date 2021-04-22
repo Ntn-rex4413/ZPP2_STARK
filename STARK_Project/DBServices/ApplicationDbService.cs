@@ -54,11 +54,11 @@ namespace STARK_Project.DBServices
             }
         }
 
-        public async Task<bool> AddToWatchListAsync(User user, Cryptocurreny cryptocurreny)
+        public async Task<bool> AddToWatchListAsync(string userId, Cryptocurreny cryptocurreny)
         {
             try
             {
-                var userToUpdate = await GetUser(user);
+                var userToUpdate = await GetUser(userId);
 
                 if (userToUpdate.Watchlist.Count(x => x.Symbol.Equals(cryptocurreny.Symbol)) > 0) return false;
                 userToUpdate.Watchlist.Add(cryptocurreny);
@@ -70,11 +70,11 @@ namespace STARK_Project.DBServices
             }
         }
 
-        public async Task<bool> ClearWatchlist(User user)
+        public async Task<bool> ClearWatchlist(string userId)
         {
             try
             {
-                var toClear = await GetUser(user);
+                var toClear = await GetUser(userId);
                 if (toClear is null) return false;
                 else
                 {
@@ -89,11 +89,11 @@ namespace STARK_Project.DBServices
             }
         }
 
-        public async Task<ICollection<Cryptocurreny>> GetWatchlist(User user)
+        public async Task<ICollection<Cryptocurreny>> GetWatchlist(string userId)
         {
             try
             {
-                var result = await GetUser(user);
+                var result = await GetUser(userId);
                 if (result is null) return null;
                 else return result.Watchlist;
             }
@@ -103,11 +103,11 @@ namespace STARK_Project.DBServices
             }
         }
 
-        public async Task<bool> RemoveFromWatchListAsync(User user, Cryptocurreny cryptocurreny)
+        public async Task<bool> RemoveFromWatchListAsync(string userId, Cryptocurreny cryptocurreny)
         {
             try
             {
-                var userToUpdate = await GetUser(user);
+                var userToUpdate = await GetUser(userId);
 
                 var coinToDelete = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol.Equals(cryptocurreny.Symbol));
                  var result =  userToUpdate.Watchlist.Remove(coinToDelete);
@@ -123,9 +123,9 @@ namespace STARK_Project.DBServices
             }
         }
 
-        private Task<User> GetUser(User user)
+        private Task<User> GetUser(string userId)
         {
-            return _context.Users.FirstOrDefaultAsync(x => x.Email.Equals(user.Email));
+            return _context.Users.FirstOrDefaultAsync(x => x.Id.Equals(userId));
         }
     }
 }

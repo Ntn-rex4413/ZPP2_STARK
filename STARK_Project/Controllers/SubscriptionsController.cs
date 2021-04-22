@@ -6,13 +6,14 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 using Microsoft.Extensions.Logging;
 using STARK_Project.CryptoAPIService;
 using STARK_Project.Data;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
 using System.Diagnostics;
+using STARK_Project.Models;
 
 namespace STARK_Project.Controllers
 {
@@ -24,27 +25,28 @@ namespace STARK_Project.Controllers
         private readonly IDbService _dbService;
 
         protected ApplicationDbContext ApplicationDbContext { get; set; }
-        protected UserManager<User> UserManager { get; set; }
+        private readonly UserManager<User> _userManager;
 
-        private User _user;
-
-        public SubscriptionsController(ICryptoService service, IDbService dbService)
+        private string _userId;
+        
+        private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        public SubscriptionsController(IHttpContextAccessor httpContextAccessor, ILogger<SubscriptionsController> logger, ICryptoService service, IDbService dbService)
         {
             _service = service;
             _dbService = dbService;
-
-            //Debug.WriteLine($"Name: {User.FindFirst(ClaimTypes.NameIdentifier).Value}");
+            _logger = logger;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
         public IActionResult Index()
         {
-            if (_user == null)
+            if (_userId == null)
             {
                 return RedirectToAction("Index", "Summary");
             }
             else
             {
                 var data = new SubscriptionsViewModel();
-                data.WatchedCryptocurrencies = _dbService.GetWatchlist(_user).Result.ToList();
+                data.WatchedCryptocurrencies = _dbService.GetWatchlist(_userId).Result.ToList();
                 data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
                 data.Currencies = _service.GetCurrencies();
                 return View(data);
