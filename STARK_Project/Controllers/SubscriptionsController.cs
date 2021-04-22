@@ -19,22 +19,15 @@ namespace STARK_Project.Controllers
 {
     public class SubscriptionsController : Controller
     {
-        private readonly ILogger<SubscriptionsController> _logger;
-
         private readonly ICryptoService _service;
         private readonly IDbService _dbService;
 
-        protected ApplicationDbContext ApplicationDbContext { get; set; }
-        private readonly UserManager<User> _userManager;
-
-        private string _userId;
+        private readonly string _userId;
         
-        private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
-        public SubscriptionsController(IHttpContextAccessor httpContextAccessor, ILogger<SubscriptionsController> logger, ICryptoService service, IDbService dbService)
+        public SubscriptionsController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService)
         {
             _service = service;
             _dbService = dbService;
-            _logger = logger;
             _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
         public IActionResult Index()
