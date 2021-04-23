@@ -23,6 +23,9 @@ namespace STARK_Project.Controllers
     // Dummy class - remove before merge
     public class Cryptocurreny
     {
-
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Symbol { get; set; }
+        //public ICollection<User> Users { get; set; }
     }
 }
