@@ -15,7 +15,7 @@ namespace STARK_Project.Controllers
     }
 
     // Dummy class - remove before merge
-    public class DummySummaryViewModel
+    public class DummySubscriptionsViewModel
     {
         
     }
