@@ -44,7 +44,7 @@ namespace STARK_Project.Controllers
                 //data.WatchedCryptocurrencies = _dbService.GetWatchlist(_userId).Result.ToList();
 
                 // Dummy data - remove before merge:
-                data.WatchedCryptocurrencies = new List<Cryptocurreny> {
+                List<Cryptocurreny> userCurrencies = new List<Cryptocurreny> {
                 new Cryptocurreny{ Id = 1, Name = "Bitcoin", Symbol = "BTC" },
                 new Cryptocurreny{ Id = 2, Name = "DogeCoin", Symbol = "DOGE" }
                 };
