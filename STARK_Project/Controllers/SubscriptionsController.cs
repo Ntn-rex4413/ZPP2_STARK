@@ -13,4 +13,10 @@ namespace STARK_Project.Controllers
             return View();
         }
     }
+
+    // Dummy class - remove before merge
+    public class DummySummaryViewModel
+    {
+
+    }
 }
