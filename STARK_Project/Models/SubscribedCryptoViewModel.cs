@@ -1,4 +1,5 @@
-﻿using STARK_Project.DatabaseModel;
+﻿using STARK_Project.CryptoApiModel;
+using STARK_Project.DatabaseModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,13 @@ namespace STARK_Project.Models
         public string ToSymbol { get; set; }
         public float UnitPrice { get; set; }
 
-        public SubscribedCryptoViewModel(Cryptocurreny crypto, float unitPrice)
+        public SubscribedCryptoViewModel(Cryptocurreny crypto, CryptoInfo info)
         {
             Id = crypto.Id;
             Name = crypto.Name;
             Symbol = crypto.Symbol;
-            UnitPrice = unitPrice;
+            ToSymbol = info.ToSymbol;
+            UnitPrice = info.Price;
         }
     }
 }
