@@ -11,6 +11,11 @@ namespace STARK_Project.Controllers
     {
         public IActionResult Index()
         {
+            // Temporary code to test view before access to real data
+            var data = new DummySubscriptionsViewModel();
+
+            data.Cryptocurrencies = _temp_service.GetCryptocurrenciesInfoAsync().Result;
+            data.Currencies = _temp_service.GetCurrencies();
             return View();
         }
 
