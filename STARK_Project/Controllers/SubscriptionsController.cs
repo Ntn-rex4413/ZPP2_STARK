@@ -53,7 +53,7 @@ namespace STARK_Project.Controllers
                 foreach (var userCurrency in userCurrencies)
                 {
                     data.WatchedCryptocurrencies.Add(new SubscribedCryptoViewModel(userCurrency,
-                        _service.GetCryptocurrencyInfoAsync(userCurrency.Symbol, currency).Result.Price));
+                        _service.GetCryptocurrencyInfoAsync(userCurrency.Symbol, currency).Result));
                 }
 
                 data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
