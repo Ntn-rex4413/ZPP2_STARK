@@ -17,6 +17,12 @@ namespace STARK_Project.Controllers
     // Dummy class - remove before merge
     public class DummySummaryViewModel
     {
+        
+    }
+
+    // Dummy class - remove before merge
+    public class Cryptocurreny
+    {
 
     }
 }
