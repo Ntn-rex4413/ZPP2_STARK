@@ -31,7 +31,7 @@ namespace STARK_Project.Controllers
             _dbService = dbService;
             _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
-        public IActionResult Index()
+        public IActionResult Index(string currency = "USD")
         {
             if (_userId == null)
             {
