@@ -24,7 +24,7 @@ namespace STARK_Project.Controllers
         private readonly IDbService _dbService;
 
         private readonly string _userId;
-        
+
         public SubscriptionsController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService)
         {
             _service = service;
@@ -40,7 +40,15 @@ namespace STARK_Project.Controllers
             else
             {
                 var data = new SubscriptionsViewModel();
-                data.WatchedCryptocurrencies = _dbService.GetWatchlist(_userId).Result.ToList();
+                // Line below is actual code on main:
+                //data.WatchedCryptocurrencies = _dbService.GetWatchlist(_userId).Result.ToList();
+
+                // Dummy data - remove before merge:
+                data.WatchedCryptocurrencies = new List<Cryptocurreny> {
+                new Cryptocurreny{ Id = 1, Name = "Bitcoin", Symbol = "BTC" },
+                new Cryptocurreny{ Id = 2, Name = "DogeCoin", Symbol = "DGC" }
+                };
+
                 data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
                 data.Currencies = _service.GetCurrencies();
                 return View(data);
