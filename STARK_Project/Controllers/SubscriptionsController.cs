@@ -49,6 +49,13 @@ namespace STARK_Project.Controllers
                 new Cryptocurreny{ Id = 2, Name = "DogeCoin", Symbol = "DOGE" }
                 };
 
+                data.WatchedCryptocurrencies = new List<SubscribedCryptoViewModel>();
+                foreach (var userCurrency in userCurrencies)
+                {
+                    data.WatchedCryptocurrencies.Add(new SubscribedCryptoViewModel(userCurrency,
+                        _service.GetCryptocurrencyInfoAsync(userCurrency.Symbol, currency).Result.Price));
+                }
+
                 data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
                 data.Currencies = _service.GetCurrencies();
                 return View(data);
