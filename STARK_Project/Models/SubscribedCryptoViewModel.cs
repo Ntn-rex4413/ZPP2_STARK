@@ -8,6 +8,11 @@ namespace STARK_Project.Models
 {
     public class SubscribedCryptoViewModel : Cryptocurreny
     {
+        public float UnitPrice { get; set; }
 
+        public SubscribedCryptoViewModel(Cryptocurreny crypto, float unitPrice)
+        {
+            UnitPrice = unitPrice;
+        }
     }
 }
