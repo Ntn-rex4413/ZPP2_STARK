@@ -19,6 +19,9 @@ namespace STARK_Project.Controllers
         {
             _temp_service = service;
         }
+
+        // Temporary property - remove before merge
+        private readonly ICryptoService _temp_service;
     }
 
     // Dummy class - remove before merge
