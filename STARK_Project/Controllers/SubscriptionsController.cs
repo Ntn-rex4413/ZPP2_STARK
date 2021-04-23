@@ -17,7 +17,9 @@ namespace STARK_Project.Controllers
     // Dummy class - remove before merge
     public class DummySubscriptionsViewModel
     {
-        
+        public List<Cryptocurreny> WatchedCryptocurrencies { get; set; }
+        public Dictionary<string, string> Cryptocurrencies { get; set; }
+        public Dictionary<string, string> Currencies { get; set; }
     }
 
     // Dummy class - remove before merge
