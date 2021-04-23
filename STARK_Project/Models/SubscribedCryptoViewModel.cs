@@ -12,6 +12,9 @@ namespace STARK_Project.Models
 
         public SubscribedCryptoViewModel(Cryptocurreny crypto, float unitPrice)
         {
+            Id = crypto.Id;
+            Name = crypto.Name;
+            Symbol = crypto.Symbol;
             UnitPrice = unitPrice;
         }
     }
