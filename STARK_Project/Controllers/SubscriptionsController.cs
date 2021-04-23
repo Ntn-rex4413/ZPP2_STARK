@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using STARK_Project.CryptoAPIService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,12 @@ namespace STARK_Project.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        // Temporary constructor - remove before merge
+        public SubscriptionsController(ICryptoService service)
+        {
+            _temp_service = service;
         }
     }
 
