@@ -43,8 +43,6 @@ namespace STARK_SeleniumTests
             Assert.That(label.Displayed, Is.True);
         }
 
-
-
         [TearDown]
         public void TearDown()
         {
