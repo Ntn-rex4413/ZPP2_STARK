@@ -31,6 +31,20 @@ namespace STARK_SeleniumTests
             Assert.AreEqual("BTC", detailsLabel);
         }
 
+        [Test]
+        public void BuySellButton_RedirectsCorrectly_IsTrue()
+        {
+            IWebElement detailsLink = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[2]"));
+
+            detailsLink.Click();
+
+            var label = webDriver.FindElement(By.XPath("/html/body/div[1]/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[1]/div[1]/div[1]/span[1]"));
+
+            Assert.That(label.Displayed, Is.True);
+        }
+
+
+
         [TearDown]
         public void TearDown()
         {
