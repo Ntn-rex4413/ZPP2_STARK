@@ -30,7 +30,7 @@ namespace STARK_UnitTests
         {
             var service = new CryptoService();
 
-            var data = service.GetCryptocurrencies();
+            var data = service.GetCryptocurrenciesAsync().Result;
 
             Assert.AreEqual(26, data.Count);
         }
