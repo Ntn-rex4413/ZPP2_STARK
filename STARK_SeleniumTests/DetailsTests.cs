@@ -33,6 +33,14 @@ namespace STARK_SeleniumTests
             Assert.That(logo.Displayed, Is.True);
         }
 
+        [Test]
+        public void CryptocurrencyPrice_Displayed_IsTrue()
+        {
+            IWebElement label = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[3]/div[1]/div/div/div/div[1]/div[2]"));
+
+            Assert.That(label.Displayed, Is.True);
+        }
+
         [TearDown]
         public void TearDown()
         {
