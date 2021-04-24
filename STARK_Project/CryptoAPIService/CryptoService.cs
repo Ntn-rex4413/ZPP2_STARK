@@ -19,6 +19,7 @@ namespace STARK_Project.CryptoAPIService
         private static readonly string _apiKey = "f55d85f81594925184304042a6bac7d8ee60a570722469d1ba0a3cee4ed6f959";
         private readonly string _baseURL = "https://min-api.cryptocompare.com/";
         private static readonly string _mulitInfoSubUri = "data/pricemultifull";
+        private static readonly string _baseCryptoInfoSubUri = "data/all/coinlist";
 
         private HttpClient _client = new HttpClient();
 
@@ -80,9 +81,18 @@ namespace STARK_Project.CryptoAPIService
         /// returns cryptocurrencies dictionary
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string,string> GetCryptocurrencies()
+        public async Task<Dictionary<string,string>> GetCryptocurrenciesAsync()
         {
-            return CryptocurrenciesNames;
+            var result = new Dictionary<string, string>();
+
+            var request = await GetResponse(_baseURL + _baseCryptoInfoSubUri, new List<KeyValuePair<string, string>>());
+            if (request.IsSuccessStatusCode)
+            {
+                var data = JsonConvert.DeserializeObject<CryptoModel>(await request.Content.ReadAsStringAsync());
+                foreach (var coin in data.Data.Values)
+                    result.Add(coin.Symbol, coin.CoinName);
+            }
+            return result;
         }
 
         /// <summary>
