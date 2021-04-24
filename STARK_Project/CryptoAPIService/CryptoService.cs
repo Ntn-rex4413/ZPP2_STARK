@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using STARK_Project.CryptoApiModel;
-using STARK_Project.CryptoApiModel.CurrencyEnums;
-using STARK_Project.CryptoApiModel.CurrencySymbolsEnums;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,8 +22,8 @@ namespace STARK_Project.CryptoAPIService
 
         private HttpClient _client = new HttpClient();
 
-        public Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
-        public Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
+        private Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
+        private Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
 
         public CryptoService()
         {
@@ -39,32 +38,7 @@ namespace STARK_Project.CryptoAPIService
         /// </summary>
         private void InitializeCryptocurrencies()
         {
-            CryptocurrenciesNames.Add("BTC", "Bitcoin");
-            CryptocurrenciesNames.Add("LTC", "Litecoin");
-            CryptocurrenciesNames.Add("NMC", "Namecoin");
-            CryptocurrenciesNames.Add("PPC", "Peercoin");
-            CryptocurrenciesNames.Add("DOGE", "Dogecoin");
-            CryptocurrenciesNames.Add("GRC", "Gridcoin");
-            CryptocurrenciesNames.Add("XPM", "Primecoin");
-            CryptocurrenciesNames.Add("XRP", "Ripple");
-            CryptocurrenciesNames.Add("NXT", "Nxt");
-            CryptocurrenciesNames.Add("AUR", "Auracoin");
-            CryptocurrenciesNames.Add("DASH", "Dash");
-            CryptocurrenciesNames.Add("NEO", "NEO");
-            CryptocurrenciesNames.Add("MZC", "MazaCoin");
-            CryptocurrenciesNames.Add("XMR", "Monero");
-            CryptocurrenciesNames.Add("TIT", "Titcoin");
-            CryptocurrenciesNames.Add("XVG", "Verge");
-            CryptocurrenciesNames.Add("XLM", "Stellar");
-            CryptocurrenciesNames.Add("VTC", "Vertcoin");
-            CryptocurrenciesNames.Add("ETH", "Ethereum");
-            CryptocurrenciesNames.Add("ETC", "Ethereum Classic");
-            CryptocurrenciesNames.Add("Nano", "Nano");
-            CryptocurrenciesNames.Add("USDT", "Tether");
-            CryptocurrenciesNames.Add("ZEC", "Zcash");
-            CryptocurrenciesNames.Add("BCH", "Bitcoin Cash");
-            CryptocurrenciesNames.Add("EOS", "EOS.IO");
-            CryptocurrenciesNames.Add("ADA", "Cardano");
+            CryptocurrenciesNames = GetCryptocurrenciesAsync().Result;
         }
 
         /// <summary>
