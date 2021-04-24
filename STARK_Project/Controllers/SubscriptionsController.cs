@@ -28,7 +28,7 @@ namespace STARK_Project.Controllers
         {
             _service = service;
             _dbService = dbService;
-            _userId = httpContextAccessor.HttpContext != null ? httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value : null;
+            _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
         public IActionResult Index()
         {
