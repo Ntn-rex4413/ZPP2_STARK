@@ -40,14 +40,14 @@ namespace STARK_Project.Controllers
             return View(data);
         }
 
-        public bool AddToWatchList(string cryptocurrency)
+        public async Task<IActionResult> AddToWatchList(string cryptocurrency)
         {
             if (_userId != null)
             {
-                _dbService.AddToWatchListAsync(_userId, cryptocurrency);
-                return true;
+                await _dbService.AddToWatchListAsync(_userId, cryptocurrency);
+                return RedirectToAction("Index", new {currency = "PLN"});
             }
-            return false;
+            return RedirectToAction("Index", new { currency = "PLN" });
         }
     }
 }

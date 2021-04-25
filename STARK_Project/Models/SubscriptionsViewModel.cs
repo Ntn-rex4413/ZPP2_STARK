@@ -8,7 +8,7 @@ namespace STARK_Project.Models
 {
     public class SubscriptionsViewModel
     {
-        public List<Cryptocurreny> WatchedCryptocurrencies { get; set; }
+        public List<SubscribedCryptoViewModel> WatchedCryptocurrencies { get; set; }
         public Dictionary<string, string> Cryptocurrencies { get; set; }
         public Dictionary<string, string> Currencies { get; set; }
     }
