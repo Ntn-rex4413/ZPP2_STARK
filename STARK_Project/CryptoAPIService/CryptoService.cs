@@ -22,8 +22,8 @@ namespace STARK_Project.CryptoAPIService
 
         private HttpClient _client = new HttpClient();
 
-        private Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
-        private Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
+        private  Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
+        private  Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
 
         public CryptoService()
         {
@@ -55,7 +55,7 @@ namespace STARK_Project.CryptoAPIService
         /// returns cryptocurrencies dictionary
         /// </summary>
         /// <returns></returns>
-        public async Task<Dictionary<string,string>> GetCryptocurrenciesAsync()
+        public async Task<Dictionary<string, string>> GetCryptocurrenciesAsync()
         {
             var result = new Dictionary<string, string>();
 
@@ -96,8 +96,9 @@ namespace STARK_Project.CryptoAPIService
         /// <returns>return Model  about all cryptocurrency in specific currency</returns>
         public async Task<CryptoModel> GetCryptocurrenciesInfoAsync(string currencySymbol)
         {
+            Debug.WriteLine(CryptocurrenciesNames.Count - (CryptocurrenciesNames.Count - 30));
             return await GetCryptoData(
-                 string.Join(",", CryptocurrenciesNames.Keys),
+                 string.Join(",", CryptocurrenciesNames.Keys.SkipLast(CryptocurrenciesNames.Count - 30)),
                  currencySymbol.ToString());
         }
         /// <summary>
@@ -108,12 +109,12 @@ namespace STARK_Project.CryptoAPIService
         /// <returns>returns Model about cryptocurrency in specific currency</returns>
         public async Task<CryptoInfo> GetCryptocurrencyInfoAsync(string cryptoSymbol, string currencySymbol)
         {
-            var data =  await GetCryptoData(
+            var data = await GetCryptoData(
            cryptoSymbol.ToString(),
            currencySymbol.ToString());
-            if(data is null) return null;
+            if (data is null) return null;
             return data.RAW[cryptoSymbol][currencySymbol];
-           
+
         }
 
 
