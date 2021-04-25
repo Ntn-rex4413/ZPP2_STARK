@@ -63,7 +63,7 @@ namespace STARK_Project.DBServices
             Debug.WriteLine("User: " + userToUpdate.Id);
             Debug.WriteLine(userToUpdate.Watchlist);
             if (userToUpdate.Watchlist is null) userToUpdate.Watchlist = new List<Cryptocurrency>();
-                var coinToAdd =  _context.Cryptocurrenies.FirstOrDefault(x => x.Symbol == "BTC");
+                var coinToAdd =  _context.Cryptocurrenies.FirstOrDefault(x => x.Symbol == cryptocurreny);
                 if (userToUpdate.Watchlist.Count(x => x.Symbol.Equals(coinToAdd)) > 0) return false;
                 userToUpdate.Watchlist.Add(coinToAdd);
                 _context.SaveChanges();
