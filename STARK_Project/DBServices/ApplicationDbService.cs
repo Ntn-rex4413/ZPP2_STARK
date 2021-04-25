@@ -54,14 +54,14 @@ namespace STARK_Project.DBServices
             }
         }
 
-        public async Task<bool> AddToWatchListAsync(string userId, Cryptocurreny cryptocurreny)
+        public async Task<bool> AddToWatchListAsync(string userId, string cryptocurreny)
         {
             try
             {
                 var userToUpdate = await GetUser(userId);
-
-                if (userToUpdate.Watchlist.Count(x => x.Symbol.Equals(cryptocurreny.Symbol)) > 0) return false;
-                userToUpdate.Watchlist.Add(cryptocurreny);
+                var coinToAdd = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol == "Cryptocurrency");
+                if (userToUpdate.Watchlist.Count(x => x.Symbol.Equals(coinToAdd)) > 0) return false;
+                userToUpdate.Watchlist.Add(coinToAdd);
                 return true;
             }
             catch (Exception)

@@ -39,7 +39,7 @@ namespace STARK_Project.Controllers
             else
             {
                 var data = new SubscriptionsViewModel();
-                data.WatchedCryptocurrencies = _dbService.GetWatchlist(_userId).Result?.ToList();
+                data.WatchedCryptocurrencies = _dbService.GetWatchlist(_userId).    ?.ToList();
                 data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
                 data.Currencies = _service.GetCurrencies();
                 return View(data);
