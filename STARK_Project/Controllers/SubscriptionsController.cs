@@ -34,7 +34,7 @@ namespace STARK_Project.Controllers
         public async Task<IActionResult> Index(string currency = "USD")
         {
 
-            if (true)
+            if (false)
             {
                 var coins = await _service.GetCryptocurrenciesAsync();
                await _dbService.AddCryptocurrenciesToDatabaseAsync(coins.Select(x=> new Cryptocurrency { Symbol = x.Key, Name = x.Value}).ToList());
