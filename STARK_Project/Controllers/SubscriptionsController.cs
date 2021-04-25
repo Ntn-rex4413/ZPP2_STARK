@@ -29,7 +29,7 @@ namespace STARK_Project.Controllers
         {
             _service = service;
             _dbService = dbService;
-            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
         public IActionResult Index(string currency = "USD")
         {

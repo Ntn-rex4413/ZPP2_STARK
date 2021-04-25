@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using STARK_Project.CryptoApiModel.CurrencyEnums;
-using STARK_Project.CryptoApiModel.CurrencySymbolsEnums;
+
 using STARK_Project.CryptoAPIService;
 using STARK_Project.DBServices;
 using STARK_Project.Models;
