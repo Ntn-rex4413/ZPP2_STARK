@@ -35,6 +35,8 @@ namespace STARK_Project.Controllers
             data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Currencies = _service.GetCurrencies();
 
+            ViewBag.IsUserLoggedIn = _userId != null;
+
             return View(data);
         }
     }
