@@ -10,7 +10,7 @@ namespace STARK_Project.DBServices
     {
         Task<bool> AddCryptocurrencyToDatabaseAsync(Cryptocurreny cryptocurreny);
         Task<bool> AddCryptocurrenciesToDatabaseAsync(ICollection<Cryptocurreny> cryptocurreny);
-        Task<bool> AddToWatchListAsync(string userId, Cryptocurreny cryptocurreny);
+        Task<bool> AddToWatchListAsync(string userId, string cryptocurreny);
         Task<bool> RemoveFromWatchListAsync(string userId, Cryptocurreny cryptocurreny);
         Task<bool> ClearWatchlist(string userId);
         Task<ICollection<Cryptocurreny>> GetWatchlist(string userId);
