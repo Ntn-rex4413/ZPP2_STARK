@@ -39,5 +39,15 @@ namespace STARK_Project.Controllers
 
             return View(data);
         }
+
+        public bool AddToWatchList(Cryptocurreny cryptocurrency)
+        {
+            if (_userId != null)
+            {
+                _dbService.AddToWatchListAsync(_userId, cryptocurrency);
+                return true;
+            }
+            return false;
+        }
     }
 }
