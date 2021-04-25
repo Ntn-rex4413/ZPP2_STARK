@@ -10,18 +10,23 @@ using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
 using STARK_Project.Models;
 using System.Diagnostics;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 namespace STARK_Project.Controllers
 {
     public class SummaryController : Controller
     {
         private readonly ICryptoService _service;
-
         private readonly IDbService _dbService;
-        public SummaryController(ICryptoService service, IDbService dbService)
+
+        private readonly string _userId;
+
+        public SummaryController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService)
         {
             _service = service;
             _dbService = dbService;
+            _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
         public IActionResult Index(string currency = "PLN")
         {
