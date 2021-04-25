@@ -62,6 +62,7 @@ namespace STARK_Project.DBServices
                 var coinToAdd = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol == "Cryptocurrency");
                 if (userToUpdate.Watchlist.Count(x => x.Symbol.Equals(coinToAdd)) > 0) return false;
                 userToUpdate.Watchlist.Add(coinToAdd);
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
