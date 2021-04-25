@@ -31,7 +31,7 @@ namespace STARK_Project.Controllers
             _dbService = dbService;
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
-        public IActionResult Index(string currency = "USD")
+        public async Task<IActionResult> Index(string currency = "USD")
         {
             if (_userId == null)
             {
@@ -44,11 +44,11 @@ namespace STARK_Project.Controllers
                 //data.WatchedCryptocurrencies = _dbService.GetWatchlist(_userId).Result.ToList();
 
                 // Dummy data - remove before merge:
-                List<Cryptocurreny> userCurrencies = new List<Cryptocurreny> {
-                new Cryptocurreny{ Id = 1, Name = "Bitcoin", Symbol = "BTC" },
-                new Cryptocurreny{ Id = 2, Name = "DogeCoin", Symbol = "DOGE" }
-                };
-
+                //List<Cryptocurrency> userCurrencies = new List<Cryptocurrency> {
+                //new Cryptocurrency{ Id = 1, Name = "Bitcoin", Symbol = "BTC" },
+                //new Cryptocurrency{ Id = 2, Name = "DogeCoin", Symbol = "DOGE" }
+                //};
+                List<Cryptocurrency> userCurrencies = (await _dbService.GetWatchlist(_userId)).ToList();
                 data.WatchedCryptocurrencies = new List<SubscribedCryptoViewModel>();
                 foreach (var userCurrency in userCurrencies)
                 {

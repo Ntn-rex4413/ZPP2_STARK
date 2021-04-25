@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace STARK_Project.Models
 {
-    public class SubscribedCryptoViewModel : Cryptocurreny
+    public class SubscribedCryptoViewModel : Cryptocurrency
     {
         public string ToSymbol { get; set; }
         public float UnitPrice { get; set; }
 
-        public SubscribedCryptoViewModel(Cryptocurreny crypto, CryptoInfo info)
+        public SubscribedCryptoViewModel(Cryptocurrency crypto, CryptoInfo info)
         {
             Id = crypto.Id;
             Name = crypto.Name;

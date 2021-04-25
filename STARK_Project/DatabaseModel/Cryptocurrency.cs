@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace STARK_Project.DatabaseModel
 {
-    public class Cryptocurreny
+    public class Cryptocurrency
     {
         public int Id { get; set; }
         public string Name { get; set; }

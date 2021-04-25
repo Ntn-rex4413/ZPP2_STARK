@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace STARK_Project.DatabaseModel
 {
-    public class CoinHash : EqualityComparer<Cryptocurreny>
+    public class CoinHash : EqualityComparer<Cryptocurrency>
     {
-        public override bool Equals(Cryptocurreny x, Cryptocurreny y)
+        public override bool Equals(Cryptocurrency x, Cryptocurrency y)
         {
             return x.Symbol.Equals(y.Symbol);
         }
 
-        public override int GetHashCode([DisallowNull] Cryptocurreny obj)
+        public override int GetHashCode([DisallowNull] Cryptocurrency obj)
         {
             return base.GetHashCode();
         }
