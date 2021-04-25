@@ -40,7 +40,7 @@ namespace STARK_Project.Controllers
             return View(data);
         }
 
-        public bool AddToWatchList(Cryptocurreny cryptocurrency)
+        public bool AddToWatchList(string cryptocurrency)
         {
             if (_userId != null)
             {
