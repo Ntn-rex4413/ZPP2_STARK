@@ -26,6 +26,13 @@ namespace STARK_Project.Controllers
         }
         public async Task<IActionResult> Index(string currency = "USD")
         {
+            if (false)
+            {
+                //TODO
+                //remove at the very end
+                var coins = await _service.GetCryptocurrenciesAsync();
+                await _dbService.AddCryptocurrenciesToDatabaseAsync(coins.Select(x => new Cryptocurrency { Symbol = x.Key, Name = x.Value }).ToList());
+            }
             if (_userId == null)
             {
                 return RedirectToAction("Index", "Summary");
