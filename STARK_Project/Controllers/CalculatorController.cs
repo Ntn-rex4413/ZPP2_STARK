@@ -12,5 +12,15 @@ namespace STARK_Project.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(double value1, double value2)
+        {
+            //TODO
+            //calculate new value
+            //return view model
+            return View();
+        }
     }
 }

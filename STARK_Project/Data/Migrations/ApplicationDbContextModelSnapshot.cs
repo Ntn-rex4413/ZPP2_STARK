@@ -19,7 +19,7 @@ namespace STARK_Project.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CryptocurrenyUser", b =>
+            modelBuilder.Entity("CryptocurrencyUser", b =>
                 {
                     b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");
@@ -31,7 +31,7 @@ namespace STARK_Project.Data.Migrations
 
                     b.HasIndex("WatchlistId");
 
-                    b.ToTable("CryptocurrenyUser");
+                    b.ToTable("CryptocurrencyUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -169,7 +169,7 @@ namespace STARK_Project.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("STARK_Project.DatabaseModel.Cryptocurreny", b =>
+            modelBuilder.Entity("STARK_Project.DatabaseModel.Cryptocurrency", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -204,7 +204,7 @@ namespace STARK_Project.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CryptocurrenyId")
+                    b.Property<int?>("CryptocurrencyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -249,7 +249,7 @@ namespace STARK_Project.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CryptocurrenyId");
+                    b.HasIndex("CryptocurrencyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -262,7 +262,7 @@ namespace STARK_Project.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("CryptocurrenyUser", b =>
+            modelBuilder.Entity("CryptocurrencyUser", b =>
                 {
                     b.HasOne("STARK_Project.DatabaseModel.User", null)
                         .WithMany()
@@ -270,7 +270,7 @@ namespace STARK_Project.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("STARK_Project.DatabaseModel.Cryptocurreny", null)
+                    b.HasOne("STARK_Project.DatabaseModel.Cryptocurrency", null)
                         .WithMany()
                         .HasForeignKey("WatchlistId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -328,7 +328,7 @@ namespace STARK_Project.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("STARK_Project.DatabaseModel.Cryptocurreny", b =>
+            modelBuilder.Entity("STARK_Project.DatabaseModel.Cryptocurrency", b =>
                 {
                     b.HasOne("STARK_Project.DatabaseModel.User", null)
                         .WithMany()
@@ -337,9 +337,9 @@ namespace STARK_Project.Data.Migrations
 
             modelBuilder.Entity("STARK_Project.DatabaseModel.User", b =>
                 {
-                    b.HasOne("STARK_Project.DatabaseModel.Cryptocurreny", null)
+                    b.HasOne("STARK_Project.DatabaseModel.Cryptocurrency", null)
                         .WithMany()
-                        .HasForeignKey("CryptocurrenyId");
+                        .HasForeignKey("CryptocurrencyId");
                 });
 #pragma warning restore 612, 618
         }

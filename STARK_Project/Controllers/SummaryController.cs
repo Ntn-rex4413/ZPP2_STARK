@@ -4,25 +4,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using STARK_Project.CryptoApiModel;
-using STARK_Project.CryptoApiModel.CurrencyEnums;
-using STARK_Project.CryptoApiModel.CurrencySymbolsEnums;
+
 using STARK_Project.CryptoAPIService;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
 using STARK_Project.Models;
 using System.Diagnostics;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 namespace STARK_Project.Controllers
 {
     public class SummaryController : Controller
     {
         private readonly ICryptoService _service;
-
         private readonly IDbService _dbService;
-        public SummaryController(ICryptoService service, IDbService dbService)
+
+        private readonly string _userId;
+
+        public SummaryController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService)
         {
             _service = service;
             _dbService = dbService;
+            _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
         public IActionResult Index(string currency = "PLN")
         {
@@ -31,7 +35,19 @@ namespace STARK_Project.Controllers
             data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Currencies = _service.GetCurrencies();
 
+            ViewBag.IsUserLoggedIn = _userId != null;
+
             return View(data);
+        }
+
+        public async Task<IActionResult> AddToWatchList(string cryptocurrency)
+        {
+            if (_userId != null)
+            {
+                await _dbService.AddToWatchListAsync(_userId, cryptocurrency);
+                return RedirectToAction("Index", new {currency = "PLN"});
+            }
+            return RedirectToAction("Index", new { currency = "PLN" });
         }
     }
 }

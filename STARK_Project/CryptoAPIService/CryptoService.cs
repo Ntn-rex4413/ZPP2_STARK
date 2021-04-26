@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using STARK_Project.CryptoApiModel;
-using STARK_Project.CryptoApiModel.CurrencyEnums;
-using STARK_Project.CryptoApiModel.CurrencySymbolsEnums;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,8 +22,8 @@ namespace STARK_Project.CryptoAPIService
 
         private HttpClient _client = new HttpClient();
 
-        public Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
-        public Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
+        private  Dictionary<string, string> CryptocurrenciesNames = new Dictionary<string, string>();
+        private  Dictionary<string, string> CurrenciesNames = new Dictionary<string, string>();
 
         public CryptoService()
         {
@@ -39,32 +38,7 @@ namespace STARK_Project.CryptoAPIService
         /// </summary>
         private void InitializeCryptocurrencies()
         {
-            CryptocurrenciesNames.Add("BTC", "Bitcoin");
-            CryptocurrenciesNames.Add("LTC", "Litecoin");
-            CryptocurrenciesNames.Add("NMC", "Namecoin");
-            CryptocurrenciesNames.Add("PPC", "Peercoin");
-            CryptocurrenciesNames.Add("DOGE", "Dogecoin");
-            CryptocurrenciesNames.Add("GRC", "Gridcoin");
-            CryptocurrenciesNames.Add("XPM", "Primecoin");
-            CryptocurrenciesNames.Add("XRP", "Ripple");
-            CryptocurrenciesNames.Add("NXT", "Nxt");
-            CryptocurrenciesNames.Add("AUR", "Auracoin");
-            CryptocurrenciesNames.Add("DASH", "Dash");
-            CryptocurrenciesNames.Add("NEO", "NEO");
-            CryptocurrenciesNames.Add("MZC", "MazaCoin");
-            CryptocurrenciesNames.Add("XMR", "Monero");
-            CryptocurrenciesNames.Add("TIT", "Titcoin");
-            CryptocurrenciesNames.Add("XVG", "Verge");
-            CryptocurrenciesNames.Add("XLM", "Stellar");
-            CryptocurrenciesNames.Add("VTC", "Vertcoin");
-            CryptocurrenciesNames.Add("ETH", "Ethereum");
-            CryptocurrenciesNames.Add("ETC", "Ethereum Classic");
-            CryptocurrenciesNames.Add("Nano", "Nano");
-            CryptocurrenciesNames.Add("USDT", "Tether");
-            CryptocurrenciesNames.Add("ZEC", "Zcash");
-            CryptocurrenciesNames.Add("BCH", "Bitcoin Cash");
-            CryptocurrenciesNames.Add("EOS", "EOS.IO");
-            CryptocurrenciesNames.Add("ADA", "Cardano");
+            CryptocurrenciesNames = GetCryptocurrenciesAsync().Result;
         }
 
         /// <summary>
@@ -81,7 +55,7 @@ namespace STARK_Project.CryptoAPIService
         /// returns cryptocurrencies dictionary
         /// </summary>
         /// <returns></returns>
-        public async Task<Dictionary<string,string>> GetCryptocurrenciesAsync()
+        public async Task<Dictionary<string, string>> GetCryptocurrenciesAsync()
         {
             var result = new Dictionary<string, string>();
 
@@ -122,8 +96,9 @@ namespace STARK_Project.CryptoAPIService
         /// <returns>return Model  about all cryptocurrency in specific currency</returns>
         public async Task<CryptoModel> GetCryptocurrenciesInfoAsync(string currencySymbol)
         {
+            Debug.WriteLine(CryptocurrenciesNames.Count - (CryptocurrenciesNames.Count - 30));
             return await GetCryptoData(
-                 string.Join(",", CryptocurrenciesNames.Keys),
+                 string.Join(",", CryptocurrenciesNames.Keys.SkipLast(CryptocurrenciesNames.Count - 30)),
                  currencySymbol.ToString());
         }
         /// <summary>
@@ -134,12 +109,12 @@ namespace STARK_Project.CryptoAPIService
         /// <returns>returns Model about cryptocurrency in specific currency</returns>
         public async Task<CryptoInfo> GetCryptocurrencyInfoAsync(string cryptoSymbol, string currencySymbol)
         {
-            var data =  await GetCryptoData(
+            var data = await GetCryptoData(
            cryptoSymbol.ToString(),
            currencySymbol.ToString());
-            if(data is null) return null;
+            if (data is null) return null;
             return data.RAW[cryptoSymbol][currencySymbol];
-           
+
         }
 
 
