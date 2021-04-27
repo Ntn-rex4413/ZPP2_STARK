@@ -20,7 +20,7 @@ namespace STARK_UnitTests
 
             var data = service.GetCryptocurrenciesInfoAsync("PLN").Result;
 
-            Assert.AreEqual(26, data.RAW.Count);
+            Assert.AreEqual(29, data.RAW.Count);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace STARK_UnitTests
 
             var data = service.GetCryptocurrenciesAsync().Result;
 
-            Assert.AreEqual(26, data.Count);
+            Assert.AreEqual(29, data.Count);
         }
 
         [TestMethod]
