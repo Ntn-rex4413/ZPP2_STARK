@@ -17,6 +17,16 @@ namespace STARK_SeleniumTests
         public void Setup()
         {
             webDriver = new FirefoxDriver();
+            webDriver.Navigate().GoToUrl("https://localhost:44311/Identity/Account/Login");
+
+            IWebElement login = webDriver.FindElement(By.XPath("//*[@id=\"Input_Email\"]"));
+            login.SendKeys("lafel42099@iludir.com");
+            IWebElement password = webDriver.FindElement(By.XPath("//*[@id=\"Input_Password\"]"));
+            password.SendKeys("Zpp2STARK!");
+            IWebElement button = webDriver.FindElement(
+                By.XPath("/html/body/div[1]/div/div/div/div/div/div/div/div/div/div/div/form[1]/div[4]/button"));
+            button.Click();
+
             webDriver.Navigate().GoToUrl("https://localhost:44311/Subscriptions");
         }
 
@@ -27,6 +37,8 @@ namespace STARK_SeleniumTests
 
             Assert.That(element.Displayed, Is.True);
         }
+
+
 
         [TearDown]
         public void TearDown()
