@@ -9,7 +9,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace STARK_SeleniumTests
 {
-    public class SubscriptionsTests
+    public class SubscriptionsRedirectionTests
     {
         private IWebDriver webDriver;
 
@@ -31,28 +31,14 @@ namespace STARK_SeleniumTests
         }
 
         [Test]
-        public void CryptocurrencyName_Displayed_IsTrue()
+        public void BuySellButton_Redirects_IsTrue()
         {
-            IWebElement element = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[3]/div/div/div[1]/h6[1]"));
+            IWebElement element = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[3]/div/div/div[2]/div/a[2]"));
+            element.Click();
+            element = webDriver.FindElement(By.XPath(
+                "/html/body/div[1]/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[1]/div[1]/div[1]/span[1]"));
 
             Assert.That(element.Displayed, Is.True);
-        }
-
-        [Test]
-        public void CryptocurrencyPrice_Displayed_IsTrue()
-        {
-            IWebElement element = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[3]/div/div/div[1]/h6[2]"));
-
-            Assert.That(element.Displayed, Is.True);
-        }
-
-        [Test]
-        public void CryptocurrencyCount_IsInt_IsTrue()
-        {
-            IWebElement element = webDriver.FindElement(By.XPath("html/body/div[1]/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]"));
-            bool isInt = int.TryParse(element.Text.ToString(), out int a);
-
-            Assert.That(isInt, Is.True);
         }
 
         [TearDown]
