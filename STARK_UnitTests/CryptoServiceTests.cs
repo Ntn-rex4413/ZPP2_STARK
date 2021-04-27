@@ -6,8 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using STARK_Project.CryptoApiModel;
-using STARK_Project.CryptoApiModel.CurrencyEnums;
-using STARK_Project.CryptoApiModel.CurrencySymbolsEnums;
 using STARK_Project.CryptoAPIService;
 
 namespace STARK_UnitTests
