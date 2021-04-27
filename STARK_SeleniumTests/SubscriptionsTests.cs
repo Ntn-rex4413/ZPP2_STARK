@@ -46,6 +46,16 @@ namespace STARK_SeleniumTests
             Assert.That(element.Displayed, Is.True);
         }
 
+        ///html/body/div[1]/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]
+        [Test]
+        public void CryptocurrencyCount_IsInt_IsTrue()
+        {
+            IWebElement element = webDriver.FindElement(By.XPath("html/body/div[1]/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]"));
+            bool isInt = int.TryParse(element.Text.ToString(), out int a);
+
+            Assert.That(isInt, Is.True);
+        }
+
         [TearDown]
         public void TearDown()
         {
