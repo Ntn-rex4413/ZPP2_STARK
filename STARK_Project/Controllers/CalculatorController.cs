@@ -15,7 +15,7 @@ namespace STARK_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(double value1, double value2)
+        public IActionResult Index(double valueLeft, string currencyLeft, string currencyRight)
         {
             //TODO
             //calculate new value
