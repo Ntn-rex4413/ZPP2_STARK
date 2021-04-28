@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using STARK_Project.CryptoAPIService;
 using STARK_Project.DBServices;
+using STARK_Project.Models;
 
 namespace STARK_Project.Controllers
 {
@@ -25,8 +27,14 @@ namespace STARK_Project.Controllers
         }
         public IActionResult Index(double valueLeft = 0, double valueRight = 0, string currencyLeft = "EUR", string currencyRight = "BTC")
         {
+            CalculatorViewModel viewModel = new CalculatorViewModel();
 
-            return View();
+            viewModel.LeftCurrency = currencyLeft;
+            viewModel.RightCurrency = currencyRight;
+            viewModel.LeftValue = valueLeft;
+            viewModel.RightValue = valueRight;
+
+            return View(viewModel);
         }
 
         [HttpPost]
