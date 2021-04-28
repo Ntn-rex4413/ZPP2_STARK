@@ -8,7 +8,7 @@ namespace STARK_Project.Controllers
 {
     public class CalculatorController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(double valueLeft = 0, double valueRight = 0, string currencyLeft = "EUR", string currencyRight = "BTC")
         {
             return View();
         }
