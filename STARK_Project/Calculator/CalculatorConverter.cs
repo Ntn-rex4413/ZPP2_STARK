@@ -7,11 +7,11 @@ using STARK_Project.DBServices;
 
 namespace STARK_Project.Calculator
 {
-    public class Calculator
+    public class CalculatorConverter
     {
         private IDbService _dbService;
         private ICryptoService _cryptoService;
-        public Calculator(IDbService dbService, ICryptoService cryptoService)
+        public CalculatorConverter(IDbService dbService, ICryptoService cryptoService)
         {
             _dbService = dbService;
             _cryptoService = cryptoService;

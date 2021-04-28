@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using STARK_Project.CryptoAPIService;
 using STARK_Project.DBServices;
 using STARK_Project.Models;
+using STARK_Project.Calculator;
 
 namespace STARK_Project.Controllers
 {
@@ -39,12 +40,12 @@ namespace STARK_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(double valueLeft, string currencyLeft, string currencyRight)
+        public IActionResult Index(CalculatorViewModel viewModel)
         {
             //TODO
-            //calculate new value
-            //return view model
-            return View();
+            CalculatorConverter calculator = new CalculatorConverter(_dbService, _service);
+            viewModel.RightValue = calculator.Calculate(viewModel.LeftValue, viewModel.LeftCurrency, viewModel.RightCurrency);
+            return RedirectToAction("Index", new {valueLeft = viewModel.LeftValue, valueRight = viewModel.RightValue, currencyLeft = viewModel.LeftCurrency, currencyRight = viewModel.RightCurrency});
         }
     }
 }
