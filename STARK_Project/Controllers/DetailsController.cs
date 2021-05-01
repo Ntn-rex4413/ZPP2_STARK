@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using STARK_Project.CryptoAPIService;
 using STARK_Project.DBServices;
 using STARK_Project.Models;
+using System.Threading.Tasks;
 
 namespace STARK_Project.Controllers
 {
@@ -35,6 +36,16 @@ namespace STARK_Project.Controllers
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
             return dtDateTime;
+        }
+
+        public async Task<IActionResult> AddToWatchList(string cryptocurrency = "BTC", string currency = "USD")
+        {
+            if (_userId != null)
+            {
+                await _dbService.AddToWatchListAsync(_userId, cryptocurrency);
+                return RedirectToAction("Index", new { currency = "PLN" });
+            }
+            return RedirectToAction("Index", new { currency = "PLN" });
         }
     }
 }
