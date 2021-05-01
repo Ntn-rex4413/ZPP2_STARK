@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace STARK_Project.CryptoAPIService
 {
@@ -15,6 +16,8 @@ namespace STARK_Project.CryptoAPIService
         Task<CryptoInfo> GetCryptocurrencyInfoAsync(string cryptoSymbol, string currencySymbol);
         Task<CryptoModel> GetCryptocurrenciesInfoAsync();
         Task<CryptoModel> GetCryptocurrenciesInfoAsync(string symbol);
+        Task<CryptoHistoricalData> GetHistoricalData(HistoricalDataTypes type,string symbol, string currencySymbol, int? limit, int? aggregate);
+
         Task<Dictionary<string, string>> GetCryptocurrenciesAsync();
         Dictionary<string, string> GetCurrencies();
     }
