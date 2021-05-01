@@ -68,7 +68,7 @@
                             <a href="https://www.binance.com/en/buy-sell-crypto" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-4 nav-link">
                                 <i class="fas fa-money-bill-wave fa-sm text-white-50"></i> Kup / Sprzedaj
                             </a>
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mr-4 nav-link">
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mr-4 nav-link" asp-controller="Subscriptions" asp-action="RemoveFromWatchlist" asp-route-cryptocurrency="@currency.Symbol" asp-route-currency="@currency.ToSymbol">
                                 <i class="fas fa-ban fa-sm text-white-50"></i> Odobserwuj
                             </a>
                             <a href="" type="button" value="Refresh Page" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm mr-4 nav-link">
