@@ -43,9 +43,9 @@ namespace STARK_Project.Controllers
             if (_userId != null)
             {
                 await _dbService.AddToWatchListAsync(_userId, cryptocurrency);
-                return RedirectToAction("Index", new { currency = "PLN" });
+                return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
             }
-            return RedirectToAction("Index", new { currency = "PLN" });
+            return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
         }
     }
 }
