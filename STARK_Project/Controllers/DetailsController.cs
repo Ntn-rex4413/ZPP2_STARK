@@ -27,7 +27,7 @@ namespace STARK_Project.Controllers
             data.CryptoModel = _service.GetCryptocurrencyInfoAsync(cryptocurrency, currency).Result;
             data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Currencies = _service.GetCurrencies();
-            data.HistoricalData = _service.GetHistoricalData(HistoricalDataTypes.Daily, cryptocurrency, currency, 0, 0).Result;
+            data.HistoricalData = _service.GetHistoricalData(HistoricalDataTypes.Daily, cryptocurrency, currency, 7, 7).Result;
 
             return View(data);
         }
