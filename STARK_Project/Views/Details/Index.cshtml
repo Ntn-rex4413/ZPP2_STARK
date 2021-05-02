@@ -340,7 +340,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Cryptocurrency Chart</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">@Model.CryptoModel.FromSymbol ohlc Chart</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -358,33 +358,34 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-area">
+                    <div style="height: 25rem">
                         <div id="chartContainer">
                             <script>
                                 window.onload = function () {
 
                                 var chart = new CanvasJS.Chart("chartContainer", {
-                                	animationEnabled: true,
-                                	exportEnabled: true,
-                                	exportFileName: "@Model.CryptoModel.FromSymbol",
+                                    animationEnabled: true,
+                                    zoomEnabled: true,
+                                	exportEnabled: false,
+                                	exportFileName: "",
                                 	title: {
-                                		text: "@Model.CryptoModel.FromSymbol Price"
+                                		text: ""
                                 	},
-                                	axisX: {
+                                    axisX: {
                                 		interval: 1,
                                 		intervalType: "day",
-                                		valueFormatString: "DD"
+                                        valueFormatString: "DD MMM"
                                 	},
                                 	axisY: {
                                 		prefix: "$",
-                                		title: "Price (in USD)"
+                                		title: "Price (in @Model.CryptoModel.ToSymbol)"
                                 	},
                                 	data: [{
-                                		type: "ohlc",
+                                        type: "candlestick",
                                 		yValueFormatString: "$#,##0.00",
-                                		xValueFormatString: "DD MMM YYYY",
+                                        xValueFormatString: "DD MMM YYYY",
                                 		xValueType: "dateTime",
-                                		dataPoints: @Html.Raw(ViewBag.DataPoints)
+                                		dataPoints: @Html.Raw(ViewBag.dataPoints)
                                 	}]
                                 });
                                 chart.render();
@@ -392,7 +393,6 @@
                                 }
                             </script>
                         </div>
-                        <canvas id="myAreaChart"></canvas>
                     </div>
                 </div>
             </div>
