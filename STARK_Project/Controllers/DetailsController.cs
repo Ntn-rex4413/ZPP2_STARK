@@ -36,7 +36,7 @@ namespace STARK_Project.Controllers
             // data for the chart
             foreach (var record in data.HistoricalData.Data)
             {
-                dataPoints.Add(new DataPoint(record.Time, new double[] { record.Open, record.High, record.Low, record.Close }));
+                dataPoints.Add(new DataPoint(UnixTimeStampToDateTime(record.Time), new double[] { record.Open, record.High, record.Low, record.Close }));
             }
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
@@ -64,10 +64,10 @@ namespace STARK_Project.Controllers
     public class DataPoint
     {
         [DataMember(Name = "x")]
-        public Nullable<double> X { get; set; }
+        public Nullable<DateTime> X { get; set; }
         [DataMember(Name = "y")]
         public double[] Y { get; set; }
-        public DataPoint(double x, double[] y)
+        public DataPoint(DateTime x, double[] y)
         {
             this.X = x;
             this.Y = y;
