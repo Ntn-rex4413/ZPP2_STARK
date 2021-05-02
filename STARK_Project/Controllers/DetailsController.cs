@@ -6,6 +6,7 @@ using STARK_Project.CryptoAPIService;
 using STARK_Project.DBServices;
 using STARK_Project.Models;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace STARK_Project.Controllers
 {
@@ -46,6 +47,17 @@ namespace STARK_Project.Controllers
                 return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
             }
             return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
+        }
+    }
+
+    public class DataPoint
+    {
+        public Nullable<double> X { get; set; }
+        public double[] Y { get; set; }
+        public DataPoint(double x, double[] y)
+        {
+            this.X = x;
+            this.Y = y;
         }
     }
 }
