@@ -64,8 +64,8 @@ namespace STARK_Project.CryptoAPIService
         {
             var parameters = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("fsyms", symbol),
-                new KeyValuePair<string, string>("tsyms", currencySymbol)
+                new KeyValuePair<string, string>("fsym", symbol),
+                new KeyValuePair<string, string>("tsym", currencySymbol)
             };
 
             if (limit.HasValue) 
