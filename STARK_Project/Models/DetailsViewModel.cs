@@ -11,5 +11,6 @@ namespace STARK_Project.Models
         public CryptoInfo CryptoModel { get; set; }
         public Dictionary<string, string> Cryptocurrencies { get; set; }
         public Dictionary<string, string> Currencies { get; set; }
+        public CryptoHistoricalData HistoricalData { get; set; }
     }
 }

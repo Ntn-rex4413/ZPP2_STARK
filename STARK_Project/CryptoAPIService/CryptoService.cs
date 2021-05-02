@@ -11,6 +11,12 @@ using System.Web;
 
 namespace STARK_Project.CryptoAPIService
 {
+    public enum HistoricalDataTypes
+    {
+        Daily,
+        Hourly,
+        Minute
+    }
 
     public class CryptoService : ICryptoService
     {
@@ -19,6 +25,9 @@ namespace STARK_Project.CryptoAPIService
         private readonly string _baseURL = "https://min-api.cryptocompare.com/";
         private static readonly string _mulitInfoSubUri = "data/pricemultifull";
         private static readonly string _baseCryptoInfoSubUri = "data/all/coinlist";
+        private static readonly string _dailyHistoricalDataSubUrl = "data/v2/histoday";
+        private static readonly string _hourlyHistoricalDataSubUrl = "data/v2/histohour";
+        private static readonly string _minuteHistoricalDataSubUrl = "data/v2/histominute";
 
         private HttpClient _client = new HttpClient();
 
@@ -49,6 +58,30 @@ namespace STARK_Project.CryptoAPIService
             CurrenciesNames.Add("PLN", "Polski złoty");
             CurrenciesNames.Add("EUR", "Euro");
             CurrenciesNames.Add("USD", "United States dollar");
+        }
+
+        public async Task<CryptoHistoricalData> GetHistoricalData(HistoricalDataTypes type, string symbol, string currencySymbol, int? limit, int? aggregate)
+        {
+            var parameters = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("fsym", symbol),
+                new KeyValuePair<string, string>("tsym", currencySymbol)
+            };
+
+            if (limit.HasValue) 
+                parameters.Add(new KeyValuePair<string, string>("limit", limit.Value.ToString()));
+            if(aggregate.HasValue)
+                parameters.Add(new KeyValuePair<string, string>("aggregate", aggregate.Value.ToString()));
+
+            var subUrl = GetHistoricalSubUrl(type);
+            var response = await GetResponse(_baseURL + subUrl, parameters);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var data = JsonConvert.DeserializeObject<CryptoHistoricalModel>(await response.Content.ReadAsStringAsync());
+                return data.Data;
+            }
+            return null;
         }
 
         /// <summary>
@@ -147,6 +180,21 @@ namespace STARK_Project.CryptoAPIService
             uriBuilder.Query = query.ToString();
             Debug.WriteLine(uriBuilder.Uri);
             return await _client.GetAsync(uriBuilder.Uri);
+        }
+
+        private string GetHistoricalSubUrl(HistoricalDataTypes type)
+        {
+            switch (type)
+            {
+                case HistoricalDataTypes.Daily:
+                    return _dailyHistoricalDataSubUrl;
+                case HistoricalDataTypes.Hourly:
+                    return _hourlyHistoricalDataSubUrl;
+                case HistoricalDataTypes.Minute:
+                    return _minuteHistoricalDataSubUrl;
+                default:
+                    return _dailyHistoricalDataSubUrl;
+            }
         }
     }
 }
