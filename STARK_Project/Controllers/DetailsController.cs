@@ -7,6 +7,7 @@ using STARK_Project.DBServices;
 using STARK_Project.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace STARK_Project.Controllers
 {
@@ -29,6 +30,14 @@ namespace STARK_Project.Controllers
             data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Currencies = _service.GetCurrencies();
             data.HistoricalData = _service.GetHistoricalData(HistoricalDataTypes.Daily, cryptocurrency, currency, 7, 7).Result;
+
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            // data for the chart
+            foreach (var record in data.HistoricalData.Data)
+            {
+                dataPoints.Add(new DataPoint(record.Time, new double[] { record.Open, record.High, record.Low, record.Close }));
+            }
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
             return View(data);
         }
