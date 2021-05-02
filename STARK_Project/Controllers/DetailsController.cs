@@ -30,7 +30,7 @@ namespace STARK_Project.Controllers
             data.CryptoModel = _service.GetCryptocurrencyInfoAsync(cryptocurrency, currency).Result;
             data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Currencies = _service.GetCurrencies();
-            data.HistoricalData = _service.GetHistoricalData(HistoricalDataTypes.Daily, cryptocurrency, currency, 50, 1).Result;
+            data.HistoricalData = _service.GetHistoricalData(HistoricalDataTypes.Daily, cryptocurrency, currency, 30, 1).Result;
 
             List<DataPoint> dataPoints = new List<DataPoint>();
             // data for the chart
