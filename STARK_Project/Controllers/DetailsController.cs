@@ -8,6 +8,7 @@ using STARK_Project.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace STARK_Project.Controllers
 {
@@ -59,9 +60,12 @@ namespace STARK_Project.Controllers
         }
     }
 
+    [DataContract]
     public class DataPoint
     {
+        [DataMember(Name = "x")]
         public Nullable<double> X { get; set; }
+        [DataMember(Name = "y")]
         public double[] Y { get; set; }
         public DataPoint(double x, double[] y)
         {
