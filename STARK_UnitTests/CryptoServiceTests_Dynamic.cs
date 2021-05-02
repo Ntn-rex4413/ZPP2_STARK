@@ -5,11 +5,15 @@ using STARK_Project.CryptoAPIService;
 
 namespace STARK_UnitTests
 {
+    /// <summary>
+    /// dynamic - will not pass unless you copy proper price from any cryptocurrency website
+    /// </summary>
     [TestClass]
     public class CryptoServiceTests_Dynamic
     {
         /// <summary>
-        /// gets all cryptocurrencies
+        /// get all cryptocurrencies and ensure that price is correct
+        /// by JB
         /// </summary>
         [TestMethod]
         public void CryptocurrencySummary_ReturnsCorrectValue_IsTrue()
@@ -21,7 +25,8 @@ namespace STARK_UnitTests
             Assert.AreEqual(Convert.ToSingle(58583.58), data.RAW["BTC"]["USD"].Price);
         }
         /// <summary>
-        /// gets one cryptocurrency
+        /// get one cryptocurrency and ensure that price is correct
+        /// by JB
         /// </summary>
         [TestMethod]
         public void CryptocurrencyDetails_ReturnsCorrectValue_IsTrue()

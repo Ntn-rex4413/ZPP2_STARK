@@ -13,6 +13,9 @@ namespace STARK_UnitTests
     [TestClass]
     public class CryptoServiceTests
     {
+        /// <summary>
+        /// by JB
+        /// </summary>
         [TestMethod]
         public void CryptocurrencySummary_ReturnsAllValues_IsTrue()
         {
@@ -23,6 +26,9 @@ namespace STARK_UnitTests
             Assert.AreEqual(29, data.RAW.Count);
         }
 
+        /// <summary>
+        /// by JB
+        /// </summary>
         [TestMethod]
         public void CryptocurrenciesNames_ContainsAllValues_IsTrue()
         {
@@ -33,6 +39,9 @@ namespace STARK_UnitTests
             Assert.AreEqual(29, data.Count);
         }
 
+        /// <summary>
+        /// by NJ
+        /// </summary>
         [TestMethod]
         public void CryptocurrencySummary_ContainsNoDuplicates_IsTrue()
         {
