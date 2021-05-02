@@ -30,13 +30,13 @@ namespace STARK_Project.Controllers
             data.CryptoModel = _service.GetCryptocurrencyInfoAsync(cryptocurrency, currency).Result;
             data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Currencies = _service.GetCurrencies();
-            data.HistoricalData = _service.GetHistoricalData(HistoricalDataTypes.Daily, cryptocurrency, currency, 7, 7).Result;
+            data.HistoricalData = _service.GetHistoricalData(HistoricalDataTypes.Daily, cryptocurrency, currency, 50, 1).Result;
 
             List<DataPoint> dataPoints = new List<DataPoint>();
             // data for the chart
             foreach (var record in data.HistoricalData.Data)
             {
-                dataPoints.Add(new DataPoint(record.Time, new double[] { record.Open, record.High, record.Low, record.Close }));
+                dataPoints.Add(new DataPoint(record.Time*1000, new double[] { record.Open, record.High, record.Low, record.Close }));
             }
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
@@ -64,7 +64,7 @@ namespace STARK_Project.Controllers
     public class DataPoint
     {
         [DataMember(Name = "x")]
-        public Nullable<double> X { get; set; }
+        public double X { get; set; }
         [DataMember(Name = "y")]
         public double[] Y { get; set; }
         public DataPoint(double x, double[] y)
