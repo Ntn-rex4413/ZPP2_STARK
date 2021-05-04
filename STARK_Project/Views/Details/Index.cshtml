@@ -23,7 +23,7 @@
 
     <!-- Custom styles for this template-->
     <link href="~/css/site.css" rel="stylesheet">
-
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -36,7 +36,7 @@
         <a href="https://www.binance.com/en/buy-sell-crypto" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-4">
             <i class="fas fa-money-bill-wave fa-sm text-white-50"></i> Kup / Sprzedaj
         </a>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4">
+        <a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4" asp-controller="Details" asp-action="AddToWatchlist" asp-route-cryptocurrency="@Model.CryptoModel.FromSymbol" asp-route-currency="@Model.CryptoModel.ToSymbol">
             <i class="fas fa-star fa-sm text-white-50"></i> Obserwuj
         </a>
         @*DO WYKORZYSTANIA W PRZYPADKU IMPLEMENTACJI ABY ZMINIC PRZYCISK POMIEDZY OBSERWOWANIE A ODOBSERWOWANIEM!!!!!!*@
@@ -262,13 +262,13 @@
                             </div>
                             @* CHANGE THIS TO "ChangePCTHour" AFTER IT'S CORRECTED ON BACKEND*@
                             @*@if (Model.CryptoModel.ChangePTCHour < 0)
-                            {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePTCHour%</div>
-                            }
-                            else
-                            {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePTCHour%</div>
-                            }*@
+                                {
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePTCHour%</div>
+                                }
+                                else
+                                {
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePTCHour%</div>
+                                }*@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">temporary</div>
                         </div>
                         <div class="col-auto">
@@ -336,11 +336,11 @@
     <div class="row">
 
         <!-- Area Chart -->
-        <div class="col-xl-8 col-lg-7">
+        <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Cryptocurrency Chart</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">@Model.CryptoModel.FromSymbol ohlc Chart</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -358,36 +358,69 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                    <div style="height: 25rem">
+                        <div id="chartContainer">
+                            <script>
+                                window.onload = function () {
+
+                                var chart = new CanvasJS.Chart("chartContainer", {
+                                    animationEnabled: true,
+                                    zoomEnabled: true,
+                                	exportEnabled: false,
+                                	exportFileName: "",
+                                	title: {
+                                		text: ""
+                                	},
+                                    axisX: {
+                                		interval: 1,
+                                		intervalType: "day",
+                                        valueFormatString: "DD MMM"
+                                	},
+                                	axisY: {
+                                		prefix: "$",
+                                		title: "Price (in @Model.CryptoModel.ToSymbol)"
+                                	},
+                                	data: [{
+                                        type: "candlestick",
+                                		yValueFormatString: "$#,##0.00",
+                                        xValueFormatString: "DD MMM YYYY",
+                                		xValueType: "dateTime",
+                                		dataPoints: @Html.Raw(ViewBag.dataPoints)
+                                	}]
+                                });
+                                chart.render();
+
+                                }
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Mined to this Date</h6>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                             aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
+        <!--<div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">-->
+        <!-- Card Header - Dropdown -->
+        <!--<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Mined to this Date</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                     aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Dropdown Header:</div>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
+            </div>
+        </div>-->
+        <!-- Card Body -->
+        <!--<div class="card-body">
                     <div class="chart-pie pt-4 pb-2">
                         <canvas id="myPieChart"></canvas>
                     </div>
@@ -404,7 +437,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 
     <!-- Content Row -->
