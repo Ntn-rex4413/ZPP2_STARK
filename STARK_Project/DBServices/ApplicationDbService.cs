@@ -19,6 +19,21 @@ namespace STARK_Project.DBServices
             _context = context;
         }
 
+        public async Task<bool> AddCondtionsAsync(string userId, string symbol, Condition condition)
+        {
+            var user = GetUser(userId);
+            if (user is null) return false;
+
+            var cyptoSymbol = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol == symbol);
+            if (cyptoSymbol is null) return false;
+
+            condition.Cryptocurrency = cyptoSymbol;
+            condition.User = user;
+            await _context.Conditions.AddAsync(condition);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<bool> AddCryptocurrenciesToDatabaseAsync(ICollection<Cryptocurrency> cryptocurrencies)
         {
             try
