@@ -52,6 +52,14 @@ namespace STARK_SeleniumTests
             Assert.That(element.Displayed, Is.True);
         }
 
+        [Test]
+        public void CalculatorCardBody_Displayed_IsTrue()
+        {
+            IWebElement element = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div/div/div/div/div/div/div/div[2]/div/div"));
+
+            Assert.That(element.Displayed, Is.True);
+        }
+
         [TearDown]
         public void TearDown()
         {
