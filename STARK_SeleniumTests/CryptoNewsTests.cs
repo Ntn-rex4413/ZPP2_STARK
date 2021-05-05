@@ -17,7 +17,7 @@ namespace STARK_SeleniumTests
         public void Setup()
         {
             webDriver = new FirefoxDriver();
-            webDriver.Navigate().GoToUrl("https://localhost:44311/Calculator");
+            webDriver.Navigate().GoToUrl("https://localhost:44311/News");
         }
 
         [TearDown]
