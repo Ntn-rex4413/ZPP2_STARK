@@ -28,6 +28,14 @@ namespace STARK_SeleniumTests
             Assert.That(element.Displayed, Is.True);
         }
 
+        [Test]
+        public void CalculatorInputField_Displayed_IsTrue()
+        {
+            IWebElement element = webDriver.FindElement(By.XPath("//*[@id=\"LeftCurrency\"]"));
+
+            Assert.That(element.Displayed, Is.True);
+        }
+
         [TearDown]
         public void TearDown()
         {
