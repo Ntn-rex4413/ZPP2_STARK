@@ -14,8 +14,4 @@
     <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.29.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="KatalonTests\" />
-  </ItemGroup>
-
 </Project>
