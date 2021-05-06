@@ -19,7 +19,7 @@ namespace STARK_Project.DBServices
             _context = context;
         }
 
-        public async Task<bool> AddCondtionsAsync(string userId, string symbol, Condition condition)
+        public async Task<bool> AddCondtionAsync(string userId, string symbol, Condition condition)
         {
             var user = GetUser(userId);
             if (user is null) return false;
@@ -33,7 +33,14 @@ namespace STARK_Project.DBServices
             await _context.SaveChangesAsync();
             return true;
         }
-
+        public async Task<bool> RemoveCondtionAsync(string userId, Condition condition)
+        {
+            var user = GetUser(userId);
+            if (user is null) return false;
+            user.Conditions.Remove(condition);
+            await _context.SaveChangesAsync();
+            return true;
+        }
         public async Task<bool> AddCryptocurrenciesToDatabaseAsync(ICollection<Cryptocurrency> cryptocurrencies)
         {
             try
@@ -122,6 +129,8 @@ namespace STARK_Project.DBServices
                 return null;
             }
         }
+
+       
 
         public async Task<bool> RemoveFromWatchListAsync(string userId, Cryptocurrency cryptocurreny)
         {
