@@ -141,7 +141,9 @@
                                                        class="btn btn-danger btn-circle btn-sm mr-2"
                                                        asp-action="RemoveNotification"
                                                        asp-controller="Details"
-                                                       asp-route-conditionId="@condition.Id">
+                                                       asp-route-conditionId="@condition.Id"
+                                                       asp-route-currentCrypto="@Model.CryptoModel.FromSymbol"
+                                                       asp-route-currentCurrency="@Model.CryptoModel.ToSymbol">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </div>
