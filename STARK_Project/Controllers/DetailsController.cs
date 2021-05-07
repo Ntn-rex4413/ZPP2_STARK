@@ -92,6 +92,8 @@ namespace STARK_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
         {
+            // TO-DO: może przydać się walidacja
+
             var condition = new Condition();
 
             if (type == "value")
