@@ -63,6 +63,7 @@ namespace STARK_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNotification(string symbol)
         {
+            var condition = new Condition();
             await _dbService.AddConditionAsync(_userId, symbol, condition);
             return RedirectToAction("Index");
         }
