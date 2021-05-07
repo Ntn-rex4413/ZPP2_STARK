@@ -54,6 +54,12 @@ namespace STARK_Project.Controllers
                 new SelectListItem("Procent", "percentage"),
                 new SelectListItem("Wartość", "value")};
 
+            ViewBag.ConditionRelativities = new List<SelectListItem>
+            {
+                new SelectListItem("Kiedy spadnie poniżej", "drop below"),
+                new SelectListItem("Kiedy wzrośnie powyżej", "rise above")
+            };
+
             var currentConditions = _dbService.GetConditions(_userId).Where(x => x.Cryptocurrency.Symbol == cryptocurrency).ToList();
             if (currentConditions != null)
             {
