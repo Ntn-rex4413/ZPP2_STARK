@@ -20,8 +20,9 @@ namespace STARK_Project.DBServices
         Task<bool> RemoveConditionAsync(string userId, int conditionId);
         ICollection<Condition> GetConditions(string userId);
 
-        ICollection<Notification> GetNotifications();
+        ICollection<Notification> GetNotifications(string userId);
         Task<bool> AddNotification(string userId, string message);
-        
+        Task<bool> RemoveNotification(string userId, string message);
+
     }
 }
