@@ -19,6 +19,31 @@ namespace STARK_Project.DBServices
             _context = context;
         }
 
+        public ICollection<Notification> GetNotifications(string userId)
+        {
+            return GetUser(userId).Notifications;
+        }
+
+        public async Task<bool> AddNotification(string userId, string message)
+        {
+            var user = GetUser(userId);
+            if (user is null) return false;
+
+            user.Notifications.Add(new Notification { Message = message });
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> RemoveNotification(string userId, string message)
+        {
+            var user = GetUser(userId);
+            if (user is null) return false;
+
+            user.Notifications.Remove(new Notification { Message = message });
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public ICollection<Condition> GetConditions(string userId)
         {
             return GetUser(userId).Conditions;
@@ -166,6 +191,6 @@ namespace STARK_Project.DBServices
             return  _context.Users.FirstOrDefault(x => x.Id == userId);
         }
 
-    
+     
     }
 }

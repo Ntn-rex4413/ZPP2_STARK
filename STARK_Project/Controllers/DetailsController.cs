@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
+using STARK_Project.DatabaseModel;
 
 namespace STARK_Project.Controllers
 {
@@ -57,6 +58,20 @@ namespace STARK_Project.Controllers
                 return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
             }
             return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNotification(string symbol, Condition condition)
+        {
+            await _dbService.AddConditionAsync(_userId, symbol, condition);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveNotification(int conditionId)
+        {
+            await _dbService.RemoveConditionAsync(_userId, conditionId);
+            return RedirectToAction("Index");
         }
     }
 
