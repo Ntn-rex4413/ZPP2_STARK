@@ -71,13 +71,15 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="p-5">
-                                <form class="user" asp-action="AddNotification" asp-controller="Details">
+                                <form class="user" asp-action="" asp-controller="" 
+>
+                                    <label id="symbol">@Model.CryptoModel.FromSymbol</label>
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Typ powiadomienia
                                     </div>
                                     <!-- Typ powiadomienia -->
                                     <div class="form-group">
-                                        <select class="form-control form-control-user" placeholder="">
+                                        <select id="type" class="form-control form-control-user" placeholder="">
                                             <option value="1">Procentowy</option>
                                             <option value="2">Wartościowy</option>
                                         </select>
@@ -88,7 +90,7 @@
                                     </div>
                                     <!-- wiecej/mniej -->
                                     <div class="form-group">
-                                        <select class="form-control form-control-user" placeholder="">
+                                        <select id="relative" class="form-control form-control-user" placeholder="">
                                             <option value="1">Wiecej</option>
                                             <option value="2">Mniej</option>
                                         </select>
@@ -99,12 +101,13 @@
                                     </div>
                                     <!-- Wartosc -->
                                     <div class="form-group">
-                                        <input class="form-control form-control-user" placeholder="" />
+                                        <input id="threshold" class="form-control form-control-user" placeholder="" />
                                         <span class="text-danger"></span>
                                     </div>
                                     <!-- Submit Button -->
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-user btn-block">Dodaj</button>
+                                        @*<button id="addNotifButton" type="submit" class="btn btn-success btn-user btn-block">Dodaj</button>*@
+                                        <input id="addNotifButton" type="button" value="Dodaj"/>
                                     </div>
                                 </form>
                             </div>
@@ -671,3 +674,27 @@
 
 </div>
 <!-- /.container-fluid -->
+
+@section scripts{ 
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#addNotifButton").click(function () {
+            var data = {
+                type: $("#type").val(),
+                relative: $("#relative").val(),
+                value: $("#value").val(),
+            };
+
+            $.post("/Details/AddNotification", {
+                symbol: $("#symbol").text(),
+                type: $("#type").val(),
+                relative: $("#relative").val(),
+                value: $("#threshold").val()
+            });
+        });
+    });
+</script>
+}
