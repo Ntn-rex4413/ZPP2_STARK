@@ -66,7 +66,8 @@ namespace STARK_Project.DBServices
         }
         public async Task<bool> RemoveConditionAsync(string userId, int conditionId)
         {
-            var user = GetUser(userId);
+            //var user = GetUser(userId);
+            var user = _context.Users.Include(x => x.Conditions).FirstOrDefault(x => x.Id == userId);
             if (user is null) return false;
 
             var condition = user.Conditions.FirstOrDefault(x => x.Id == conditionId);
