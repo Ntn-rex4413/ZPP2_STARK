@@ -79,9 +79,9 @@
                                     </div>
                                     <!-- Typ powiadomienia -->
                                     <div class="form-group">
-                                        <select id="type" class="form-control form-control-user" placeholder="">
-                                            <option value="1">Procentowy</option>
-                                            <option value="2">Wartościowy</option>
+                                        <select id="type" asp-items="@ViewBag.ConditionTypes" class="form-control form-control-user" placeholder="">
+                                            @*<option value="1">Procentowy</option>
+                                            <option value="2">Wartościowy</option>*@
                                         </select>
                                         <span class="text-danger"></span>
                                     </div>
