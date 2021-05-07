@@ -261,15 +261,15 @@
                                 Change % 1Hr
                             </div>
                             @* CHANGE THIS TO "ChangePCTHour" AFTER IT'S CORRECTED ON BACKEND*@
-                            @*@if (Model.CryptoModel.ChangePTCHour < 0)
+                            @if (Model.CryptoModel.ChangePCTHour < 0)
                                 {
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePTCHour%</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTHour%</div>
                                 }
                                 else
                                 {
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePTCHour%</div>
-                                }*@
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">temporary</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTHour%</div>
+                                }
+                            @*<div class="h5 mb-0 font-weight-bold text-gray-800">temporary</div>*@
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-percent fa-2x text-gray-300"></i>
