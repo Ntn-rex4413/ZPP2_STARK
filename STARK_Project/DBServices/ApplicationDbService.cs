@@ -165,6 +165,14 @@ namespace STARK_Project.DBServices
             return  _context.Users.FirstOrDefault(x => x.Id == userId);
         }
 
-    
+        public ICollection<Notification> GetNotifications()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> AddNotification(string userId, string message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
