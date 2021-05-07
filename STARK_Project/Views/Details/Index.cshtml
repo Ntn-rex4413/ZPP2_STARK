@@ -71,7 +71,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="p-5">
-                                <form class="user" asp-action="" asp-controller="">
+                                <form class="user" asp-action="AddNotification" asp-controller="Details">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Typ powiadomienia
                                     </div>
@@ -143,6 +143,20 @@
                                     </div>
 
                                 }
+                            }
+                            else
+                            {
+                                <div class="card border-bottom-primary shadow mb-2">
+                                    <div class="">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800 ml-4">Brak dodanych powiadomień</div>
+                                            </div>
+                                            <div class="col-auto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             }
                         </div>
                     </div>
