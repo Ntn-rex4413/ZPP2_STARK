@@ -107,14 +107,14 @@ namespace STARK_Project.Controllers
             }
 
             await _dbService.AddConditionAsync(_userId, symbol, condition);
-            //return RedirectToAction("Index");
-            return View("Index");
+            return RedirectToAction("Index", new { cryptocurrency = symbol, currency = currentCurrency });
+            //return View("Index");
         }
 
         public async Task<IActionResult> RemoveNotification(int conditionId, string currentCrypto, string currentCurrency)
         {
             await _dbService.RemoveConditionAsync(_userId, conditionId);
-            return RedirectToAction("Index", new { cryptocurrency = currentCrypto, currency = currentCurrency});
+            return RedirectToAction("Index", new { cryptocurrency = currentCrypto, currency = currentCurrency });
         }
 
         [HttpGet]
