@@ -137,7 +137,11 @@
                                                     }
                                                 </div>
                                                 <div class="col-auto">
-                                                    <a href="#" class="btn btn-danger btn-circle btn-sm mr-2">
+                                                    <a 
+                                                       class="btn btn-danger btn-circle btn-sm mr-2"
+                                                       asp-action="RemoveNotification"
+                                                       asp-controller="Details"
+                                                       asp-route-conditionId="@condition.Id">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </div>
