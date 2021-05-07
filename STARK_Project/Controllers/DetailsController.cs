@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
+using STARK_Project.DatabaseModel;
 
 namespace STARK_Project.Controllers
 {
@@ -60,8 +61,9 @@ namespace STARK_Project.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddNotification()
+        public async Task<IActionResult> AddNotification(string symbol, Condition condition)
         {
+            await _dbService.AddConditionAsync(_userId, symbol, condition);
             return RedirectToAction("Index");
         }
 
