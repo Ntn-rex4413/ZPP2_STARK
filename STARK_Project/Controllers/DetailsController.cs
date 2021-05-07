@@ -90,21 +90,22 @@ namespace STARK_Project.Controllers
         {
             // TO-DO: może przydać się walidacja
 
-            var condition = new Condition();
-
-            if (type == "value")
+            if (_userId != null)
             {
-                if (relative == "drop below")
+                var condition = new Condition();
+                if (type == "value")
                 {
-                    condition.TresholdMin = float.Parse(value);
+                    if (relative == "drop below")
+                    {
+                        condition.TresholdMin = float.Parse(value);
+                    }
+                    else
+                    {
+                        condition.TresholdMax = float.Parse(value);
+                    }
                 }
-                else
-                {
-                    condition.TresholdMax = float.Parse(value);
-                }
+                await _dbService.AddConditionAsync(_userId, symbol, condition);
             }
-
-            await _dbService.AddConditionAsync(_userId, symbol, condition);
             return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
         }
 
