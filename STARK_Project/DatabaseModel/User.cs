@@ -10,5 +10,6 @@ namespace STARK_Project.DatabaseModel
     {
         public virtual ICollection<Cryptocurrency> Watchlist { get; set; }
         public virtual ICollection<Condition> Conditions { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }
