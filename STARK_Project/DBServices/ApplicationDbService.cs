@@ -135,13 +135,13 @@ namespace STARK_Project.DBServices
 
        
 
-        public async Task<bool> RemoveFromWatchListAsync(string userId, Cryptocurrency cryptocurreny)
+        public async Task<bool> RemoveFromWatchListAsync(string userId, string cryptocurreny)
         {
             try
             {
                 var userToUpdate =  GetUser(userId);
 
-                var coinToDelete = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol.Equals(cryptocurreny.Symbol));
+                var coinToDelete = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol.Equals(cryptocurreny));
                  var result =  userToUpdate.Watchlist.Remove(coinToDelete);
                 if (result)
                 {
