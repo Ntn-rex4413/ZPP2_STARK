@@ -90,9 +90,9 @@
                                     </div>
                                     <!-- wiecej/mniej -->
                                     <div class="form-group">
-                                        <select id="relative" class="form-control form-control-user" placeholder="">
-                                            <option value="1">Wiecej</option>
-                                            <option value="2">Mniej</option>
+                                        <select id="relative" asp-items="@ViewBag.ConditionRelativities" class="form-control form-control-user" placeholder="">
+                                            @*<option value="1">Wiecej</option>
+                                            <option value="2">Mniej</option>*@
                                         </select>
                                         <span class="text-danger"></span>
                                     </div>
