@@ -147,7 +147,8 @@ namespace STARK_Project.DBServices
                 var userToUpdate =  GetUser(userId);
 
                 var coinToDelete = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol.Equals(cryptocurreny));
-                 var result =  userToUpdate.Watchlist.Remove(coinToDelete);
+                //var result =  userToUpdate.Watchlist.Remove(coinToDelete);
+                var result = GetWatchlist(userId).Result.Remove(coinToDelete);
                 if (result)
                 {
                     _context.SaveChanges();
