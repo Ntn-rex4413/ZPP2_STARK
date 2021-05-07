@@ -43,13 +43,6 @@ namespace STARK_Project.Controllers
             }
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
-            // dummy data for testing display
-            //ViewBag.CurrencyConditions = new List<Condition> { 
-            //    new Condition { TresholdMax = 500, Cryptocurrency = new Cryptocurrency { Name = "Bitcoin", Symbol = "BTC" } },
-            //    new Condition { TresholdMin = 600, Cryptocurrency = new Cryptocurrency { Name = "Ethereum", Symbol = "ETH" } },
-            //};
-            // data for conditions list
-
             ViewBag.ConditionTypes = new List<SelectListItem> {
                 new SelectListItem("Procent", "percentage"),
                 new SelectListItem("Wartość", "value")};
