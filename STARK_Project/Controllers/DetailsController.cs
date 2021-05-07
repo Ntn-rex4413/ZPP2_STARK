@@ -58,6 +58,18 @@ namespace STARK_Project.Controllers
             }
             return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
         }
+
+        [HttpPost]
+        public IActionResult AddNotification()
+        {
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveNotification()
+        {
+            return RedirectToAction("Index");
+        }
     }
 
     [DataContract]
