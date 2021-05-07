@@ -57,8 +57,95 @@
         </a>
     </div>
 
-
-
+    <!-- Collapsable Card Alerts -->
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+           role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">Powiadomienie</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="collapseCardExample">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <form class="user" asp-action="" asp-controller="">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Typ powiadomienia
+                                    </div>
+                                    <!-- Typ powiadomienia -->
+                                    <div class="form-group">
+                                        <select class="form-control form-control-user" placeholder="">
+                                            <option value="1">Procentowy</option>
+                                            <option value="2">Wartościowy</option>
+                                        </select>
+                                        <span class="text-danger"></span>
+                                    </div>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Znak porównania
+                                    </div>
+                                    <!-- wiecej/mniej -->
+                                    <div class="form-group">
+                                        <select class="form-control form-control-user" placeholder="">
+                                            <option value="1">Wiecej</option>
+                                            <option value="2">Mniej</option>
+                                        </select>
+                                        <span class="text-danger"></span>
+                                    </div>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Wartość
+                                    </div>
+                                    <!-- Wartosc -->
+                                    <div class="form-group">
+                                        <input class="form-control form-control-user" placeholder="" />
+                                        <span class="text-danger"></span>
+                                    </div>
+                                    <!-- Submit Button -->
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success btn-user btn-block">Dodaj</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card border-bottom-primary shadow py-2 mb-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                % < niż
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Wartość</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card border-bottom-primary shadow py-2 mb-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Earnings (Monthly)
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+    </div>
 
     <!-- Content Row -->
     <div class="row">
@@ -261,13 +348,13 @@
                                 Change % 1Hr
                             </div>
                             @if (Model.CryptoModel.ChangePCTHour < 0)
-                                {
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTHour%</div>
-                                }
-                                else
-                                {
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTHour%</div>
-                                }
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTHour%</div>
+                            }
+                            else
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTHour%</div>
+                            }
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-percent fa-2x text-gray-300"></i>
@@ -331,6 +418,7 @@
             </div>
         </div>
     </div>
+
     <div class="row">
 
         <!-- Area Chart -->
