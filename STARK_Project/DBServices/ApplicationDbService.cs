@@ -46,7 +46,8 @@ namespace STARK_Project.DBServices
 
         public ICollection<Condition> GetConditions(string userId)
         {
-            return GetUser(userId).Conditions;
+            return _context.Users.Include(x => x.Conditions).ThenInclude(x => x.Cryptocurrency).FirstOrDefault(x => x.Id == userId).Conditions;
+            //return GetUser(userId).Conditions;
         }
 
         public async Task<bool> AddConditionAsync(string userId, string symbol, Condition condition)
