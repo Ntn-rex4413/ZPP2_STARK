@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Runtime.Serialization;
 using STARK_Project.DatabaseModel;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace STARK_Project.Controllers
 {
@@ -42,6 +43,26 @@ namespace STARK_Project.Controllers
             }
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
+            // dummy data for testing display
+            //ViewBag.CurrencyConditions = new List<Condition> { 
+            //    new Condition { TresholdMax = 500, Cryptocurrency = new Cryptocurrency { Name = "Bitcoin", Symbol = "BTC" } },
+            //    new Condition { TresholdMin = 600, Cryptocurrency = new Cryptocurrency { Name = "Ethereum", Symbol = "ETH" } },
+            //};
+            // data for conditions list
+
+            ViewBag.ConditionTypes = new List<SelectListItem> {
+                new SelectListItem("Procent", "percentage"),
+                new SelectListItem("Wartość", "value")};
+
+            var currentConditions = _dbService.GetConditions(_userId).Where(x => x.Cryptocurrency.Symbol == cryptocurrency).ToList();
+            if (currentConditions != null)
+            {
+                ViewBag.CurrencyConditions = currentConditions;
+            }
+            else
+            {
+                ViewBag.CurrencyConditions = new List<Condition>();
+            }
             return View(data);
         }
         public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
@@ -62,7 +83,7 @@ namespace STARK_Project.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNotification(string symbol)
+        public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value)
         {
             var condition = new Condition();
             await _dbService.AddConditionAsync(_userId, symbol, condition);
@@ -79,7 +100,7 @@ namespace STARK_Project.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCurrencyConditions(string currencySymbol)
         {
-            var currencyConditions =  _dbService.GetConditions(_userId).Where(x => x.Cryptocurrency.Symbol == currencySymbol).ToList();
+            var currencyConditions = _dbService.GetConditions(_userId).Where(x => x.Cryptocurrency.Symbol == currencySymbol).ToList();
 
             if (currencySymbol.Count() > 0)
             {
