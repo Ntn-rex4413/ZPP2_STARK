@@ -80,7 +80,7 @@
                                     </div>
                                     <!-- Typ powiadomienia -->
                                     <div class="form-group">
-                                        <select id="type" asp-items="@ViewBag.ConditionTypes" class="form-control form-control-user" placeholder="">
+                                        <select id="type" asp-items="@ViewBag.ConditionTypes" class="form-control" >
                                             @*<option value="1">Procentowy</option>
                                             <option value="2">Wartościowy</option>*@
                                         </select>
@@ -91,7 +91,7 @@
                                     </div>
                                     <!-- wiecej/mniej -->
                                     <div class="form-group">
-                                        <select id="relative" asp-items="@ViewBag.ConditionRelativities" class="form-control form-control-user" placeholder="">
+                                        <select id="relative" asp-items="@ViewBag.ConditionRelativities" class="form-control" placeholder="">
                                             @*<option value="1">Wiecej</option>
                                             <option value="2">Mniej</option>*@
                                         </select>
