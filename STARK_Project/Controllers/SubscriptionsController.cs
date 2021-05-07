@@ -60,7 +60,7 @@ namespace STARK_Project.Controllers
                 // TO-DO: method arguments of ApplicationDbService require change to accept string instead of model,
                 // the same as AddToWatchlist earlier,
                 // after change uncomment the line below:
-                //await _dbService.RemoveFromWatchListAsync(_userId, cryptocurrency);
+                await _dbService.RemoveFromWatchListAsync(_userId, cryptocurrency);
                 return RedirectToAction("Index", new { currency = currency });
             }
             return RedirectToAction("Index", new { currency = currency });
