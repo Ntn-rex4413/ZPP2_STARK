@@ -90,7 +90,7 @@ namespace STARK_Project.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value)
+        public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
         {
             var condition = new Condition();
 
