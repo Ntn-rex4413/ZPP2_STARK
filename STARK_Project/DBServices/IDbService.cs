@@ -14,6 +14,7 @@ namespace STARK_Project.DBServices
         Task<bool> RemoveFromWatchListAsync(string userId, string cryptocurreny);
         Task<bool> AddConditionAsync(string userId, string symbol, Condition condition);
         Task<bool> RemoveConditionAsync(string userId, int conditionId);
+        ICollection<Condition> GetConditions(string userId);
         Task<bool> ClearWatchlist(string userId);
         Task<ICollection<Cryptocurrency>> GetWatchlist(string userId);
     }

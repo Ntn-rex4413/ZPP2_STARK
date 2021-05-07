@@ -19,6 +19,11 @@ namespace STARK_Project.DBServices
             _context = context;
         }
 
+        public ICollection<Condition> GetConditions(string userId)
+        {
+            return GetUser(userId).Conditions;
+        }
+
         public async Task<bool> AddConditionAsync(string userId, string symbol, Condition condition)
         {
             var user = GetUser(userId);
@@ -159,5 +164,7 @@ namespace STARK_Project.DBServices
         {
             return  _context.Users.FirstOrDefault(x => x.Id == userId);
         }
+
+    
     }
 }
