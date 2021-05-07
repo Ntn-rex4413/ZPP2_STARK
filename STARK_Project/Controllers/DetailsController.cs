@@ -68,8 +68,9 @@ namespace STARK_Project.Controllers
         }
 
         [HttpPost]
-        public IActionResult RemoveNotification()
+        public async Task<IActionResult> RemoveNotification(int conditionId)
         {
+            await _dbService.RemoveConditionAsync(_userId, conditionId);
             return RedirectToAction("Index");
         }
     }
