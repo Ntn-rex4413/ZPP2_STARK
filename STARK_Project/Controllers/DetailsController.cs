@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 using STARK_Project.DatabaseModel;
+using System.Linq;
 
 namespace STARK_Project.Controllers
 {
@@ -73,6 +74,19 @@ namespace STARK_Project.Controllers
         {
             await _dbService.RemoveConditionAsync(_userId, conditionId);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCurrencyConditions(string currencySymbol)
+        {
+            var currencyConditions =  _dbService.GetConditions(_userId).Where(x => x.Cryptocurrency.Symbol == currencySymbol).ToList();
+
+            if (currencySymbol.Count() > 0)
+            {
+                return Json(currencySymbol);
+            }
+
+            return Json(new List<Condition>());
         }
     }
 
