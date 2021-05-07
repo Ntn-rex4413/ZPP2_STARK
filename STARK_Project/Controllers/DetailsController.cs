@@ -60,7 +60,8 @@ namespace STARK_Project.Controllers
                 new SelectListItem("Kiedy wzrośnie powyżej", "rise above")
             };
 
-            var currentConditions = _dbService.GetConditions(_userId).Where(x => x.Cryptocurrency.Symbol == cryptocurrency).ToList();
+            var currentConditions = _dbService.GetConditions(_userId);
+            currentConditions = currentConditions.Where(x => x.Cryptocurrency.Symbol == cryptocurrency).ToList();
             if (currentConditions != null)
             {
                 ViewBag.CurrencyConditions = currentConditions;
@@ -92,8 +93,22 @@ namespace STARK_Project.Controllers
         public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value)
         {
             var condition = new Condition();
+
+            if (type == "value")
+            {
+                if (relative == "drop below")
+                {
+                    condition.TresholdMin = float.Parse(value);
+                }
+                else
+                {
+                    condition.TresholdMax = float.Parse(value);
+                }
+            }
+
             await _dbService.AddConditionAsync(_userId, symbol, condition);
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            return View("Index");
         }
 
         [HttpPost]
