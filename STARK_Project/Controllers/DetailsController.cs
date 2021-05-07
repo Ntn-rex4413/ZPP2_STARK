@@ -111,7 +111,10 @@ namespace STARK_Project.Controllers
 
         public async Task<IActionResult> RemoveNotification(int conditionId, string currentCrypto, string currentCurrency)
         {
-            await _dbService.RemoveConditionAsync(_userId, conditionId);
+            if (_userId != null)
+            {
+                await _dbService.RemoveConditionAsync(_userId, conditionId);
+            }
             return RedirectToAction("Index", new { cryptocurrency = currentCrypto, currency = currentCurrency });
         }
 
