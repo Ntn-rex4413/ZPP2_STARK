@@ -110,23 +110,40 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="card border-bottom-primary shadow mb-2">
-                                <div class="">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 ml-4">
-                                                % < niż
+                            @if (ViewBag.CurrencyConditions.Count > 0)
+                            {
+                                @foreach (var condition in ViewBag.CurrencyConditions)
+                                {
+                                    <div class="card border-bottom-primary shadow mb-2">
+                                        <div class="">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    @if (condition.TresholdMin != 0)
+                                                    {
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 ml-4">
+                                                            Jeśli spadnie poniżej
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800 ml-4">@condition.TresholdMin</div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 ml-4">
+                                                            Jeśli wzrośnie powyżej
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800 ml-4">@condition.TresholdMax</div>
+                                                    }
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#" class="btn btn-danger btn-circle btn-sm mr-2">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-4">Wartość</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <a href="#" class="btn btn-danger btn-circle btn-sm mr-2">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+
+                                }
+                            }
                             <div class="card border-bottom-primary shadow mb-2">
                                 <div class="">
                                     <div class="row no-gutters align-items-center">
@@ -147,8 +164,8 @@
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
     </div>
 
     <!-- Content Row -->
