@@ -53,11 +53,14 @@ namespace STARK_Project.Controllers
                 new SelectListItem("Kiedy wzrośnie powyżej", "rise above")
             };
 
-            var currentConditions = _dbService.GetConditions(_userId);
-            currentConditions = currentConditions.Where(x => x.Cryptocurrency.Symbol == cryptocurrency).ToList();
-            if (currentConditions != null)
+            if (_userId != null)
             {
-                ViewBag.CurrencyConditions = currentConditions;
+                var currentConditions = _dbService.GetConditions(_userId);
+                currentConditions = currentConditions.Where(x => x.Cryptocurrency.Symbol == cryptocurrency).ToList();
+                if (currentConditions != null)
+                {
+                    ViewBag.CurrencyConditions = currentConditions;
+                }
             }
             else
             {
