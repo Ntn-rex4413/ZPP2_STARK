@@ -37,7 +37,7 @@ namespace STARK_Project.Controllers
             // data for the chart
             foreach (var record in data.HistoricalData.Data)
             {
-                dataPoints.Add(new DataPoint(record.Time*1000, new double[] { record.Open, record.High, record.Low, record.Close }));
+                dataPoints.Add(new DataPoint(record.Time * 1000, new double[] { record.Open, record.High, record.Low, record.Close }));
             }
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
