@@ -111,7 +111,6 @@ namespace STARK_Project.Controllers
             return View("Index");
         }
 
-        [HttpPost]
         public async Task<IActionResult> RemoveNotification(int conditionId)
         {
             await _dbService.RemoveConditionAsync(_userId, conditionId);
