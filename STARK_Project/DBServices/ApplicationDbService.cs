@@ -19,7 +19,7 @@ namespace STARK_Project.DBServices
             _context = context;
         }
 
-        public async Task<bool> AddCondtionAsync(string userId, string symbol, Condition condition)
+        public async Task<bool> AddConditionAsync(string userId, string symbol, Condition condition)
         {
             var user = GetUser(userId);
             if (user is null) return false;
@@ -33,10 +33,13 @@ namespace STARK_Project.DBServices
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> RemoveCondtionAsync(string userId, Condition condition)
+        public async Task<bool> RemoveConditionAsync(string userId, int conditionId)
         {
             var user = GetUser(userId);
             if (user is null) return false;
+
+            var condition = user.Conditions.FirstOrDefault(x => x.Id == conditionId);
+            if (condition is null) return false;
             user.Conditions.Remove(condition);
             await _context.SaveChangesAsync();
             return true;
