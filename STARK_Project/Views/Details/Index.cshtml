@@ -375,12 +375,12 @@
                                         valueFormatString: "DD MMM"
                                 	},
                                 	axisY: {
-                                		prefix: "$",
+                                		prefix: "@Model.CryptoModel.ToSymbol ",
                                 		title: "Price (in @Model.CryptoModel.ToSymbol)"
                                 	},
                                 	data: [{
                                         type: "candlestick",
-                                		yValueFormatString: "$#,##0.00",
+                                		yValueFormatString: "@Model.CryptoModel.ToSymbol #,##0.00",
                                         xValueFormatString: "DD MMM YYYY",
                                 		xValueType: "dateTime",
                                 		dataPoints: @Html.Raw(ViewBag.dataPoints)
