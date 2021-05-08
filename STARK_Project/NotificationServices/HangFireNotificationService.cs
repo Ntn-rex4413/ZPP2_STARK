@@ -7,5 +7,6 @@ namespace STARK_Project.NotificationServices
 {
     public class HangFireNotificationService : INotificationService
     {
+
     }
 }

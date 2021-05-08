@@ -1,3 +1,4 @@
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +38,9 @@ namespace STARK_Project
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddHttpContextAccessor();
 
+            services.AddHangfire(x => x.UseSqlServerStorage("<connection string>"));
+            services.AddHangfireServer();
+
             services.AddScoped<IDbService, ApplicationDbService>();
             services.AddScoped<ICryptoService, CryptoService>();
             services.AddScoped<INotificationService, HangFireNotificationService>();
@@ -70,6 +74,8 @@ namespace STARK_Project
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseHangfireDashboard();
 
             app.UseEndpoints(endpoints =>
             {
