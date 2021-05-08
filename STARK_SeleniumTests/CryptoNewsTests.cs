@@ -20,6 +20,14 @@ namespace STARK_SeleniumTests
             webDriver.Navigate().GoToUrl("https://localhost:44311/News");
         }
 
+        [Test]
+        public void NewsHeader_Displayed_IsTrue()
+        {
+            IWebElement element = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div/div/div[1]/div/div[1]/h6"));
+
+            Assert.That(element.Displayed, Is.True);
+        }
+
         [TearDown]
         public void TearDown()
         {
