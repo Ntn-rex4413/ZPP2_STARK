@@ -68,6 +68,14 @@ namespace STARK_SeleniumTests.GlobalLayout
             Assert.That(element.Displayed, Is.True);
         }
 
+        [Test]
+        public void SummaryLink_Displayed_IsTrue()
+        {
+            IWebElement element = webDriver.FindElement(By.XPath("/html/body/div[1]/ul/li[1]/a/span"));
+
+            Assert.That(element.Displayed, Is.True);
+        }
+
         [TearDown]
         public void TearDown()
         {
