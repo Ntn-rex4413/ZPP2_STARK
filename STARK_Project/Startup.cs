@@ -11,6 +11,7 @@ using STARK_Project.CryptoAPIService;
 using STARK_Project.Data;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
+using STARK_Project.NotificationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,7 @@ namespace STARK_Project
 
             services.AddScoped<IDbService, ApplicationDbService>();
             services.AddScoped<ICryptoService, CryptoService>();
+            services.AddScoped<INotificationService, HangFireNotificationService>();
             services.AddHttpContextAccessor();
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
