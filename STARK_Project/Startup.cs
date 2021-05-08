@@ -38,7 +38,7 @@ namespace STARK_Project
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddHttpContextAccessor();
 
-            services.AddHangfire(x => x.UseSqlServerStorage("<connection string>"));
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
             services.AddHangfireServer();
 
             services.AddScoped<IDbService, ApplicationDbService>();
