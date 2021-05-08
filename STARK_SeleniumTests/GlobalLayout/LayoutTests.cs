@@ -28,6 +28,14 @@ namespace STARK_SeleniumTests.GlobalLayout
             Assert.That(element.Displayed, Is.True);
         }
 
+        [Test]
+        public void MessagesDropDown_Displayed_IsTrue()
+        {
+            IWebElement element = webDriver.FindElement(By.XPath("//*[@id=\"messagesDropdown\"]"));
+
+            Assert.That(element.Displayed, Is.True);
+        }
+
         [TearDown]
         public void TearDown()
         {
