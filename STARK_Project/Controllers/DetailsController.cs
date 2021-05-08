@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
+using STARK_Project.DatabaseModel;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace STARK_Project.Controllers
 {
@@ -36,10 +39,33 @@ namespace STARK_Project.Controllers
             // data for the chart
             foreach (var record in data.HistoricalData.Data)
             {
-                dataPoints.Add(new DataPoint(record.Time*1000, new double[] { record.Open, record.High, record.Low, record.Close }));
+                dataPoints.Add(new DataPoint(record.Time * 1000, new double[] { record.Open, record.High, record.Low, record.Close }));
             }
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
+            ViewBag.ConditionTypes = new List<SelectListItem> {
+                new SelectListItem("Procent", "percentage"),
+                new SelectListItem("Wartość", "value")};
+
+            ViewBag.ConditionRelativities = new List<SelectListItem>
+            {
+                new SelectListItem("Kiedy spadnie poniżej", "drop below"),
+                new SelectListItem("Kiedy wzrośnie powyżej", "rise above")
+            };
+
+            if (_userId != null)
+            {
+                var currentConditions = _dbService.GetConditions(_userId);
+                currentConditions = currentConditions.Where(x => x.Cryptocurrency.Symbol == cryptocurrency).ToList();
+                if (currentConditions != null)
+                {
+                    ViewBag.CurrencyConditions = currentConditions;
+                }
+            }
+            else
+            {
+                ViewBag.CurrencyConditions = new List<Condition>();
+            }
             return View(data);
         }
         public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
@@ -57,6 +83,52 @@ namespace STARK_Project.Controllers
                 return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
             }
             return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
+        {
+            // TO-DO: może przydać się walidacja
+
+            if (_userId != null)
+            {
+                var condition = new Condition();
+                if (type == "value")
+                {
+                    if (relative == "drop below")
+                    {
+                        condition.TresholdMin = float.Parse(value);
+                    }
+                    else
+                    {
+                        condition.TresholdMax = float.Parse(value);
+                    }
+                }
+                await _dbService.AddConditionAsync(_userId, symbol, condition);
+            }
+            return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
+        }
+
+        public async Task<IActionResult> RemoveNotification(int conditionId, string currentCrypto, string currentCurrency)
+        {
+            if (_userId != null)
+            {
+                await _dbService.RemoveConditionAsync(_userId, conditionId);
+            }
+            return RedirectToAction("Index", new { cryptocurrency = currentCrypto, currency = currentCurrency });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCurrencyConditions(string currencySymbol)
+        {
+            var currencyConditions = _dbService.GetConditions(_userId).Where(x => x.Cryptocurrency.Symbol == currencySymbol).ToList();
+
+            if (currencySymbol.Count() > 0)
+            {
+                return Json(currencySymbol);
+            }
+
+            return Json(new List<Condition>());
         }
     }
 

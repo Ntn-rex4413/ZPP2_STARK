@@ -57,8 +57,123 @@
         </a>
     </div>
 
+    <!-- Collapsable Card Alerts -->
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+           role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">Powiadomienie</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="collapseCardExample">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <form class="user" asp-action="" asp-controller="" 
+>
+                                    <label id="symbol">@Model.CryptoModel.FromSymbol</label>
+                                    <label id="currency">@Model.CryptoModel.ToSymbol</label>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Typ powiadomienia
+                                    </div>
+                                    <!-- Typ powiadomienia -->
+                                    <div class="form-group">
+                                        <select id="type" asp-items="@ViewBag.ConditionTypes" class="form-control" >
+                                            @*<option value="1">Procentowy</option>
+                                            <option value="2">Wartościowy</option>*@
+                                        </select>
+                                        <span class="text-danger"></span>
+                                    </div>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Znak porównania
+                                    </div>
+                                    <!-- wiecej/mniej -->
+                                    <div class="form-group">
+                                        <select id="relative" asp-items="@ViewBag.ConditionRelativities" class="form-control" placeholder="">
+                                            @*<option value="1">Wiecej</option>
+                                            <option value="2">Mniej</option>*@
+                                        </select>
+                                        <span class="text-danger"></span>
+                                    </div>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Wartość
+                                    </div>
+                                    <!-- Wartosc -->
+                                    <div class="form-group">
+                                        <input id="threshold" class="form-control form-control-user" placeholder="" />
+                                        <span class="text-danger"></span>
+                                    </div>
+                                    <!-- Submit Button -->
+                                    <div class="form-group">
+                                        @*<button id="addNotifButton" type="submit" class="btn btn-success btn-user btn-block">Dodaj</button>*@
+                                        <input id="addNotifButton" type="button" value="Dodaj"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            @if (ViewBag.CurrencyConditions.Count > 0)
+                            {
+                                @foreach (var condition in ViewBag.CurrencyConditions)
+                                {
+                                    <div class="card border-bottom-primary shadow mb-2">
+                                        <div class="">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    @if (condition.TresholdMin != 0)
+                                                    {
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 ml-4">
+                                                            Jeśli spadnie poniżej
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800 ml-4">@condition.TresholdMin</div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 ml-4">
+                                                            Jeśli wzrośnie powyżej
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800 ml-4">@condition.TresholdMax</div>
+                                                    }
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a 
+                                                       class="btn btn-danger btn-circle btn-sm mr-2"
+                                                       asp-action="RemoveNotification"
+                                                       asp-controller="Details"
+                                                       asp-route-conditionId="@condition.Id"
+                                                       asp-route-currentCrypto="@Model.CryptoModel.FromSymbol"
+                                                       asp-route-currentCurrency="@Model.CryptoModel.ToSymbol">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-
+                                }
+                            }
+                            else
+                            {
+                                <div class="card border-bottom-primary shadow mb-2">
+                                    <div class="">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800 ml-4">Brak dodanych powiadomień</div>
+                                            </div>
+                                            <div class="col-auto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Content Row -->
     <div class="row">
@@ -260,16 +375,14 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Change % 1Hr
                             </div>
-                            @* CHANGE THIS TO "ChangePCTHour" AFTER IT'S CORRECTED ON BACKEND*@
-                            @*@if (Model.CryptoModel.ChangePTCHour < 0)
-                                {
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePTCHour%</div>
-                                }
-                                else
-                                {
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePTCHour%</div>
-                                }*@
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">temporary</div>
+                            @if (Model.CryptoModel.ChangePCTHour < 0)
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTHour%</div>
+                            }
+                            else
+                            {
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTHour%</div>
+                            }
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-percent fa-2x text-gray-300"></i>
@@ -333,6 +446,7 @@
             </div>
         </div>
     </div>
+
     <div class="row">
 
         <!-- Area Chart -->
@@ -377,12 +491,12 @@
                                         valueFormatString: "DD MMM"
                                 	},
                                 	axisY: {
-                                		prefix: "$",
+                                		prefix: "@Model.CryptoModel.ToSymbol ",
                                 		title: "Price (in @Model.CryptoModel.ToSymbol)"
                                 	},
                                 	data: [{
                                         type: "candlestick",
-                                		yValueFormatString: "$#,##0.00",
+                                		yValueFormatString: "@Model.CryptoModel.ToSymbol #,##0.00",
                                         xValueFormatString: "DD MMM YYYY",
                                 		xValueType: "dateTime",
                                 		dataPoints: @Html.Raw(ViewBag.dataPoints)
@@ -567,3 +681,30 @@
 
 </div>
 <!-- /.container-fluid -->
+
+@section scripts{ 
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#addNotifButton").click(function () {
+            var data = {
+                type: $("#type").val(),
+                relative: $("#relative").val(),
+                value: $("#value").val(),
+            };
+
+            $.post("/Details/AddNotification", {
+                symbol: $("#symbol").text(),
+                type: $("#type").val(),
+                relative: $("#relative").val(),
+                value: $("#threshold").val(),
+                currentCurrency: $("#currency").text()
+            });
+
+            location.reload();
+        });
+    });
+</script>
+}

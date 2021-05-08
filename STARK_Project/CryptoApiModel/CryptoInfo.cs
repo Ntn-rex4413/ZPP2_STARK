@@ -16,7 +16,7 @@
         public float ChangeDay { get; set; }
         public float ChangePCTDay { get; set; }
         public float ChangeHour { get; set; }
-        public float ChangePTCHour { get; set; }
+        public float ChangePCTHour { get; set; }
         public float LowDay { get; set; }
         public float HighDay { get; set; }
     }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using STARK_Project.Data;
 
 namespace STARK_Project.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210505144200_CreateConditions")]
+    partial class CreateConditions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,26 +222,6 @@ namespace STARK_Project.Data.Migrations
                     b.ToTable("Cryptocurrenies");
                 });
 
-            modelBuilder.Entity("STARK_Project.DatabaseModel.Notification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Notifications");
-                });
-
             modelBuilder.Entity("STARK_Project.DatabaseModel.User", b =>
                 {
                     b.Property<string>("Id")
@@ -398,15 +380,6 @@ namespace STARK_Project.Data.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("STARK_Project.DatabaseModel.Notification", b =>
-                {
-                    b.HasOne("STARK_Project.DatabaseModel.User", "User")
-                        .WithMany("Notifications")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("STARK_Project.DatabaseModel.User", b =>
                 {
                     b.HasOne("STARK_Project.DatabaseModel.Cryptocurrency", null)
@@ -422,8 +395,6 @@ namespace STARK_Project.Data.Migrations
             modelBuilder.Entity("STARK_Project.DatabaseModel.User", b =>
                 {
                     b.Navigation("Conditions");
-
-                    b.Navigation("Notifications");
                 });
 #pragma warning restore 612, 618
         }

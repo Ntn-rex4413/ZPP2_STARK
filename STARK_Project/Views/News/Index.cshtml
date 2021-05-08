@@ -28,32 +28,31 @@
 <div class="container-fluid">
 
     <!-- Content Row -->
-    <div class="row">
-
-        <div class="col-lg-7 mb-4">
-
-            <!-- Approach -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">NEWS</h6>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="text-center">
-        <div class="row">
+    <div>
+        <div class="row justify-content-center">
             @foreach (var item in Model)
             {
-                <div class="col-md-6">
+                <div class="col-lg-9 mb-4">
+
+                    <!-- Approach -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">@item.Title</h6>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <h4>@item.PubDate</h4>
+                                <p>@Html.Raw(item.Description)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-6">
                     <h3 style="font-family:Calibri">@item.Title</h3>
                     <h4 style="font-family:Calibri">@item.PubDate</h4>
                     <p>@Html.Raw(item.Description)</p>
-                </div>
+                </div>*@
             }
         </div>
     </div>

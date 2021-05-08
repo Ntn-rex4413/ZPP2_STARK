@@ -19,6 +19,63 @@ namespace STARK_Project.DBServices
             _context = context;
         }
 
+        public ICollection<Notification> GetNotifications(string userId)
+        {
+            return GetUser(userId).Notifications;
+        }
+
+        public async Task<bool> AddNotification(string userId, string message)
+        {
+            var user = GetUser(userId);
+            if (user is null) return false;
+
+            user.Notifications.Add(new Notification { Message = message });
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> RemoveNotification(string userId, string message)
+        {
+            var user = GetUser(userId);
+            if (user is null) return false;
+
+            user.Notifications.Remove(new Notification { Message = message });
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public ICollection<Condition> GetConditions(string userId)
+        {
+            return _context.Users.Include(x => x.Conditions).ThenInclude(x => x.Cryptocurrency).FirstOrDefault(x => x.Id == userId).Conditions;
+            //return GetUser(userId).Conditions;
+        }
+
+        public async Task<bool> AddConditionAsync(string userId, string symbol, Condition condition)
+        {
+            var user = GetUser(userId);
+            if (user is null) return false;
+
+            var cyptoSymbol = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol == symbol);
+            if (cyptoSymbol is null) return false;
+
+            condition.Cryptocurrency = cyptoSymbol;
+            condition.User = user;
+            await _context.Conditions.AddAsync(condition);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        public async Task<bool> RemoveConditionAsync(string userId, int conditionId)
+        {
+            //var user = GetUser(userId);
+            var user = _context.Users.Include(x => x.Conditions).FirstOrDefault(x => x.Id == userId);
+            if (user is null) return false;
+
+            var condition = user.Conditions.FirstOrDefault(x => x.Id == conditionId);
+            if (condition is null) return false;
+            user.Conditions.Remove(condition);
+            await _context.SaveChangesAsync();
+            return true;
+        }
         public async Task<bool> AddCryptocurrenciesToDatabaseAsync(ICollection<Cryptocurrency> cryptocurrencies)
         {
             try
@@ -108,14 +165,17 @@ namespace STARK_Project.DBServices
             }
         }
 
-        public async Task<bool> RemoveFromWatchListAsync(string userId, Cryptocurrency cryptocurreny)
+       
+
+        public async Task<bool> RemoveFromWatchListAsync(string userId, string cryptocurreny)
         {
             try
             {
                 var userToUpdate =  GetUser(userId);
 
-                var coinToDelete = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol.Equals(cryptocurreny.Symbol));
-                 var result =  userToUpdate.Watchlist.Remove(coinToDelete);
+                var coinToDelete = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol.Equals(cryptocurreny));
+                //var result =  userToUpdate.Watchlist.Remove(coinToDelete);
+                var result = GetWatchlist(userId).Result.Remove(coinToDelete);
                 if (result)
                 {
                     _context.SaveChanges();
@@ -132,5 +192,7 @@ namespace STARK_Project.DBServices
         {
             return  _context.Users.FirstOrDefault(x => x.Id == userId);
         }
+
+     
     }
 }

@@ -12,7 +12,7 @@ namespace STARK_Project.Controllers
     {
         public IActionResult Index()
         {
-            const string url = "https://bitmon.pl/rss/itemlist";
+            const string url = "https://minergate.com/blog/feed";
             var data = XElement.Load(url).Descendants("item").Select(i => new RssItem
             {
                 Title = i.Element("title").Value,
