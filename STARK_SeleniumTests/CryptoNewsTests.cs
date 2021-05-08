@@ -36,6 +36,14 @@ namespace STARK_SeleniumTests
             Assert.That(element.Displayed, Is.True);
         }
 
+        [Test]
+        public void NewsLink_Displayed_IsTrue()
+        {
+            IWebElement element = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div/div/div[1]/div/div[2]/div/p[3]/a[1]"));
+
+            Assert.That(element.Displayed, Is.True);
+        }
+
         [TearDown]
         public void TearDown()
         {
