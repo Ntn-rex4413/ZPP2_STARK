@@ -80,7 +80,7 @@
                                     </div>
                                     <!-- Typ powiadomienia -->
                                     <div class="form-group">
-                                        <select id="type" asp-items="@ViewBag.ConditionTypes" class="form-control" >
+                                        <select id="type" asp-items="@ViewBag.ConditionTypes" class="form-control">
                                             @*<option value="1">Procentowy</option>
                                             <option value="2">Wartościowy</option>*@
                                         </select>
@@ -91,24 +91,24 @@
                                     </div>
                                     <!-- wiecej/mniej -->
                                     <div class="form-group">
-                                        <select id="relative" asp-items="@ViewBag.ConditionRelativities" class="form-control" placeholder="">
+                                        <select id="relative" asp-items="@ViewBag.ConditionRelativities" class="form-control">
                                             @*<option value="1">Wiecej</option>
                                             <option value="2">Mniej</option>*@
                                         </select>
-                                        <span class="text-danger"></span>
+                                        <span class="text-danger"></span>   
                                     </div>
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Wartość
                                     </div>
                                     <!-- Wartosc -->
                                     <div class="form-group">
-                                        <input id="threshold" class="form-control form-control-user" placeholder="" />
+                                        <input id="threshold" class="form-control" placeholder="" />
                                         <span class="text-danger"></span>
                                     </div>
                                     <!-- Submit Button -->
                                     <div class="form-group">
                                         @*<button id="addNotifButton" type="submit" class="btn btn-success btn-user btn-block">Dodaj</button>*@
-                                        <input id="addNotifButton" type="button" value="Dodaj"/>
+                                        <input class="btn btn-success btn-block" id="addNotifButton" type="button" value="Dodaj"/>
                                     </div>
                                 </form>
                             </div>
