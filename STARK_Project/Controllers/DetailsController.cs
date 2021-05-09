@@ -12,6 +12,7 @@ using System.Runtime.Serialization;
 using STARK_Project.DatabaseModel;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using STARK_Project.NotificationServices;
 
 namespace STARK_Project.Controllers
 {
@@ -19,6 +20,7 @@ namespace STARK_Project.Controllers
     {
         private readonly ICryptoService _service;
         private readonly IDbService _dbService;
+        private readonly INotificationService _notificationService;
         private readonly string _userId;
         public DetailsController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService)
         {
@@ -105,6 +107,9 @@ namespace STARK_Project.Controllers
                     }
                 }
                 await _dbService.AddConditionAsync(_userId, symbol, condition);
+
+                // added for notification
+
             }
             return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
         }
