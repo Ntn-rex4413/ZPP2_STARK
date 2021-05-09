@@ -24,7 +24,8 @@ namespace STARK_Project.NotificationServices
         public void CreateConditionNotify(string userId, Condition condition)
         {
             var jobId = GetUniqueJobId(userId);
-            RecurringJob.AddOrUpdate(jobId, () => IsMaxTresholdExceeded(userId, condition, jobId), Cron.Hourly);
+            RecurringJob.AddOrUpdate(jobId, () => IsMaxTresholdExceeded(userId, condition, jobId), Cron.Minutely);
+            RecurringJob.Trigger(jobId);
         }
 
         private async void IsMaxTresholdExceeded(string userId, Condition condition,string jobId)
