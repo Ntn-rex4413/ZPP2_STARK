@@ -22,10 +22,11 @@ namespace STARK_Project.Controllers
         private readonly IDbService _dbService;
         private readonly INotificationService _notificationService;
         private readonly string _userId;
-        public DetailsController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService)
+        public DetailsController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService, INotificationService notificationService)
         {
             _service = service;
             _dbService = dbService;
+            _notificationService = notificationService;
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
 
