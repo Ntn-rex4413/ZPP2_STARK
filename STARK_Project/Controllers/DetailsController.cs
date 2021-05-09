@@ -115,7 +115,7 @@ namespace STARK_Project.Controllers
                 // added for notification
                 if (await _dbService.AddNotification(_userId, notifMessage))
                 {
-
+                    _notificationService.CreateConditionNotify(_userId, condition);
                 }
 
             }
