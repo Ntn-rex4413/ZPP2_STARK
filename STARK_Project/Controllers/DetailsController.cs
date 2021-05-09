@@ -96,15 +96,18 @@ namespace STARK_Project.Controllers
             if (_userId != null)
             {
                 var condition = new Condition();
+                var notifMessage = "";
                 if (type == "value")
                 {
                     if (relative == "drop below")
                     {
                         condition.TresholdMin = float.Parse(value);
+                        notifMessage = $"The price of {symbol} has dropped below {value}.";
                     }
                     else
                     {
                         condition.TresholdMax = float.Parse(value);
+                        notifMessage = $"The price of {symbol} has risen above {value}.";
                     }
                 }
                 await _dbService.AddConditionAsync(_userId, symbol, condition);
