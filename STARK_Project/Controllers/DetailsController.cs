@@ -113,6 +113,10 @@ namespace STARK_Project.Controllers
                 await _dbService.AddConditionAsync(_userId, symbol, condition);
 
                 // added for notification
+                if (await _dbService.AddNotification(_userId, notifMessage))
+                {
+
+                }
 
             }
             return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
