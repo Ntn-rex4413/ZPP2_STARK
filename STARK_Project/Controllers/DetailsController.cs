@@ -12,6 +12,7 @@ using System.Runtime.Serialization;
 using STARK_Project.DatabaseModel;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using STARK_Project.NotificationServices;
 
 namespace STARK_Project.Controllers
 {
@@ -19,11 +20,13 @@ namespace STARK_Project.Controllers
     {
         private readonly ICryptoService _service;
         private readonly IDbService _dbService;
+        private readonly INotificationService _notificationService;
         private readonly string _userId;
-        public DetailsController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService)
+        public DetailsController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService, INotificationService notificationService)
         {
             _service = service;
             _dbService = dbService;
+            _notificationService = notificationService;
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
 
@@ -93,18 +96,25 @@ namespace STARK_Project.Controllers
             if (_userId != null)
             {
                 var condition = new Condition();
+                var notifMessage = "";
                 if (type == "value")
                 {
                     if (relative == "drop below")
                     {
                         condition.TresholdMin = float.Parse(value);
+                        notifMessage = $"The price of {symbol} has dropped below {value}.";
                     }
                     else
                     {
                         condition.TresholdMax = float.Parse(value);
+                        notifMessage = $"The price of {symbol} has risen above {value}.";
                     }
                 }
                 await _dbService.AddConditionAsync(_userId, symbol, condition);
+
+                // added for notification
+                _notificationService.CreateConditionNotify(_userId, condition);
+
             }
             return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
         }
