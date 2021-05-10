@@ -50,19 +50,19 @@ namespace STARK_Project.DBServices
             //return GetUser(userId).Conditions;
         }
 
-        public async Task<bool> AddConditionAsync(string userId, string symbol, Condition condition)
+        public async Task<Condition> AddConditionAsync(string userId, string symbol, Condition condition)
         {
             var user = GetUser(userId);
-            if (user is null) return false;
+      
 
             var cyptoSymbol = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol == symbol);
-            if (cyptoSymbol is null) return false;
+
 
             condition.Cryptocurrency = cyptoSymbol;
             condition.User = user;
             await _context.Conditions.AddAsync(condition);
             await _context.SaveChangesAsync();
-            return true;
+            return condition;
         }
         public async Task<bool> RemoveConditionAsync(string userId, int conditionId)
         {

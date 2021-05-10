@@ -1,4 +1,5 @@
 using Hangfire;
+using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,11 +39,17 @@ namespace STARK_Project
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddHttpContextAccessor();
 
-            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddHangfire(x => x.UseMemoryStorage()
+                    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                    .UseSimpleAssemblyNameTypeSerializer()
+                    .UseRecommendedSerializerSettings());
             services.AddHangfireServer();
 
             services.AddScoped<IDbService, ApplicationDbService>();
             services.AddScoped<ICryptoService, CryptoService>();
+
+
             services.AddScoped<INotificationService, HangFireNotificationService>();
             services.AddHttpContextAccessor();
 
@@ -83,6 +90,7 @@ namespace STARK_Project
                     name: "default",
                     pattern: "{controller=Summary}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapHangfireDashboard();
             });
         }
     }

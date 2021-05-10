@@ -13,38 +13,61 @@ namespace STARK_Project.NotificationServices
     {
         private IDbService _dbService;
         private ICryptoService _cyptoService;
-        private static readonly string _currency = "PLN";
+        private readonly IRecurringJobManager _manager;
+
+        private static readonly string _currency = "USD";
+  
        
-        public HangFireNotificationService(IDbService dbService, ICryptoService cyptoService)
+        //public HangFireNotificationService(IDbService dbService, ICryptoService cyptoService)
+        //{
+        //    _dbService = dbService;
+        //    _cyptoService = cyptoService;
+        //}
+
+        public HangFireNotificationService(IDbService dbService, ICryptoService cyptoService, IRecurringJobManager manager)
         {
             _dbService = dbService;
             _cyptoService = cyptoService;
+            _manager = manager;
+
         }
 
-        public void CreateConditionNotify(string userId, Condition condition)
+        public void CreateConditionNotifyTresholdMax(string userId, Condition condition)
         {
             var jobId = GetUniqueJobId(userId);
-            RecurringJob.AddOrUpdate(jobId, () => IsMaxTresholdExceeded(userId, condition, jobId), Cron.Minutely);
-            RecurringJob.Trigger(jobId);
+            _manager.AddOrUpdate(jobId, ()=> IsMaxTresholdExceeded(userId, 
+                condition.TresholdMax, 
+                condition.Cryptocurrency.Symbol, 
+                jobId), 
+                "* * * * *");
+            //RecurringJob.Trigger(jobId);
         }
 
-        private async void IsMaxTresholdExceeded(string userId, Condition condition,string jobId)
+        public void TestMethod(int a, Condition c)
         {
-            
-            var coinInfo = await _cyptoService.GetCryptocurrencyInfoAsync(condition.Cryptocurrency.Symbol, _currency);
-            if(coinInfo.ChangeHour >= condition.TresholdMax)
+            //var con = (Condition)c;
+            Console.WriteLine($"write line {a} {c.TresholdMax}");
+        }
+        public async Task IsMaxTresholdExceeded(string userId, double value, string symbol, string jobId)
+        {
+            var coinInfo = await _cyptoService.GetCryptocurrencyInfoAsync(symbol, _currency);
+            Console.WriteLine($"coin info {coinInfo}");
+            if (coinInfo.ChangeHour >= value)
             {
-               await _dbService.AddNotification(userId, TresholdMaxMesssage(condition));
+                Console.WriteLine("Spelniono warunek!");
+                await _dbService.AddNotification(userId, TresholdMaxMesssage(value, symbol));
                 RecurringJob.RemoveIfExists(jobId);
             }
         }
+
+
         private string GetUniqueJobId(string userId)
         {
             return userId + Guid.NewGuid();
         }
-        private string TresholdMaxMesssage(Condition condition)
+        private string TresholdMaxMesssage(double value, string symbol)
         {
-            return $"Treshold max: {condition.TresholdMax} has benn exceeded in {condition.Cryptocurrency.Name} cryptocurrency!";
+            return $"Treshold max: {value} has benn exceeded in {symbol} cryptocurrency!";
         }
     }
 }

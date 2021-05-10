@@ -110,10 +110,10 @@ namespace STARK_Project.Controllers
                         notifMessage = $"The price of {symbol} has risen above {value}.";
                     }
                 }
-                await _dbService.AddConditionAsync(_userId, symbol, condition);
+               condition = await _dbService.AddConditionAsync(_userId, symbol, condition);
 
                 // added for notification
-                _notificationService.CreateConditionNotify(_userId, condition);
+                _notificationService.CreateConditionNotifyTresholdMax(_userId, condition);
 
             }
             return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
