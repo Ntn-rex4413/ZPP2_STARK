@@ -93,7 +93,7 @@ namespace STARK_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
         {
-            // TO-DO: może przydać się walidacja
+            // TODO: może przydać się walidacja
 
             if (_userId != null)
             {
@@ -121,6 +121,7 @@ namespace STARK_Project.Controllers
             return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
         }
 
+        [Authorize]
         public async Task<IActionResult> RemoveNotification(int conditionId, string currentCrypto, string currentCurrency)
         {
             if (_userId != null)
