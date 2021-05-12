@@ -43,6 +43,7 @@ namespace STARK_Project.Calculator
             {
                 case (true, true):
                 {
+                    //TODO
                     var tempValue = "PLN";
                     var currencyLeftInfo = _cryptoService.GetCryptocurrencyInfoAsync(currencyLeft, tempValue).Result;
                     var currencyRightInfo = _cryptoService.GetCryptocurrencyInfoAsync(currencyRight, tempValue).Result;
@@ -52,12 +53,14 @@ namespace STARK_Project.Calculator
                 }
                 case (true, false):
                 {
+                    //WORKING
                     var cryptocurrencyLeftInfo = _cryptoService.GetCryptocurrencyInfoAsync(currencyLeft, currencyRight).Result;
                     valueRight = cryptocurrencyLeftInfo.Price * valueLeft;
                     break;
                 }
                 case (false, false):
                 {
+                    //TODO
                     var tempValue = "ETH";
                     var currencyLeftInfo = _cryptoService.GetCryptocurrencyInfoAsync(tempValue, currencyLeft).Result;
                     var currencyRightInfo = _cryptoService.GetCryptocurrencyInfoAsync(tempValue, currencyRight).Result;
@@ -67,6 +70,7 @@ namespace STARK_Project.Calculator
                 }
                 case (false, true):
                 {
+                    //TODO
                     var cryptocurrencyRightInfo =
                         _cryptoService.GetCryptocurrencyInfoAsync(currencyRight, currencyLeft).Result;
                     valueRight = cryptocurrencyRightInfo.Price * valueLeft;
