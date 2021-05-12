@@ -55,7 +55,7 @@ namespace STARK_Project.DBServices
             var user = GetUser(userId);
       
 
-            var cyptoSymbol = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol == symbol);
+            var cyptoSymbol = await _context.Cryptocurrenies.FirstAsync(x => x.Symbol == symbol);
 
 
             condition.Cryptocurrency = cyptoSymbol;
