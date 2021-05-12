@@ -26,10 +26,11 @@ namespace STARK_Project.DBServices
 
         public async Task<bool> AddNotification(string userId, string message)
         {
-            var user = GetUser(userId);
+            var user = await _context.Users.Include(x => x.Notifications).FirstAsync(x => x.Id == userId);
             if (user is null) return false;
 
             user.Notifications.Add(new Notification { Message = message });
+
             await _context.SaveChangesAsync();
             return true;
         }

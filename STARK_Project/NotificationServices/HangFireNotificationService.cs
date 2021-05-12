@@ -52,11 +52,11 @@ namespace STARK_Project.NotificationServices
         {
             var coinInfo = await _cyptoService.GetCryptocurrencyInfoAsync(symbol, _currency);
             Console.WriteLine($"coin info {coinInfo}");
-            if (coinInfo.ChangeHour >= value)
+            if (coinInfo.Price >= value)
             {
                 Console.WriteLine("Spelniono warunek!");
                 await _dbService.AddNotification(userId, TresholdMaxMesssage(value, symbol));
-                RecurringJob.RemoveIfExists(jobId);
+                //RecurringJob.RemoveIfExists(jobId);
             }
         }
 
