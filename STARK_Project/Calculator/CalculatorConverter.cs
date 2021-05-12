@@ -70,10 +70,10 @@ namespace STARK_Project.Calculator
                 }
                 case (false, true):
                 {
-                    //TODO
+                    //WORKING
                     var cryptocurrencyRightInfo =
                         _cryptoService.GetCryptocurrencyInfoAsync(currencyRight, currencyLeft).Result;
-                    valueRight = cryptocurrencyRightInfo.Price * valueLeft;
+                    valueRight = valueLeft / cryptocurrencyRightInfo.Price;
                     break;
                 }
             }
