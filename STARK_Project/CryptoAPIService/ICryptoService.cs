@@ -17,6 +17,7 @@ namespace STARK_Project.CryptoAPIService
         Task<CryptoModel> GetCryptocurrenciesInfoAsync();
         Task<CryptoModel> GetCryptocurrenciesInfoAsync(string symbol);
         Task<CryptoHistoricalData> GetHistoricalData(HistoricalDataTypes type,string symbol, string currencySymbol, int? limit, int? aggregate);
+        Task<Dictionary<string, string>> GetRankingDataAsync(int limit, string currency);
 
         Task<Dictionary<string, string>> GetCryptocurrenciesAsync();
         Dictionary<string, string> GetCurrencies();
