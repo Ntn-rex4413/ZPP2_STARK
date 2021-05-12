@@ -90,6 +90,7 @@ namespace STARK_Project.Controllers
             return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
         {
