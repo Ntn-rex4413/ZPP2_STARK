@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Runtime.Serialization;
 using STARK_Project.DatabaseModel;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using STARK_Project.NotificationServices;
 
@@ -78,6 +79,7 @@ namespace STARK_Project.Controllers
             return dtDateTime;
         }
 
+        [Authorize]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency = "BTC", string currency = "USD")
         {
             if (_userId != null)
@@ -88,10 +90,11 @@ namespace STARK_Project.Controllers
             return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
         {
-            // TO-DO: może przydać się walidacja
+            // TODO: może przydać się walidacja
 
             if (_userId != null)
             {
@@ -119,6 +122,7 @@ namespace STARK_Project.Controllers
             return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
         }
 
+        [Authorize]
         public async Task<IActionResult> RemoveNotification(int conditionId, string currentCrypto, string currentCurrency)
         {
             if (_userId != null)
