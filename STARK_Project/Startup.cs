@@ -40,7 +40,7 @@ namespace STARK_Project
             services.AddHttpContextAccessor();
 
             //services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddHangfire(x => x.UseMemoryStorage()
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection"))
                     .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                     .UseSimpleAssemblyNameTypeSerializer()
                     .UseRecommendedSerializerSettings());
@@ -83,7 +83,14 @@ namespace STARK_Project
             app.UseAuthorization();
 
             app.UseHangfireDashboard();
-
+            var monitor = Hangfire.JobStorage.Current.GetMonitoringApi();
+            if (monitor.ProcessingCount() > 0)
+            {
+                foreach (var job in monitor.ProcessingJobs(0, (int)monitor.ProcessingCount()))
+                {
+                    BackgroundJob.Requeue(job.Key);
+                }
+            }
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
