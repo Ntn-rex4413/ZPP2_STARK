@@ -29,7 +29,8 @@
         <h1 class="h3 mb-0 font-weight-bold text-gray-800 mr-4">Display details about all cryptocurrencies</h1>
     </div>
     <!-- Content Row -->
-    @foreach (var currency in Model.CryptoModel.RAW)
+    @*@foreach (var currency in Model.CryptoModel.RAW)*@
+    @foreach (var currency in Model.Cryptocurrencies)
     {
         <div class="row">
 
@@ -37,7 +38,7 @@
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-sm-flex align-items-center">
-@*                        <i class="fab fa-@currency.Name.ToLower() fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">@currency.Name</h6>*@
+                        @*                        <i class="fab fa-@currency.Name.ToLower() fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">@currency.Name</h6>*@
                         <i class="fab fa-bitcoin fa-2x mr-4"></i><h6 class="m-0 font-weight-bold text-primary">@currency.Key</h6>
                     </div>
                     <div class="card-body">
@@ -50,7 +51,7 @@
                             </a>
                             @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4 nav-link">*@
                             <a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4 nav-link" asp-area="" asp-controller="Summary" asp-action="AddToWatchList" asp-route-cryptocurrency="@currency.Key">
-                            @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4 nav-link">*@
+                                @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4 nav-link">*@
                                 <i class="fas fa-star fa-sm text-white-50"></i> Obserwuj
                             </a>
                         </div>
