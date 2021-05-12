@@ -33,7 +33,7 @@ namespace STARK_Project.Controllers
             var data = new SummaryViewModel();
             data.CryptoModel = _service.GetCryptocurrenciesInfoAsync(currency).Result;
             // data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
-            data.Cryptocurrencies = _service.GetRankingDataAsync(5, currency).Result;
+            data.Cryptocurrencies = _service.GetRankingDataAsync(10, currency).Result;
             data.Currencies = _service.GetCurrencies();
 
             ViewBag.IsUserLoggedIn = _userId != null;
