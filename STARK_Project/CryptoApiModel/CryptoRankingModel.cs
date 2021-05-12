@@ -7,6 +7,6 @@ namespace STARK_Project.CryptoApiModel
 {
     public class CryptoRankingModel
     {
-        public CryptoRankingCoinInfo[] Data { get; set; }
+        public ICollection<CryptoRankingCoinInfo> Data { get; set; }
     }
 }
