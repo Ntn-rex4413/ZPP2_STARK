@@ -40,7 +40,7 @@ namespace STARK_Project.NotificationServices
                 condition.Cryptocurrency.Symbol, 
                 jobId), 
                 "* * * * *");
-            //RecurringJob.Trigger(jobId);
+
         }
 
         public async Task IsMaxTresholdExceeded(string userId, double value, string symbol, string jobId)
@@ -51,7 +51,7 @@ namespace STARK_Project.NotificationServices
             {
                 Console.WriteLine("Spelniono warunek!");
                 await _dbService.AddNotification(userId, TresholdMaxMesssage(value, symbol));
-                //RecurringJob.RemoveIfExists(jobId);
+                RecurringJob.RemoveIfExists(jobId);
             }
         }
 
@@ -63,7 +63,7 @@ namespace STARK_Project.NotificationServices
                 condition.Cryptocurrency.Symbol,
                 jobId),
                 "* * * * *");
-            //RecurringJob.Trigger(jobId);
+
         }
 
         public async Task IsMinTresholdExceeded(string userId, double value, string symbol, string jobId)
@@ -74,7 +74,7 @@ namespace STARK_Project.NotificationServices
             {
                 Console.WriteLine("Spelniono warunek!");
                 await _dbService.AddNotification(userId, TresholdMaxMesssage(value, symbol));
-                //RecurringJob.RemoveIfExists(jobId);
+                RecurringJob.RemoveIfExists(jobId);
             }
         }
 
