@@ -79,7 +79,7 @@ namespace STARK_Project.CryptoAPIService
                 var data = JsonConvert.DeserializeObject<CryptoRankingModel>(await request.Content.ReadAsStringAsync());
                 foreach (var coin in data.Data)
                 {
-                    result.Add(coin.Name, coin.FullName);
+                    result.Add(coin.CoinInfo.Name, coin.CoinInfo.FullName);
                 }
             }
             return result;

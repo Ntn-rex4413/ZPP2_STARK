@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace STARK_Project.CryptoApiModel
 {
-    public class CryptoRankingModel
+    public class CryptoRankingCoinInfo
     {
-        public CryptoRankingCoinInfo[] Data { get; set; }
+        public CyptoRankingInfo CoinInfo { get; set; }
     }
 }
