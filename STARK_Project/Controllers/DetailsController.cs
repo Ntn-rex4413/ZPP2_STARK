@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Runtime.Serialization;
 using STARK_Project.DatabaseModel;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using STARK_Project.NotificationServices;
 
@@ -78,6 +79,7 @@ namespace STARK_Project.Controllers
             return dtDateTime;
         }
 
+        [Authorize]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency = "BTC", string currency = "USD")
         {
             if (_userId != null)
