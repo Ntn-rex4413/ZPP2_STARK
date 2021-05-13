@@ -160,14 +160,8 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Po wyborze określonej kryptowaluty z listy obserwowanych użytkownik ma możliwość wyboru i włączania/wyłączania powiadomień mailowych o zmianach jej wartości. Użytkownik ma możliwość określenia rodzaju i skali zmian, o których chce być powiadomiony oraz dopuszczalnej częstotliwości otrzymywania powiadomień. |
 
-| ID:        | 10                                                           |
-| ---------- | ------------------------------------------------------------ |
-| Nazwa:     | Przeliczanie kryptowalut na inne                             |
-| Priorytet: | WYSOKI                                                       |
-| Rola:      | Użytkownicy zalogowani                                       |
-| Opis:      | Użytkownik ma możliwość przeliczania wartości kryptowalut na inne, za pomocą dostarczonego przez platformę kalkulatora. |
 
-| ID:        | 11                                                           |
+| ID:        | 10                                                           |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Przeliczanie kryptowalut na waluty tradycyjne                |
 | Priorytet: | ŚREDNI                                                       |
