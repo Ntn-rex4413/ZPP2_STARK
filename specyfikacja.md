@@ -208,7 +208,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Szata graficzna interfejsu                                   |
 | Priorytet: | ŚREDNI                                                       |
-| Opis:      | Wskazane jest zaprojektowanie szaty graficznej interfejsu pod kątem wyraźnego zaznaczania istotnych informacji (np. kolor zielony - wzrost ceny), ale również zastosowania gamy barw i proporcji elementów sprawiających wrażenie spójnego, przyjaznego wizerunku platformy. |
+| Opis:      | Wskazane jest zaprojektowanie szaty graficznej interfejsu pod kątem wyraźnego zaznaczania istotnych informacji, ale również zastosowania gamy barw i proporcji elementów sprawiających wrażenie spójnego, przyjaznego wizerunku platformy. |
 
 
 
