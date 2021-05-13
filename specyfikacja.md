@@ -116,7 +116,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | Nazwa:     | Wyświetlanie szczegółowych informacji o danej kryptowalucie  |
 | Priorytet: | WYSOKI                                                       |
 | Rola:      | WSZYSCY                                                      |
-| Opis:      | Każdy użytkownik platformy po wybraniu z poziomu przeglądania (użytkownicy zalogowani również poprzez wybór z listy szybkiego dostępu) danej kryptowaluty uzyskuje podgląd szczegółowych informacji na jej temat; wartości cenowych, wolumenu, przebiegu zmian w postaci wykresów. |
+| Opis:      | Każdy użytkownik platformy po wybraniu z poziomu przeglądania (użytkownicy zalogowani również poprzez wybór z listy szybkiego dostępu) danej kryptowaluty uzyskuje podgląd szczegółowych informacji na jej temat; wartości cenowych, zarejestrowanych zmian (w postaci kwoty i wartości procentowej) w przeciągu ostatniej godziny, doby, przebiegu zmian ceny w postaci wykresu. |
 
 | ID:        | 4                                                            |
 | ---------- | ------------------------------------------------------------ |
