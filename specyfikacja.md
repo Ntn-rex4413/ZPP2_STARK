@@ -155,26 +155,19 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 | ID:        | 9                                                            |
 | ---------- | ------------------------------------------------------------ |
-| Nazwa:     | Zmiana kolejności pozycji na liście obserwowanych            |
-| Priorytet: | ŚREDNI                                                       |
-| Rola:      | Użytkownicy zalogowani                                       |
-| Opis:      | W celu lepszego dostosowania formy wyświetlanych informacji użytkownik ma możliwość zmiany kolejności kryptowalut wyświetlanych na liście obserwowanych. |
-
-| ID:        | 10                                                           |
-| ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Konfiguracja i włączenie powiadomień mailowych               |
 | Priorytet: | WYSOKI                                                       |
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Po wyborze określonej kryptowaluty z listy obserwowanych użytkownik ma możliwość wyboru i włączania/wyłączania powiadomień mailowych o zmianach jej wartości. Użytkownik ma możliwość określenia rodzaju i skali zmian, o których chce być powiadomiony oraz dopuszczalnej częstotliwości otrzymywania powiadomień. |
 
-| ID:        | 11                                                           |
+| ID:        | 10                                                           |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Przeliczanie kryptowalut na inne                             |
 | Priorytet: | WYSOKI                                                       |
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Użytkownik ma możliwość przeliczania wartości kryptowalut na inne, za pomocą dostarczonego przez platformę kalkulatora. |
 
-| ID:        | 12                                                           |
+| ID:        | 11                                                           |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Przeliczanie kryptowalut na waluty tradycyjne                |
 | Priorytet: | ŚREDNI                                                       |
