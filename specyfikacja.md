@@ -164,7 +164,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | ID:        | 10                                                           |
 | ---------- | ------------------------------------------------------------ |
 | Nazwa:     | Przeliczanie kryptowalut na waluty tradycyjne                |
-| Priorytet: | ŚREDNI                                                       |
+| Priorytet: | WYSOKI                                                       |
 | Rola:      | Użytkownicy zalogowani                                       |
 | Opis:      | Użytkownik ma możliwość przeliczania wartości kryptowalut na dane waluty tradycyjne, za pomocą dostarczonego przez platformę kalkulatora. |
 
