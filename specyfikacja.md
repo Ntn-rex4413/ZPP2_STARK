@@ -236,7 +236,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 Frontend: wykonany na platformie ASP.NET, zgodnie ze wzorcem MVC (Model-View-Controller).  
 
-Widoki (interfejs użytkownika) wykonane z wykorzystaniem HTML i CSS (biblioteka Bootstrap) komunikujące się z kontrolerami za pomocą składni Razor (integracji C# wewnątrz strony html,  w plikach .cshtml). 
+Widoki (interfejs użytkownika) wykonane z wykorzystaniem HTML i CSS (biblioteka Bootstrap) komunikujące się z kontrolerami za pomocą składni Razor (integracji C# wewnątrz strony html,  w plikach .cshtml), uzupełniane w miarę potrzeb skryptami Javascript/Jquery.
 
 Główne API dostarczające dane aplikacji: CryptoCompare.
 
