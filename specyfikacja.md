@@ -249,3 +249,4 @@ Przewidywane implementacje wzorców projektowych:
 - **Decorator** - pozwala na rozwinięcie klasy bez ingerencji w jej implementację, potencjalne wykorzystanie w przypadku wprowadzania dodatkowych funkcjonalności w trakcie pracy nad projektem,
 - **Observer** - pozwala na nadzorowanie zmian stanu obiektów i powiadamianie o nich obiektów zależnych, potencjalne wykorzystanie w ramach opracowywania systemu powiadomień użytkownika o zmianach kursów,
 - **Dependency Injection** - pozwala na tworzenie kodu o luźniejszych powiązaniach (ang. *loose coupling*), ułatwiającym testowanie i modyfikacje,
+- **Model-View-Controler** - wzorzec architektoniczny organizujący strukturę aplikacji o graficznym interfejsie użytkownika w trzy główne części: "Model", "Widok" oraz "Kontroler",
