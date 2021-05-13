@@ -77,7 +77,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 | Nazwa: | Kalkulator walutowy                                          |
 | ------ | ------------------------------------------------------------ |
-| Opis:  | Wewnętrzny serwis platformy, umożliwiający przeliczanie wartości kryptowalut względem innych kryptowalut bądź walut tradycyjnych, w oparciu o aktualne kursy kupna i sprzedaży. |
+| Opis:  | Wewnętrzny serwis platformy, umożliwiający przeliczanie wartości kryptowalut względem walut tradycyjnych, w oparciu o aktualne kursy. |
 
 
 
