@@ -245,4 +245,11 @@ Foldery:
 - Views - folder zawierający pliki widoków dla każdego z kontrolerów,
 - wwwroot - folder zawierający pliki statyczne strony (css, js, bootstrap, jquery, czcionki),
 
+Pliki:
+
+- Program.cs oraz Startup.cs - pliki wykorzystywane podczas uruchamiania programu,
+- STARK_Project.csproj - plik głównego projektu programu,
+- ScaffoldingReadMe.txt - plik readme generowany przez Entity Framework,
+- appsettings.Development.json oraz appsettings.json - pliki konfiguracyjne programu,
+
 [//instrukcja kompilacji/instalacji]
