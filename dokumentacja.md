@@ -180,6 +180,9 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 - Microsoft Visual Studio - środowisko programistyczne wykorzystywane na każdym etapie implementacji,
 - API Cryptocompare - interfejs pozwalający na pozyskiwanie aktualnych informacji o kryptowalutach,
 - Microsoft Entity Framework - obsługa i wymiana informacji z bazą danych,
+- Hangfire - narzędzie wykorzystane w ramach obsługi powiadomień; zadań "fire-and-forget", opóźnionych i powtarzanych,
+- MSTEST - framework, w którym zaimplementowano testy jednostkowe,
+- Selenium - framework, w którym zaimplementowano testy wyższego poziomu,
 
 ### 3. Projekt systemu
 
