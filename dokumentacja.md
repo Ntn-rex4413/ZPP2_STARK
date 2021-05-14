@@ -176,7 +176,10 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 #### 2.5. Wykorzystane narzędzia programistyczne i technologie
 
-
+- git - wersjonowanie oprogramowania, repozytorium projektu na platformie GitHub,
+- Microsoft Visual Studio - środowisko programistyczne wykorzystywane na każdym etapie implementacji,
+- API Cryptocompare - interfejs pozwalający na pozyskiwanie aktualnych informacji o kryptowalutach,
+- Microsoft Entity Framework - obsługa i wymiana informacji z bazą danych,
 
 ### 3. Projekt systemu
 
