@@ -174,6 +174,8 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | Priorytet: | ŚREDNI                                                       |
 | Opis:      | Wskazane jest zaprojektowanie szaty graficznej interfejsu pod kątem wyraźnego zaznaczania istotnych informacji, ale również zastosowania gamy barw i proporcji elementów sprawiających wrażenie spójnego, przyjaznego wizerunku platformy. |
 
+#### 2.5. Wykorzystane narzędzia programistyczne i technologie
+
 
 
 ### 3. Projekt systemu
