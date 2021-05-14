@@ -205,6 +205,15 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 ### 4. Opis wersji systemu
 
-[//struktura katalogowa projektu]
+#### 4.1. Struktura katalogowa projektu
+
+Branch **main** repozytorium ZPP2_STARK zawiera:
+
+- STARK_Project.sln - plik rozwiązania środowiska Visual Studio,
+- STARK_Project - folder zawierający pliki środowiska oraz kod projektu,
+- README.md - plik zawierający krótki opis i wskazujący najistotniejsze elementy repozytorium,
+- specyfikacja.md - plik zawierający specyfikację projektu,
+- dokumentacja.md - plik zawierający dokumentację projektu,
+- .gitignore oraz .gitattributes - pliki obsługi repozytorium,
 
 [//instrukcja kompilacji/instalacji]
