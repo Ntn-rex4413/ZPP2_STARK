@@ -222,4 +222,17 @@ Foldery:
 - STARK_Project - folder zawierający pliki środowiska oraz kod projektu,
 - docimages - folder zawierający obrazy wykorzystane w dokumentacji,
 
+Główny folder rozwiązania (STARK_Project) zawiera:
+
+Foldery:
+
+- Areas/Identity - folder zawierający pliki obsługi użytkowników,
+- Calculator - folder zawierający implementację kalkulatora kryptowalut,
+- Controllers - folder zawierający pliki kontrolerów projektu, w tym:
+  - CalculatorController - kontroler kalkulatora,
+  - DetailsController - kontroler obsługujący wyświetlanie szczegółowych danych kryptowalut,
+  - NewsController - kontroler obsługi strumienia RSS,
+  - SubscriptionsController - kontroler obsługi list obserwowanych kryptowalut użytkowników,
+  - SummaryController - kontroler obsługi strony głównej programu,
+
 [//instrukcja kompilacji/instalacji]
