@@ -234,5 +234,15 @@ Foldery:
   - NewsController - kontroler obsługi strumienia RSS,
   - SubscriptionsController - kontroler obsługi list obserwowanych kryptowalut użytkowników,
   - SummaryController - kontroler obsługi strony głównej programu,
+- CryptoAPIService - folder zawierający interfejs oraz implementację serwisu pozyskującego informacje o kryptowalutach z API,
+- CryptoApiModel - folder zawierający pliki klas wykorzystywanych do przechowywania danych pozyskanych z API,
+- DBServices - folder zawierający interfejs oraz implementację serwisu obsługi bazy danych,
+- Data/Migrations - folder zawierający pliki zmian-migracji bazy danych,
+- DatabaseModel - folder zawierający pliki klas-encji bazy danych,
+- Models - folder zawierający pliki klas wykorzystywanych do komunikacji kontrolerów z widokami,
+- NotificationServices - folder zawierający interfejs oraz implementację serwisu obsługi powiadomień,
+- Properties - folder zawierający pliki .json obejmujące konfiguracje zależności i uruchamiania,
+- Views - folder zawierający pliki widoków dla każdego z kontrolerów,
+- wwwroot - folder zawierający pliki statyczne strony (css, js, bootstrap, jquery, czcionki),
 
 [//instrukcja kompilacji/instalacji]
