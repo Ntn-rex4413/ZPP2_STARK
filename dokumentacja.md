@@ -209,11 +209,17 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 Branch **main** repozytorium ZPP2_STARK zawiera:
 
+Pliki:
+
 - STARK_Project.sln - plik rozwiązania środowiska Visual Studio,
-- STARK_Project - folder zawierający pliki środowiska oraz kod projektu,
 - README.md - plik zawierający krótki opis i wskazujący najistotniejsze elementy repozytorium,
 - specyfikacja.md - plik zawierający specyfikację projektu,
 - dokumentacja.md - plik zawierający dokumentację projektu,
 - .gitignore oraz .gitattributes - pliki obsługi repozytorium,
+
+Foldery:
+
+- STARK_Project - folder zawierający pliki środowiska oraz kod projektu,
+- docimages - folder zawierający obrazy wykorzystane w dokumentacji,
 
 [//instrukcja kompilacji/instalacji]
