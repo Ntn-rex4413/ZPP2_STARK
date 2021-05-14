@@ -24,5 +24,6 @@ namespace STARK_Project.DBServices
         Task<bool> AddNotification(string userId, string message);
         Task<bool> RemoveNotification(string userId, string message);
 
+        Task<Dictionary<string, string>> GetMatchingCryptoNames(string phrase);
     }
 }
