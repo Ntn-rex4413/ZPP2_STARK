@@ -18,13 +18,16 @@ namespace STARK_Project.Controllers
         private readonly ICryptoService _service;
         private readonly IDbService _dbService;
 
+        private readonly ICalculator _calculator;
+
         private readonly string _userId;
 
-        public CalculatorController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService)
+        public CalculatorController(IHttpContextAccessor httpContextAccessor, ICryptoService service, IDbService dbService, ICalculator calculator)
         {
             _service = service;
             _dbService = dbService;
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            _calculator = calculator;
         }
 
         [HttpGet]
@@ -44,8 +47,8 @@ namespace STARK_Project.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(CalculatorViewModel viewModel)
         {
-            CalculatorConverter calculator = new CalculatorConverter(_dbService, _service);
-            viewModel.RightValue = calculator.Calculate(viewModel.LeftValue, viewModel.LeftCurrency, viewModel.RightCurrency);
+            //CalculatorConverter calculator = new CalculatorConverter(_dbService, _service);
+            viewModel.RightValue = _calculator.Calculate(viewModel.LeftValue, viewModel.LeftCurrency, viewModel.RightCurrency);
             return RedirectToAction("Index", new {valueLeft = viewModel.LeftValue, valueRight = viewModel.RightValue, currencyLeft = viewModel.LeftCurrency, currencyRight = viewModel.RightCurrency});
         }
     }
