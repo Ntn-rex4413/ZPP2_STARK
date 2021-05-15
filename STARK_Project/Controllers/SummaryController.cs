@@ -55,5 +55,24 @@ namespace STARK_Project.Controllers
             }
             return RedirectToAction("Index", new { currency = "PLN" });
         }
+
+        public IActionResult Search(string cryptocurrency, string currency = "PLN")
+        {
+            var data = new SummaryViewModel();
+            data.CryptoModel = _service.GetCryptocurrenciesInfoAsync(currency).Result;
+
+            if (!String.IsNullOrEmpty(cryptocurrency))
+            {
+                data.Cryptocurrencies = _dbService.GetMatchingCryptoNames(cryptocurrency).Result;
+            }
+            else
+            {
+                data.Cryptocurrencies = _service.GetRankingDataAsync(10, currency).Result;
+            }
+            data.Currencies = _service.GetCurrencies();
+            ViewBag.IsUserLoggedIn = _userId != null;
+
+            return View("Index", data);
+        }
     }
 }

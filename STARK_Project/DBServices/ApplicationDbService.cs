@@ -194,6 +194,11 @@ namespace STARK_Project.DBServices
             return  _context.Users.FirstOrDefault(x => x.Id == userId);
         }
 
-     
+        public async Task<Dictionary<string, string>> GetMatchingCryptoNames(string phrase)
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            await _context.Cryptocurrenies.Where(x => x.Symbol.Contains(phrase) || x.Name.Contains(phrase)).ForEachAsync(x => result.Add(x.Symbol, x.Name));
+            return result;
+        }
     }
 }
