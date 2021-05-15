@@ -77,9 +77,4 @@ namespace STARK_Project.Calculator
             return valueRight;
         }
     }
-
-    public interface ICalculator
-    {
-        double Calculate(double valueLeft, string currencyLeft, string currencyRight);
-    }
 }
