@@ -10,6 +10,7 @@ namespace STARK_Project.Controllers
 {
     public class NewsController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             const string url = "https://minergate.com/blog/feed";
