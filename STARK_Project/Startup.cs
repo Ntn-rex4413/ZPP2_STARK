@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using STARK_Project.Calculator;
 
 namespace STARK_Project
 {
@@ -58,6 +59,9 @@ namespace STARK_Project
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            //calculator
+            services.AddScoped<ICalculator, CalculatorConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
