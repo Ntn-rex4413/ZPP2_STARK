@@ -7,7 +7,7 @@ using STARK_Project.DBServices;
 
 namespace STARK_Project.Calculator
 {
-    public class CalculatorConverter
+    public class CalculatorConverter : ICalculator
     {
         private IDbService _dbService;
         private ICryptoService _cryptoService;
@@ -76,5 +76,10 @@ namespace STARK_Project.Calculator
 
             return valueRight;
         }
+    }
+
+    public interface ICalculator
+    {
+        double Calculate(double valueLeft, string currencyLeft, string currencyRight);
     }
 }
