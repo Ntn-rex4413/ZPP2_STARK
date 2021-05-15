@@ -26,6 +26,8 @@ namespace STARK_Project.Controllers
             _dbService = dbService;
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
+
+        [HttpGet]
         public IActionResult Index(double valueLeft = 0, double valueRight = 0, string currencyLeft = "EUR", string currencyRight = "BTC")
         {
             CalculatorViewModel viewModel = new CalculatorViewModel();
@@ -42,7 +44,6 @@ namespace STARK_Project.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(CalculatorViewModel viewModel)
         {
-            //TODO
             CalculatorConverter calculator = new CalculatorConverter(_dbService, _service);
             viewModel.RightValue = calculator.Calculate(viewModel.LeftValue, viewModel.LeftCurrency, viewModel.RightCurrency);
             return RedirectToAction("Index", new {valueLeft = viewModel.LeftValue, valueRight = viewModel.RightValue, currencyLeft = viewModel.LeftCurrency, currencyRight = viewModel.RightCurrency});
