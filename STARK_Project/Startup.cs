@@ -13,6 +13,7 @@ using STARK_Project.CryptoAPIService;
 using STARK_Project.Data;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
+using STARK_Project.EmailServices;
 using STARK_Project.NotificationServices;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,7 @@ namespace STARK_Project
 
             services.AddScoped<IDbService, ApplicationDbService>();
             services.AddScoped<ICryptoService, CryptoService>();
+            services.AddScoped<IEmailService, SMTPService>();
 
 
             services.AddScoped<INotificationService, HangFireNotificationService>();

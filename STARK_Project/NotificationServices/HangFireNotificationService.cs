@@ -6,6 +6,7 @@ using Hangfire;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using STARK_Project.EmailServices;
 
 namespace STARK_Project.NotificationServices
 {
@@ -14,6 +15,9 @@ namespace STARK_Project.NotificationServices
         private IDbService _dbService;
         private ICryptoService _cyptoService;
         private readonly IRecurringJobManager _manager;
+        private readonly IEmailService _emailService;
+
+
 
         private static readonly string _currency = "USD";
   
@@ -24,15 +28,15 @@ namespace STARK_Project.NotificationServices
         //    _cyptoService = cyptoService;
         //}
 
-        public HangFireNotificationService(IDbService dbService, ICryptoService cyptoService, IRecurringJobManager manager)
+
+
+        public HangFireNotificationService(IDbService dbService, ICryptoService cyptoService, IRecurringJobManager manager, IEmailService emailService)
         {
             _dbService = dbService;
             _cyptoService = cyptoService;
             _manager = manager;
-
+            _emailService = emailService;
         }
-
-        
 
         public void CreateConditionNotifyTresholdMax(string userId, Condition condition)
         {
