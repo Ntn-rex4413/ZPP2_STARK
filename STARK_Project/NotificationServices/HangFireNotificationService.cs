@@ -32,6 +32,8 @@ namespace STARK_Project.NotificationServices
 
         }
 
+        
+
         public void CreateConditionNotifyTresholdMax(string userId, Condition condition)
         {
             var jobId = GetUniqueJobId(userId);
