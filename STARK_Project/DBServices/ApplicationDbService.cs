@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentEmail.Core;
+using Microsoft.EntityFrameworkCore;
 using STARK_Project.Data;
 using STARK_Project.DatabaseModel;
 using System;
@@ -194,6 +195,9 @@ namespace STARK_Project.DBServices
             return  _context.Users.FirstOrDefault(x => x.Id == userId);
         }
 
-     
+        public string GetUserEmail(string userId)
+        {
+            return _context.Users.First(x => x.Id == userId).Email;
+        }
     }
 }
