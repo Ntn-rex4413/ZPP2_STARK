@@ -23,8 +23,8 @@ namespace STARK_Project.DBServices
         ICollection<Notification> GetNotifications(string userId);
         Task<bool> AddNotification(string userId, string message);
         Task<bool> RemoveNotification(string userId, string message);
-
         string GetUserEmail(string userId);
+        Task<Dictionary<string, string>> GetMatchingCryptoNames(string phrase);
 
     }
 }

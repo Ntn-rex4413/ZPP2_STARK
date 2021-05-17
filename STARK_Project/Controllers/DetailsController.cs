@@ -31,6 +31,7 @@ namespace STARK_Project.Controllers
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
 
+        [HttpGet]
         public IActionResult Index(string cryptocurrency = "BTC", string currency = "USD")
         {
             var data = new DetailsViewModel();
@@ -80,6 +81,8 @@ namespace STARK_Project.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency = "BTC", string currency = "USD")
         {
             if (_userId != null)
@@ -92,6 +95,7 @@ namespace STARK_Project.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
         {
             // TODO: może przydać się walidacja
@@ -123,6 +127,8 @@ namespace STARK_Project.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveNotification(int conditionId, string currentCrypto, string currentCurrency)
         {
             if (_userId != null)
@@ -133,7 +139,7 @@ namespace STARK_Project.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCurrencyConditions(string currencySymbol)
+        public IActionResult GetCurrencyConditions(string currencySymbol)
         {
             var currencyConditions = _dbService.GetConditions(_userId).Where(x => x.Cryptocurrency.Symbol == currencySymbol).ToList();
 

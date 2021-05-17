@@ -29,11 +29,12 @@ namespace STARK_Project.Controllers
             _dbService = dbService;
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
+
+        [HttpGet]
         public IActionResult Index(string currency = "PLN")
         {
             var data = new SummaryViewModel();
             data.CryptoModel = _service.GetCryptocurrenciesInfoAsync(currency).Result;
-            // data.Cryptocurrencies = _service.GetCryptocurrenciesAsync().Result;
             data.Cryptocurrencies = _service.GetRankingDataAsync(10, currency).Result;
             data.Currencies = _service.GetCurrencies();
 
@@ -43,6 +44,8 @@ namespace STARK_Project.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency)
         {
             if (_userId != null)
@@ -51,6 +54,25 @@ namespace STARK_Project.Controllers
                 return RedirectToAction("Index", new {currency = "PLN"});
             }
             return RedirectToAction("Index", new { currency = "PLN" });
+        }
+
+        public IActionResult Search(string cryptocurrency, string currency = "PLN")
+        {
+            var data = new SummaryViewModel();
+            data.CryptoModel = _service.GetCryptocurrenciesInfoAsync(currency).Result;
+
+            if (!String.IsNullOrEmpty(cryptocurrency))
+            {
+                data.Cryptocurrencies = _dbService.GetMatchingCryptoNames(cryptocurrency).Result;
+            }
+            else
+            {
+                data.Cryptocurrencies = _service.GetRankingDataAsync(10, currency).Result;
+            }
+            data.Currencies = _service.GetCurrencies();
+            ViewBag.IsUserLoggedIn = _userId != null;
+
+            return View("Index", data);
         }
     }
 }

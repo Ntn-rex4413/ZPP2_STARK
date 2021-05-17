@@ -26,6 +26,8 @@ namespace STARK_Project.Controllers
             _dbService = dbService;
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
+
+        [HttpGet]
         public async Task<IActionResult> Index(string currency = "USD")
         {
             if (false)
@@ -55,6 +57,8 @@ namespace STARK_Project.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveFromWatchList(string cryptocurrency = "BTC", string currency = "USD")
         {
             if (_userId != null)
