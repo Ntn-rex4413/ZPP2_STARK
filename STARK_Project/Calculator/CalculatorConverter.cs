@@ -7,7 +7,7 @@ using STARK_Project.DBServices;
 
 namespace STARK_Project.Calculator
 {
-    public class CalculatorConverter
+    public class CalculatorConverter : ICalculator
     {
         private IDbService _dbService;
         private ICryptoService _cryptoService;
@@ -47,7 +47,7 @@ namespace STARK_Project.Calculator
                     var currencyLeftInfo = _cryptoService.GetCryptocurrencyInfoAsync(currencyLeft, tempValue).Result;
                     var currencyRightInfo = _cryptoService.GetCryptocurrencyInfoAsync(currencyRight, tempValue).Result;
                     var x = currencyLeftInfo.Price * valueLeft;
-                    valueRight = currencyRightInfo.Price * x;
+                    valueRight = x / currencyRightInfo.Price;
                     break;
                 }
                 case (true, false):
@@ -61,15 +61,15 @@ namespace STARK_Project.Calculator
                     var tempValue = "ETH";
                     var currencyLeftInfo = _cryptoService.GetCryptocurrencyInfoAsync(tempValue, currencyLeft).Result;
                     var currencyRightInfo = _cryptoService.GetCryptocurrencyInfoAsync(tempValue, currencyRight).Result;
-                    var x = currencyLeftInfo.Price * valueLeft;
-                    valueRight = currencyRightInfo.Price * x;
+                    var x = currencyRightInfo.Price * valueLeft;
+                    valueRight = x / currencyLeftInfo.Price;
                     break;
                 }
                 case (false, true):
                 {
                     var cryptocurrencyRightInfo =
                         _cryptoService.GetCryptocurrencyInfoAsync(currencyRight, currencyLeft).Result;
-                    valueRight = cryptocurrencyRightInfo.Price * valueLeft;
+                    valueRight = valueLeft / cryptocurrencyRightInfo.Price;
                     break;
                 }
             }

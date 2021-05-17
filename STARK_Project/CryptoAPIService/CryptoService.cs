@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.WebSockets;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -28,6 +29,7 @@ namespace STARK_Project.CryptoAPIService
         private static readonly string _dailyHistoricalDataSubUrl = "data/v2/histoday";
         private static readonly string _hourlyHistoricalDataSubUrl = "data/v2/histohour";
         private static readonly string _minuteHistoricalDataSubUrl = "data/v2/histominute";
+        private static readonly string _rankingDataSubUrl = "data/top/totalvolfull";
 
         private HttpClient _client = new HttpClient();
 
@@ -50,6 +52,8 @@ namespace STARK_Project.CryptoAPIService
             CryptocurrenciesNames = GetCryptocurrenciesAsync().Result;
         }
 
+    
+
         /// <summary>
         /// add new values to dictionary
         /// </summary>
@@ -58,6 +62,28 @@ namespace STARK_Project.CryptoAPIService
             CurrenciesNames.Add("PLN", "Polski złoty");
             CurrenciesNames.Add("EUR", "Euro");
             CurrenciesNames.Add("USD", "United States dollar");
+        }
+
+        public async Task<Dictionary<string, string>> GetRankingDataAsync(int limit, string currency)
+        {
+            var result = new Dictionary<string, string>();
+            var parameters = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("limit", limit.ToString()),
+                new KeyValuePair<string, string>("tsym", currency)
+            };
+
+            var request = await GetResponse(_baseURL + _rankingDataSubUrl, parameters);
+            if (request.IsSuccessStatusCode)
+            {
+                var data = JsonConvert.DeserializeObject<CryptoRankingModel>(await request.Content.ReadAsStringAsync());
+                foreach (var coin in data.Data)
+                {
+                    result.Add(coin.CoinInfo.Name, coin.CoinInfo.FullName);
+                }
+            }
+            return result;
+
         }
 
         public async Task<CryptoHistoricalData> GetHistoricalData(HistoricalDataTypes type, string symbol, string currencySymbol, int? limit, int? aggregate)
@@ -101,7 +127,7 @@ namespace STARK_Project.CryptoAPIService
             }
             return result;
         }
-
+        
         /// <summary>
         /// return currencies dictionary
         /// </summary>
@@ -196,6 +222,8 @@ namespace STARK_Project.CryptoAPIService
                     return _dailyHistoricalDataSubUrl;
             }
         }
+
+
     }
 }
 

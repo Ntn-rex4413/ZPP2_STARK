@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
@@ -11,6 +12,7 @@ using STARK_Project.Models;
 
 namespace STARK_Project.Controllers
 {
+    [Authorize]
     public class SubscriptionsController : Controller
     {
         private readonly ICryptoService _service;
@@ -24,6 +26,8 @@ namespace STARK_Project.Controllers
             _dbService = dbService;
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
+
+        [HttpGet]
         public async Task<IActionResult> Index(string currency = "USD")
         {
             if (false)
@@ -53,6 +57,8 @@ namespace STARK_Project.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveFromWatchList(string cryptocurrency = "BTC", string currency = "USD")
         {
             if (_userId != null)

@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Runtime.Serialization;
 using STARK_Project.DatabaseModel;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using STARK_Project.NotificationServices;
 
@@ -30,6 +31,7 @@ namespace STARK_Project.Controllers
             _userId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
 
+        [HttpGet]
         public IActionResult Index(string cryptocurrency = "BTC", string currency = "USD")
         {
             var data = new DetailsViewModel();
@@ -78,6 +80,9 @@ namespace STARK_Project.Controllers
             return dtDateTime;
         }
 
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency = "BTC", string currency = "USD")
         {
             if (_userId != null)
@@ -88,10 +93,12 @@ namespace STARK_Project.Controllers
             return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
         }
 
+        [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
         {
-            // TO-DO: może przydać się walidacja
+            // TODO: może przydać się walidacja
 
             if (_userId != null)
             {
@@ -110,15 +117,18 @@ namespace STARK_Project.Controllers
                         notifMessage = $"The price of {symbol} has risen above {value}.";
                     }
                 }
-                await _dbService.AddConditionAsync(_userId, symbol, condition);
+               condition = await _dbService.AddConditionAsync(_userId, symbol, condition);
 
                 // added for notification
-                _notificationService.CreateConditionNotify(_userId, condition);
+                _notificationService.CreateConditionNotifyTresholdMax(_userId, condition);
 
             }
             return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
         }
 
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveNotification(int conditionId, string currentCrypto, string currentCurrency)
         {
             if (_userId != null)
@@ -129,7 +139,7 @@ namespace STARK_Project.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCurrencyConditions(string currencySymbol)
+        public IActionResult GetCurrencyConditions(string currencySymbol)
         {
             var currencyConditions = _dbService.GetConditions(_userId).Where(x => x.Cryptocurrency.Symbol == currencySymbol).ToList();
 

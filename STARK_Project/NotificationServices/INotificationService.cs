@@ -9,6 +9,6 @@ namespace STARK_Project.NotificationServices
 {
     public interface INotificationService
     {
-        void CreateConditionNotify(string userId, Condition condition);
+        void CreateConditionNotifyTresholdMax(string userId, Condition condition);
     }
 }
