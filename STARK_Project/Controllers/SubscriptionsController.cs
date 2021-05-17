@@ -68,7 +68,10 @@ namespace STARK_Project.Controllers
             }
             return RedirectToAction("Index", new { currency = currency });
         }
-
+        public IActionResult Alerts()
+        {
+            return View();
+        }
 
     }
 }
