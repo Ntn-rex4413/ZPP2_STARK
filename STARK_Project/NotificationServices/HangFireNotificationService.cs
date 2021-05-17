@@ -16,12 +16,12 @@ namespace STARK_Project.NotificationServices
         private ICryptoService _cyptoService;
         private readonly IRecurringJobManager _manager;
         private readonly IEmailService _emailService;
-
+        private readonly string _email = "START@project.com";
 
 
         private static readonly string _currency = "USD";
-  
-       
+
+
         //public HangFireNotificationService(IDbService dbService, ICryptoService cyptoService)
         //{
         //    _dbService = dbService;
@@ -41,10 +41,10 @@ namespace STARK_Project.NotificationServices
         public void CreateConditionNotifyTresholdMax(string userId, Condition condition)
         {
             var jobId = GetUniqueJobId(userId);
-            _manager.AddOrUpdate(jobId, ()=> IsMaxTresholdExceeded(userId, 
-                condition.TresholdMax, 
-                condition.Cryptocurrency.Symbol, 
-                jobId), 
+            _manager.AddOrUpdate(jobId, () => IsMaxTresholdExceeded(userId,
+                condition.TresholdMax,
+                condition.Cryptocurrency.Symbol,
+                jobId),
                 "* * * * *");
 
         }
@@ -55,8 +55,12 @@ namespace STARK_Project.NotificationServices
             Console.WriteLine($"coin info {coinInfo}");
             if (coinInfo.Price >= value)
             {
+                var message = TresholdMaxMesssage(value, symbol);
+                var userEmail = _dbService.GetUserEmail(userId);
+                await _emailService.SendEmail(_email, userEmail, "Max treshold was exceeded!", message);
+
                 Console.WriteLine("Spelniono warunek!");
-                await _dbService.AddNotification(userId, TresholdMaxMesssage(value, symbol));
+                await _dbService.AddNotification(userId, message);
                 RecurringJob.RemoveIfExists(jobId);
             }
         }
@@ -78,12 +82,20 @@ namespace STARK_Project.NotificationServices
             Console.WriteLine($"coin info {coinInfo}");
             if (coinInfo.Price <= value)
             {
+                var message = TresholdMinMesssage(value, symbol);
+                var userEmail = _dbService.GetUserEmail(userId);
+                await _emailService.SendEmail(_email, userEmail, "Min treshold was exceeded!", message);
+
                 Console.WriteLine("Spelniono warunek!");
-                await _dbService.AddNotification(userId, TresholdMaxMesssage(value, symbol));
+                await _dbService.AddNotification(userId, message);
                 RecurringJob.RemoveIfExists(jobId);
             }
         }
 
+        private string TresholdMinMesssage(double value, string symbol)
+        {
+            return $"Treshold min: {value} has benn exceeded in {symbol} cryptocurrency!";
+        }
 
         private string GetUniqueJobId(string userId)
         {
