@@ -278,7 +278,92 @@ Adresy API, do których wysyłane są zapytania objęte przez powyższe metody, 
 
 #### Specyfikacja interfejsu graficznego
 
-Interfejs graficzny zrealizowany został w oparciu o pliki widoków *.cshtml* napisanych z wykorzystaniem składni Razor ()
+Interfejs graficzny zrealizowany został w oparciu o pliki widoków *.cshtml* napisanych z wykorzystaniem składni Razor, co pozwala na sterowanie generowaniem kodu HTML na podstawie odwołań osadzonych w języku C#. Dodatkowo zastosowano bilbliotekę stylów CSS "" i skryptów odpowiedzialnych za animacje elementów. Tak przygotowane strony wysyłane są przez serwer aplikacji i prezentowane użytkownikowi za pośrednictwem przeglądarki.
+
+Podczas odwiedzania dowolnej ze stron wyświetlane są paski nawigacyjne pozwalające użytkownikowi na przechodzenie między poszczególnymi panelami, w tym:
+
+- panelów rejestracji i logowania,
+- panelu startowego aplikacji,
+- panelu informacji szczegółowych o wybranej kryptowalucie,
+- panelu listy obserwowanych kryptowalut (możliwe tylko po zalogowaniu),
+- panelu przelicznika kryptowalut,
+- panelu kanału wiadomości (RSS),
+
+Interfejs obejmuje następujące strony aplikacji:
+
+1) Stronę startową, przedstawioną na rysunku 3.5.
+
+![]()
+
+<div style="text-align: center"> Rysunek 3.5. - Strona startowa programu </div>
+
+Po wejściu na stronę wyświetlana jest lista najpopularniejszych w danej chwili kryptowalut. Z tego poziomu użytkownik może, po naciśnięciu przycisku "Details" danej pozycji przejść do strony szczegółowych informacji o danej walucie.
+
+Po wpisaniu frazy w polu wyszukiwania w górnym menu nawigacyjnym lista najpopularniejszych kryptowalut zastąpiona zostaje listą kryptowalut zawierających w nazwie bądź symbolu wpisaną przez użytkownika frazę.
+
+2) Stronę logowania, przedstawioną na rysunku 3.6.
+
+![]()
+
+<div style="text-align: center"> Rysunek 3.6. - Strona logowania </div>
+
+Za pośrednictwem tej strony użytkownik posiadający konto może zalogować się w aplikacji, uzyskując dostęp do wszystkich jej funkcjonalności. Jeśli nie posiada konta, może również przejść do rejestracji.
+
+3) Stronę rejestracji, przedstawioną na rysunku 3.7.
+
+![]()
+
+<div style="text-align: center"> Rysunek 3.7. - Strona rejestracji </div>
+
+Za pośrednictwem tej strony użytkownik może utworzyć konto w aplikacji podając wymagane przez formularz informacje.
+
+4) Stronę danych szczegółowych wybranej kryptowaluty, przedstawioną na rysunku 3.8.
+
+![]()
+
+<div style="text-align: center"> Rysunek 3.8. - Strona informacji szczegółowych </div>
+
+Dostęp do tej strony użytkownik może uzyskać poprzez:
+
+- przycisk "Details" jednej z pozycji listy najpopularniejszych kryptowalut,
+- przycisk "Details" jednej z pozycji listy będącej otrzymanej w wyniku skorzystania z pola wyszukiwania na górnym pasku,
+- przycisk "Details" jednej z pozycji z listy wyświetlanej na stronie "Subscriptions" (dostępna tylko dla użytkowników zalogowanych, omówiona w dalszej części).
+
+Strona szczegółowych informacji daje każdemu użytkownikowi wgląd w takie informacje, jak aktualna cena kryptowaluty, zmiana jej jako wartości pieniężnej oraz procentowej w różnych okresach czasu oraz czas ostatniej aktualizacji wspomnianych informacji. Na wykresie przedstawiane są natomiast wartości *Open, High, Low, Close* ceny kryptowaluty z dni poprzedzających wizytę na stronie.
+
+Użytkownicy zalogowani mają ponadto możliwość skonfigurowania powiadomień związanych z przekroczeniem pewnej wartości (powyżej/poniżej) ceny kryptowaluty. Użytkownicy niezalogowani w przypadku chęci skorzystania z tej funkcjonalności przekierowani zostaną automatycznie na ekran logowania.
+
+5) Stronę obserwowanych kryptowalut, przedstawioną na rysunku 3.9.
+
+![]()
+
+<div style="text-align: center"> Rysunek 3.9. - Strona obserwowanych kryptowalut </div>
+
+Dostęp do tej strony posiadają jedynie użytkownicy zalogowani. Posiada ona listę zawierającą jedynie kryptowaluty dodane przez użytkownika za pomocą przycisku "Obserwuj", z poziomu strony startowej lub danych szczegółowych. Każda z pozycji listy jest wzbogacona o aktualną cenę kryptowaluty. Podobnie, jak w przypadku strony startowej, naciśnięcie przycisku "Details" dowolnej z pozycji przekieruje użytkownika na stronę danych szczegółowych.
+
+Kryptowalutę z listy obserwowanych użytkownik może usunąć poprzez naciśnięcie przycisku "Odobserwuj".
+
+6) Stronę przelicznika kryptowalut, przedstawioną na rysunku 3.10.
+
+![]()
+
+<div style="text-align: center"> Rysunek 3.10. - Strona przelicznika kryptowalut </div>
+
+Dostęp do strony uzyskać może każdy użytkownik, po wybraniu zakładki "Kalkulator" z bocznego paska nawigacyjnego.
+
+Po wpisaniu interesujących użytkownika wartości w pola formularza; odpowiednio: ilości, kryptowaluty, docelowej waluty tradycyjnej, zostanie wyświetlony wynik przeliczenia.
+
+7) Stronę wiadomości, przedstawioną na rysunku 3.11.
+
+![]()
+
+<div style="text-align: center"> Rysunek 3.11. - Strona wiadomości na temat kryptowalut </div>
+
+Dostęp do strony uzyskać może każdy użytkownik po wybraniu zakładki "Kryptonews" z bocznego paska nawigacyjnego.
+
+
+
+
 
 #### Struktura komponentowa budowanego projektu
 
