@@ -274,6 +274,12 @@ W ramach klasy-serwisu **CryptoService.cs** zaimplementowano obsługę następuj
 
 Adresy API, do których wysyłane są zapytania objęte przez powyższe metody, jak również klucz aplikacji przechowywane są w prywatnych polach klasy **CryptoService**.
 
+
+
+#### Specyfikacja interfejsu graficznego
+
+Interfejs graficzny zrealizowany został w oparciu o pliki widoków *.cshtml* napisanych z wykorzystaniem składni Razor ()
+
 #### Struktura komponentowa budowanego projektu
 
 [//diagram komponentów]
