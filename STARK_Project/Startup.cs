@@ -1,3 +1,5 @@
+using Hangfire;
+using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,10 +13,13 @@ using STARK_Project.CryptoAPIService;
 using STARK_Project.Data;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
+using STARK_Project.EmailServices;
+using STARK_Project.NotificationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using STARK_Project.Calculator;
 
 namespace STARK_Project
 {
@@ -36,8 +41,19 @@ namespace STARK_Project
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddHttpContextAccessor();
 
+            //services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection"))
+                    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                    .UseSimpleAssemblyNameTypeSerializer()
+                    .UseRecommendedSerializerSettings());
+            services.AddHangfireServer();
+
             services.AddScoped<IDbService, ApplicationDbService>();
             services.AddScoped<ICryptoService, CryptoService>();
+            services.AddScoped<IEmailService, SMTPService>();
+
+
+            services.AddScoped<INotificationService, HangFireNotificationService>();
             services.AddHttpContextAccessor();
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -45,6 +61,9 @@ namespace STARK_Project
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            //calculator
+            services.AddScoped<ICalculator, CalculatorConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,12 +88,22 @@ namespace STARK_Project
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseHangfireDashboard();
+            var monitor = Hangfire.JobStorage.Current.GetMonitoringApi();
+            if (monitor.ProcessingCount() > 0)
+            {
+                foreach (var job in monitor.ProcessingJobs(0, (int)monitor.ProcessingCount()))
+                {
+                    BackgroundJob.Requeue(job.Key);
+                }
+            }
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Summary}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapHangfireDashboard();
             });
         }
     }

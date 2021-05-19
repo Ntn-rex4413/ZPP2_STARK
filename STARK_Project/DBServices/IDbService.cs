@@ -16,13 +16,15 @@ namespace STARK_Project.DBServices
         Task<bool> ClearWatchlist(string userId);
         Task<ICollection<Cryptocurrency>> GetWatchlist(string userId);
 
-        Task<bool> AddConditionAsync(string userId, string symbol, Condition condition);
+        Task<Condition> AddConditionAsync(string userId, string symbol, Condition condition);
         Task<bool> RemoveConditionAsync(string userId, int conditionId);
         ICollection<Condition> GetConditions(string userId);
 
         ICollection<Notification> GetNotifications(string userId);
         Task<bool> AddNotification(string userId, string message);
         Task<bool> RemoveNotification(string userId, string message);
+        string GetUserEmail(string userId);
+        Task<Dictionary<string, string>> GetMatchingCryptoNames(string phrase);
 
     }
 }

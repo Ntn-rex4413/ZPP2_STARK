@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentEmail.Core;
+using Microsoft.EntityFrameworkCore;
 using STARK_Project.Data;
 using STARK_Project.DatabaseModel;
 using System;
@@ -26,10 +27,11 @@ namespace STARK_Project.DBServices
 
         public async Task<bool> AddNotification(string userId, string message)
         {
-            var user = GetUser(userId);
+            var user = await _context.Users.Include(x => x.Notifications).FirstAsync(x => x.Id == userId);
             if (user is null) return false;
 
             user.Notifications.Add(new Notification { Message = message });
+
             await _context.SaveChangesAsync();
             return true;
         }
@@ -50,19 +52,19 @@ namespace STARK_Project.DBServices
             //return GetUser(userId).Conditions;
         }
 
-        public async Task<bool> AddConditionAsync(string userId, string symbol, Condition condition)
+        public async Task<Condition> AddConditionAsync(string userId, string symbol, Condition condition)
         {
             var user = GetUser(userId);
-            if (user is null) return false;
+      
 
-            var cyptoSymbol = await _context.Cryptocurrenies.FirstOrDefaultAsync(x => x.Symbol == symbol);
-            if (cyptoSymbol is null) return false;
+            var cyptoSymbol = await _context.Cryptocurrenies.FirstAsync(x => x.Symbol == symbol);
+
 
             condition.Cryptocurrency = cyptoSymbol;
             condition.User = user;
             await _context.Conditions.AddAsync(condition);
             await _context.SaveChangesAsync();
-            return true;
+            return condition;
         }
         public async Task<bool> RemoveConditionAsync(string userId, int conditionId)
         {
@@ -192,7 +194,12 @@ namespace STARK_Project.DBServices
         {
             return  _context.Users.FirstOrDefault(x => x.Id == userId);
         }
+        public async Task<Dictionary<string, string>> GetMatchingCryptoNames(string phrase)
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            await _context.Cryptocurrenies.Where(x => x.Symbol.Contains(phrase) || x.Name.Contains(phrase)).ForEachAsync(x => result.Add(x.Symbol, x.Name));
+            return result;
+        }
 
-     
     }
 }
