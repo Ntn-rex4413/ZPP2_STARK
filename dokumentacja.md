@@ -209,6 +209,14 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
   - AspNetUsers,
   - AspNetTokens,
 
+  ![](./docimages/db_aspNetTables.png)
+
+  <div style="text-align: center">Rysunek 3.2. - Diagram tabel Entity Framework / Identity Framework</div>
+
+  
+
+  
+
 - **Tabele reprezentujące modele własne aplikacji**:
 
   - Conditions - warunki określające, kiedy wysłane powinno zostać powiadomienie,
