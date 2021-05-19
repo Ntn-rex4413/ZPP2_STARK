@@ -258,7 +258,21 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
 
 
 
-[//diagram encji bazy danych]
+#### Specyfikacja interfejsu API CryptoCompare i zakresu jego obsługi w aplikacji
+
+CryptoCompare jest serwisem dostarczającym szeroką gamę informacji na temat rynku kryptowalut. Udostąpnia on API pozwalające na pobieranie tych informacji poprzez zapytania. Dokładną dokumentację API CyptoCompare znaleźć można pod adresem: https://min-api.cryptocompare.com/documentation
+
+Każde z zapytań wymaga podania przez klienta klucza uzyskanego w procesie rejestracji na stronie. Zapytania wykonywane są po stronie klienta przez narzędzie HttpUtility.
+
+W ramach klasy-serwisu **CryptoService.cs** zaimplementowano obsługę następujących zapytań:
+
+- pobierania słownika rekordów postaci *Symbol - Nazwa* jako listy dostępnych kryptowalut, objętego metodą **GetCryptoCurrenciesAsync()**,
+- pobierania szczegółowych informacji na temat kryptowalut wraz z kursami ich wymiany na walutę tradycyjną objętego metodą **GetCryptocurrenciesInfoAsync(** *string cryptoSymbol* **)**,
+- pobierania szczegółowych informacji na temat pojedynczej kryptowaluty wraz z kursem jej wymiany na walutę tradycyjną objętego metodą **GetCryptocurrencyInfoAsync(** *string cryptoSymbol*, *string currencySymbol*),
+- pobierania danych historycznych zmian OHLCV (*ang. - Open, High, Low, Close, Volume*) podanej kryptowaluty, objętego metodą **GetHistoricalData(** *[...]* **)**,
+- pobierania rankingu najpopularniejszych kryptowalut objętego metodą **GetRankingDataAsync()**,
+
+Adresy API, do których wysyłane są zapytania objęte przez powyższe metody, jak również klucz aplikacji przechowywane są w prywatnych polach klasy **CryptoService**.
 
 #### Struktura komponentowa budowanego projektu
 
