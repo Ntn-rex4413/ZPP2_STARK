@@ -239,6 +239,7 @@ Foldery:
 - DBServices - folder zawierający interfejs oraz implementację serwisu obsługi bazy danych,
 - Data/Migrations - folder zawierający pliki zmian-migracji bazy danych,
 - DatabaseModel - folder zawierający pliki klas-encji bazy danych,
+- EmailServices - folder zawierający interfejs oraz implementację serwisu obsługi wiadomości email,
 - Models - folder zawierający pliki klas wykorzystywanych do komunikacji kontrolerów z widokami,
 - NotificationServices - folder zawierający interfejs oraz implementację serwisu obsługi powiadomień,
 - Properties - folder zawierający pliki .json obejmujące konfiguracje zależności i uruchamiania,
