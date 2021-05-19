@@ -192,6 +192,10 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 [//diagram klas]
 
+---
+
+
+
 #### Specyfikacja bazy danych
 
 Dane aplikacji przechowywane są w bazie SQL. Komunikacja z bazą i obsługa zapytań po stronie aplikacji realizowana jest przez Microsoft Entity Framework.
@@ -256,6 +260,8 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
 
 <div style="text-align: center">Rysunek 3.4. - Diagram tabel HangFire</div>
 
+---
+
 
 
 #### Specyfikacja interfejsu API CryptoCompare i zakresu jego obsługi w aplikacji
@@ -273,6 +279,8 @@ W ramach klasy-serwisu **CryptoService.cs** zaimplementowano obsługę następuj
 - pobierania rankingu najpopularniejszych kryptowalut objętego metodą **GetRankingDataAsync()**,
 
 Adresy API, do których wysyłane są zapytania objęte przez powyższe metody, jak również klucz aplikacji przechowywane są w prywatnych polach klasy **CryptoService**.
+
+---
 
 
 
@@ -369,7 +377,7 @@ Dostęp do strony uzyskać może każdy użytkownik po wybraniu zakładki "Krypt
 
 [//diagram komponentów]
 
-[//diagram instalacji / deployment diagram]
+
 
 
 
@@ -423,7 +431,7 @@ Pliki:
 - ScaffoldingReadMe.txt - plik readme generowany przez Entity Framework,
 - appsettings.Development.json oraz appsettings.json - pliki konfiguracyjne programu,
 
-[//instrukcja kompilacji/instalacji]
+
 
 ### 5. Testy systemu
 
