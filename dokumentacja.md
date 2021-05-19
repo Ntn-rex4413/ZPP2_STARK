@@ -255,3 +255,10 @@ Pliki:
 - appsettings.Development.json oraz appsettings.json - pliki konfiguracyjne programu,
 
 [//instrukcja kompilacji/instalacji]
+
+### 5. Testy systemu
+
+Branch "**tests**" repozytorium zawiera aktualną wersję projektu obecną w branchu "**main**" uzupełnioną o projekty zawierające testy aplikacji:
+
+- STARK_SeleniumTests - folder zawierający kod testów zrealizowanych przy wykorzystaniu Selenium,
+- STARK_UnitTests - folder zawierający kod testów jednostkowych,
