@@ -240,7 +240,6 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
 
 
 - **Tabele serwisu HangFire**:
-
   - HangFire.AggregatedCounter,
   - HangFire.Counter,
   - HangFire.Hash,
@@ -253,7 +252,11 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
   - HangFire.Set,
   - HangFire.State,
 
-  
+![](./docimages/db_hangFireTables.png)
+
+<div style="text-align: center">Rysunek 3.4. - Diagram tabel HangFire</div>
+
+
 
 [//diagram encji bazy danych]
 
