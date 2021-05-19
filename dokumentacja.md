@@ -192,7 +192,45 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 [//diagram klas]
 
-[//specyfikacja bazy danych]
+#### Specyfikacja bazy danych
+
+Dane aplikacji przechowywane są w bazie SQL. Komunikacja z bazą i obsługa zapytań po stronie aplikacji realizowana jest przez Microsoft Entity Framework.
+
+Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
+
+- ##### **Tabele Entity Framework / Identity Framework**:
+
+  - _EFMigrationsHistory,
+  - AspNetRoleClaims,
+  - AspNetRoles,
+  - AspNetUserClaims,
+  - AspNetUserLogins,
+  - AspNetUserRoles,
+  - AspNetUsers,
+  - AspNetTokens,
+
+- **Tabele reprezentujące modele własne aplikacji**:
+
+  - Conditions - warunki określające, kiedy wysłane powinno zostać powiadomienie,
+  - CryptocurrencyUser - tabela techniczna łącząca użytkownika z listą obserwowanych przez niego kryptowalut,
+  - Cryptocurrenies - tabela zawierająca sygnatury oraz pełne nazwy kryptowalut,
+  - Notifications - tabela zawierająca dane powiadomień,
+
+- **Tabele serwisu HangFire**:
+
+  - HangFire.AggregatedCounter,
+  - HangFire.Counter,
+  - HangFire.Hash,
+  - HangFire.Job,
+  - HangFire.JobParameter,
+  - HangFire.JobQueue,
+  - HangFire.List,
+  - HangFire.Schema,
+  - HangFire.Server,
+  - HangFire.Set,
+  - HangFire.State,
+
+  
 
 [//diagram encji bazy danych]
 
@@ -262,3 +300,4 @@ Branch "**tests**" repozytorium zawiera aktualną wersję projektu obecną w bra
 
 - STARK_SeleniumTests - folder zawierający kod testów zrealizowanych przy wykorzystaniu Selenium,
 - STARK_UnitTests - folder zawierający kod testów jednostkowych,
+
