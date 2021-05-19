@@ -201,13 +201,22 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
 - ##### **Tabele Entity Framework / Identity Framework**:
 
   - _EFMigrationsHistory,
+
   - AspNetRoleClaims,
+
   - AspNetRoles,
+
   - AspNetUserClaims,
+
   - AspNetUserLogins,
+
   - AspNetUserRoles,
+
   - AspNetUsers,
+
   - AspNetTokens,
+
+    
 
   ![](./docimages/db_aspNetTables.png)
 
@@ -223,6 +232,12 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
   - CryptocurrencyUser - tabela techniczna łącząca użytkownika z listą obserwowanych przez niego kryptowalut,
   - Cryptocurrenies - tabela zawierająca sygnatury oraz pełne nazwy kryptowalut,
   - Notifications - tabela zawierająca dane powiadomień,
+
+![](./docimages/db_cryptoTables.png)
+
+<div style="text-align: center">Rysunek 3.3. - Diagram tabel obiektów biznesowych aplikacji </div>
+
+
 
 - **Tabele serwisu HangFire**:
 
