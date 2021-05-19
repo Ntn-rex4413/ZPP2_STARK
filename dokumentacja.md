@@ -179,6 +179,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 - git - wersjonowanie oprogramowania, repozytorium projektu na platformie GitHub,
 - Microsoft Visual Studio - środowisko programistyczne wykorzystywane na każdym etapie implementacji,
 - API Cryptocompare - interfejs pozwalający na pozyskiwanie aktualnych informacji o kryptowalutach,
+- Microsoft SQL Server - baza danych aplikacji,
 - Microsoft Entity Framework - obsługa i wymiana informacji z bazą danych,
 - Microsoft.AspNetCore.Identity - framework wykorzystany do implementacji autentyfikacji i autoryzacji aplikacji,
 - Hangfire - narzędzie wykorzystane w ramach obsługi powiadomień; zadań "fire-and-forget", opóźnionych i powtarzanych,
