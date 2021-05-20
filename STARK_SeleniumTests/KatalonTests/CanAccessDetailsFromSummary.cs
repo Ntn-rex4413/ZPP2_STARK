@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 
 namespace STARK_SeleniumTests.KatalonTests
 {
@@ -43,8 +43,10 @@ namespace STARK_SeleniumTests.KatalonTests
         public void TheCanAccessDetailsFromSummaryTest()
         {
             driver.Navigate().GoToUrl("https://localhost:44311/");
-            driver.FindElement(By.XPath("//div[@id='content']/div/div/div[19]/div/div/div[2]/div/a")).Click();
-            driver.FindElement(By.XPath("//div[@id='content']/div/div/div[5]/div[3]/div/div/div/div/div[2]")).Click();
+            driver.FindElement(By.XPath("//div[@id='content']/div/div/div[2]/div/div/div")).Click();
+            driver.FindElement(By.LinkText("Details")).Click();
+            //driver.FindElement(By.XPath("//div[@id='content']/div/div/div")).Click();
+            //driver.FindElement(By.XPath("//div[@id='content']/div/div/div/h1")).Click();
         }
         private bool IsElementPresent(By by)
         {
