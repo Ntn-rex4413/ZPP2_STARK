@@ -1,17 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using STARK_Project.CryptoApiModel;
-
 using STARK_Project.CryptoAPIService;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
 using STARK_Project.Models;
-using System.Diagnostics;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 
 namespace STARK_Project.Controllers
