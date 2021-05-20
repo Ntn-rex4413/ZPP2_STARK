@@ -201,5 +201,9 @@ namespace STARK_Project.DBServices
             return result;
         }
 
+        public string GetUserEmail(string userId)
+        {
+           return _context.Users.First(x => x.Id == userId).Email;
+        }
     }
 }
