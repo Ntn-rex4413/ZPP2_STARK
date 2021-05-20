@@ -55,7 +55,7 @@ namespace STARK_SeleniumTests
         {
             List<IWebElement> buttons = webDriver.FindElements(By.LinkText("Details")).ToList();
 
-            Assert.AreEqual(26, buttons.Count);
+            Assert.AreEqual(10, buttons.Count);
         }
 
         [TearDown]
