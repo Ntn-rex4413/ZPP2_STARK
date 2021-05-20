@@ -36,7 +36,7 @@ namespace STARK_SeleniumTests
         [Test]
         public void CryptocurrencyPrice_Displayed_IsTrue()
         {
-            IWebElement label = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[3]/div[1]/div/div/div/div[1]/div[2]"));
+            IWebElement label = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[4]/div[1]/div/div/div/div[1]/div[2]"));
 
             Assert.That(label.Displayed, Is.True);
         }
@@ -44,7 +44,7 @@ namespace STARK_SeleniumTests
         [Test]
         public void CryptocurrencyPriceIcon_Displayed_IsTrue()
         {
-            IWebElement icon = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[3]/div[1]/div/div/div/div[2]/i"));
+            IWebElement icon = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[4]/div[1]/div/div/div/div[2]/i"));
 
             Assert.That(icon.Displayed, Is.True);
         }
@@ -52,7 +52,7 @@ namespace STARK_SeleniumTests
         [Test]
         public void CryptocurrencyChart_Displayed_IsTrue()
         {
-            IWebElement chart = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[6]/div/div/div[2]/div/div/div/canvas[2]"));
+            IWebElement chart = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[7]/div/div/div[2]/div/div/div/canvas[2]"));
 
             Assert.That(chart.Displayed, Is.True);
         }

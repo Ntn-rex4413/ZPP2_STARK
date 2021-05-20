@@ -26,7 +26,7 @@ namespace STARK_SeleniumTests
 
             detailsLink.Click();
 
-            var label = webDriver.FindElement(By.XPath("/html/body/div[1]/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[1]/div[1]/div[1]/span[1]"));
+            var label = webDriver.FindElement(By.XPath("/html/body/div[1]/div[1]/div/div[2]/div[1]/div/div[1]"));
 
             Assert.That(label.Displayed, Is.True);
         }

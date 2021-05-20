@@ -35,8 +35,7 @@ namespace STARK_SeleniumTests
         {
             IWebElement element = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[3]/div/div/div[2]/div/a[2]"));
             element.Click();
-            element = webDriver.FindElement(By.XPath(
-                "/html/body/div[1]/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[1]/div[1]/div[1]/span[1]"));
+            element = webDriver.FindElement(By.XPath("/html/body/div[1]/div[1]/div/div[2]/div[1]/div/div[1]"));
 
             Assert.That(element.Displayed, Is.True);
         }
