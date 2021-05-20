@@ -26,19 +26,19 @@ namespace STARK_SeleniumTests
 
             detailsLink.Click();
 
-            var detailsLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[1]/h1")).Text;
+            var detailsLabel = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[1]/h1"));
 
-            Assert.AreEqual("BTC", detailsLabel);
+            Assert.That(detailsLabel.Displayed, Is.True);
         }
 
         [Test]
         public void BuySellButton_RedirectsCorrectly_IsTrue()
         {
-            IWebElement detailsLink = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[2]/div/a[2]"));
+            IWebElement detailsLink = webDriver.FindElement(By.XPath("//*[@id=\"content\"]/div/div/div[2]/div/div/div[2]/div/a[2]"));
 
             detailsLink.Click();
 
-            var label = webDriver.FindElement(By.XPath("/html/body/div[1]/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[1]/div[1]/div[1]/span[1]"));
+            var label = webDriver.FindElement(By.XPath("//*[@id=\"__APP\"]/div[1]/div/div[2]/div[1]/div/div[1]"));
 
             Assert.That(label.Displayed, Is.True);
         }
