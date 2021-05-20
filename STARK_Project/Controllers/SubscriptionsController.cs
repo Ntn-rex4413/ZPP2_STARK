@@ -12,7 +12,6 @@ using STARK_Project.Models;
 
 namespace STARK_Project.Controllers
 {
-    [Authorize]
     public class SubscriptionsController : Controller
     {
         private readonly ICryptoService _service;

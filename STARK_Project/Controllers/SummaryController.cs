@@ -43,7 +43,6 @@ namespace STARK_Project.Controllers
             return View(data);
         }
 
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency)

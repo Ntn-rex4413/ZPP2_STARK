@@ -80,7 +80,6 @@ namespace STARK_Project.Controllers
             return dtDateTime;
         }
 
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency = "BTC", string currency = "USD")
@@ -93,7 +92,6 @@ namespace STARK_Project.Controllers
             return RedirectToAction("Index", new { cryptocurrency = cryptocurrency, currency = currency });
         }
 
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
@@ -126,7 +124,6 @@ namespace STARK_Project.Controllers
             return View("Index", new { cryptocurrency = symbol, currency = currentCurrency });
         }
 
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveNotification(int conditionId, string currentCrypto, string currentCurrency)
