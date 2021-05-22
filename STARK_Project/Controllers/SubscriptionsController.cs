@@ -55,8 +55,6 @@ namespace STARK_Project.Controllers
             }
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveFromWatchList(string cryptocurrency = "BTC", string currency = "USD")
         {
             if (_userId != null)
