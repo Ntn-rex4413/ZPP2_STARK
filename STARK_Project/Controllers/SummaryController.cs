@@ -37,8 +37,6 @@ namespace STARK_Project.Controllers
             return View(data);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency)
         {
             if (_userId != null)
