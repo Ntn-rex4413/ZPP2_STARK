@@ -53,7 +53,7 @@ namespace STARK_SeleniumTests.KatalonTests
             driver.FindElement(By.Id("Input_Password")).SendKeys("Zpp2STARK!");
             driver.FindElement(By.XPath("//button[@type='submit']")).Click();
             driver.FindElement(By.XPath("//ul[@id='accordionSidebar']/li[3]/a/span")).Click();
-            driver.FindElement(By.LinkText("Kup / Sprzedaj")).Click();
+            //driver.FindElement(By.LinkText("Kup / Sprzedaj")).Click();
         }
         private bool IsElementPresent(By by)
         {
