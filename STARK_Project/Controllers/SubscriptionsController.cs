@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
@@ -56,8 +55,6 @@ namespace STARK_Project.Controllers
             }
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveFromWatchList(string cryptocurrency = "BTC", string currency = "USD")
         {
             if (_userId != null)
@@ -67,7 +64,10 @@ namespace STARK_Project.Controllers
             }
             return RedirectToAction("Index", new { currency = currency });
         }
-
+        public IActionResult Alerts()
+        {
+            return View();
+        }
 
     }
 }
