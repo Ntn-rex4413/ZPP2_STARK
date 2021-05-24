@@ -36,7 +36,7 @@ namespace STARK_UnitTests
 
             var data = service.GetCryptocurrenciesAsync().Result;
 
-            Assert.AreEqual(6570, data.Count);
+            Assert.AreEqual(6577, data.Count);
         }
 
         /// <summary>

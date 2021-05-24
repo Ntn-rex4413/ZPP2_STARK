@@ -21,19 +21,39 @@ namespace STARK_SeleniumTests.GlobalLayout
         }
 
         [Test]
-        public void AlertDropDown_Displayed_IsTrue()
+        public void AlertDropDown_Displayed_IsFalse()
         {
-            IWebElement element = webDriver.FindElement(By.XPath("//*[@id=\"alertsDropdown\"]"));
-
-            Assert.That(element.Displayed, Is.True);
+            IWebElement element;
+            bool result = false;
+            try
+            {
+                element = webDriver.FindElement(By.XPath("//*[@id=\"alertsDropdown\"]"));
+                result = element.Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                Assert.IsFalse(result);
+            }
+            
+            Assert.That(result, Is.False);
         }
 
         [Test]
-        public void MessagesDropDown_Displayed_IsTrue()
+        public void MessagesDropDown_Displayed_IsFalse()
         {
-            IWebElement element = webDriver.FindElement(By.XPath("//*[@id=\"messagesDropdown\"]"));
-
-            Assert.That(element.Displayed, Is.True);
+            IWebElement element;
+            bool result = false;
+            try
+            {
+                element = webDriver.FindElement(By.XPath("//*[@id=\"messagesDropdown\"]"));
+                result = element.Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                Assert.IsFalse(result);
+            }
+            
+            Assert.That(result, Is.False);
         }
 
         [Test]
