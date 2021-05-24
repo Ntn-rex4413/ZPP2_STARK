@@ -1,0 +1,12 @@
+X-Sender: START@project.com
+X-Receiver: anow2@mail.com
+MIME-Version: 1.0
+From: START@project.com
+To: anow2@mail.com
+Date: 24 May 2021 15:45:04 +0200
+Subject: Max treshold was exceeded!
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
+
+VHJlc2hvbGQgbWF4OiAwIGhhcyBiZW5uIGV4Y2VlZGVkIGluIEJUQyBjcnlwdG9jdXJy
+ZW5jeSE=
