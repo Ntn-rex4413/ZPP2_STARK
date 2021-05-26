@@ -377,11 +377,11 @@
                             </div>
                             @if (Model.CryptoModel.ChangePCTHour < 0)
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTHour%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Math.Round(Model.CryptoModel.ChangePCTHour, 5)%</div>
                             }
                             else
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTHour%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Math.Round(Model.CryptoModel.ChangePCTHour, 5)%</div>
                             }
                         </div>
                         <div class="col-auto">
@@ -403,11 +403,11 @@
                             </div>
                             @if (Model.CryptoModel.ChangePCT24Hour < 0)
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCT24Hour%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Math.Round(Model.CryptoModel.ChangePCT24Hour, 5)%</div>
                             }
                             else
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCT24Hour%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Math.Round(Model.CryptoModel.ChangePCT24Hour, 5)%</div>
                             }
                             @*<div class="h5 mb-0 font-weight-bold text-gray-800">+ 5%</div>*@
                         </div>
@@ -430,11 +430,11 @@
                             </div>
                             @if (Model.CryptoModel.ChangePCTDay < 0)
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CryptoModel.ChangePCTDay%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Math.Round(Model.CryptoModel.ChangePCTDay, 5)%</div>
                             }
                             else
                             {
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Model.CryptoModel.ChangePCTDay%</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">+ @Math.Round(Model.CryptoModel.ChangePCTDay, 5)%</div>
                             }
                             @*<div class="h5 mb-0 font-weight-bold text-gray-800">+ 5%</div>*@
                         </div>
