@@ -6,7 +6,7 @@
 
 ### 1. Charakterystyka projektu
 
-#### Cel i założenia [//v1, wzięte ze specyfikacji]
+#### Cel i założenia
 
 Celem jest utworzenie platformy dla osób inwestujących i zainteresowanych rynkiem kryptowalut. Jej zadaniem jest przedstawianie w przejrzysty i obrazowy sposób zmian wartości poszczególnych kryptowalut w czasie w oparciu o jak najaktualniejsze informacje. Ponadto, platforma udostępniać ma narzędzia do przeliczania kryptowalut na waluty tradycyjne w oparciu o aktualne kursy, co pozwoli na szybką analizę stanu obecnych i planowanych inwestycji.
 
