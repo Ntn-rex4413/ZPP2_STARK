@@ -204,6 +204,8 @@ Program zaprojektowano w oparciu o wyraźny podział na część frontendową i 
 
 
 
+
+
 Część backendowa realizuje poszczególne ze swoich zadań przez zaimplementowane serwisy:
 
 - ApplicationDbService - obsługa bazy danych,
