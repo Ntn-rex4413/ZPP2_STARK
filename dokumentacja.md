@@ -367,7 +367,7 @@ Po wpisaniu interesujących użytkownika wartości w pola formularza; odpowiedni
 
 <div style="text-align: center"> Rysunek 3.11. - Strona wiadomości na temat kryptowalut </div>
 
-Dostęp do strony uzyskać może każdy użytkownik po wybraniu zakładki "Kryptonews" z bocznego paska nawigacyjnego.
+Dostęp do strony uzyskać może każdy użytkownik po wybraniu zakładki "Crypto News" z bocznego paska nawigacyjnego.
 
 
 
