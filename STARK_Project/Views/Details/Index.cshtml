@@ -36,22 +36,23 @@
         <a href="https://www.binance.com/en/buy-sell-crypto" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-4">
             <i class="fas fa-money-bill-wave fa-sm text-white-50"></i> Kup / Sprzedaj
         </a>
-        <a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4" asp-controller="Details" asp-action="AddToWatchlist" asp-route-cryptocurrency="@Model.CryptoModel.FromSymbol" asp-route-currency="@Model.CryptoModel.ToSymbol">
-            <i class="fas fa-star fa-sm text-white-50"></i> Obserwuj
-        </a>
+        @*<a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4" asp-controller="Details" asp-action="AddToWatchlist" asp-route-cryptocurrency="@Model.CryptoModel.FromSymbol" asp-route-currency="@Model.CryptoModel.ToSymbol">
+                <i class="fas fa-star fa-sm text-white-50"></i> Obserwuj
+            </a>*@
         @*DO WYKORZYSTANIA W PRZYPADKU IMPLEMENTACJI ABY ZMINIC PRZYCISK POMIEDZY OBSERWOWANIE A ODOBSERWOWANIEM!!!!!!*@
-        @*@if (NOT ON WATCH)
-            {
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4">
-                    <i class="fas fa-star fa-sm text-white-50"></i> Obserwuj
-                </a>
-            }
-            else
-            {
-                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mr-4">
-                     <i class="fas fa-ban fa-sm text-white-50"></i> Odobserwuj
-                 </a>
-            }*@
+        @if (ViewBag.IsSubscribed == false)
+        {
+
+            <a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4" asp-controller="Details" asp-action="AddToWatchlist" asp-route-cryptocurrency="@Model.CryptoModel.FromSymbol" asp-route-currency="@Model.CryptoModel.ToSymbol">
+                <i class="fas fa-star fa-sm text-white-50"></i> Obserwuj
+            </a>
+        }
+        else
+        {
+            <a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4" asp-controller="Subscriptions" asp-action="RemoveFromWatchlist" asp-route-cryptocurrency="@Model.CryptoModel.FromSymbol" asp-route-currency="@Model.CryptoModel.ToSymbol">
+                <i class="fas fa-ban fa-sm text-white-50"></i> Odobserwuj
+            </a>
+        }
         <a href="" type="button" value="Refresh Page" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm mr-4">
             <i class="fas fa-sync-alt fa-sm text-white-50"></i> Aktualizuj
         </a>
@@ -71,8 +72,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="p-5">
-                                <form class="user" asp-action="" asp-controller="" 
->
+                                <form class="user" asp-action="" asp-controller="">
                                     <label id="symbol">@Model.CryptoModel.FromSymbol</label>
                                     <label id="currency">@Model.CryptoModel.ToSymbol</label>
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
@@ -82,7 +82,7 @@
                                     <div class="form-group">
                                         <select id="type" asp-items="@ViewBag.ConditionTypes" class="form-control">
                                             @*<option value="1">Procentowy</option>
-                                            <option value="2">Wartościowy</option>*@
+                                                <option value="2">Wartościowy</option>*@
                                         </select>
                                         <span class="text-danger"></span>
                                     </div>
@@ -93,9 +93,9 @@
                                     <div class="form-group">
                                         <select id="relative" asp-items="@ViewBag.ConditionRelativities" class="form-control">
                                             @*<option value="1">Wiecej</option>
-                                            <option value="2">Mniej</option>*@
+                                                <option value="2">Mniej</option>*@
                                         </select>
-                                        <span class="text-danger"></span>   
+                                        <span class="text-danger"></span>
                                     </div>
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Wartość
@@ -108,7 +108,7 @@
                                     <!-- Submit Button -->
                                     <div class="form-group">
                                         @*<button id="addNotifButton" type="submit" class="btn btn-success btn-user btn-block">Dodaj</button>*@
-                                        <input class="btn btn-success btn-block" id="addNotifButton" type="button" value="Dodaj"/>
+                                        <input class="btn btn-success btn-block" id="addNotifButton" type="button" value="Dodaj" />
                                     </div>
                                 </form>
                             </div>
@@ -138,8 +138,7 @@
                                                     }
                                                 </div>
                                                 <div class="col-auto">
-                                                    <a 
-                                                       class="btn btn-danger btn-circle btn-sm mr-2"
+                                                    <a class="btn btn-danger btn-circle btn-sm mr-2"
                                                        asp-action="RemoveNotification"
                                                        asp-controller="Details"
                                                        asp-route-conditionId="@condition.Id"
@@ -519,7 +518,7 @@
         <!-- Content Column -->
         <div class="col-lg-6 mb-4">
 
-            
+
         </div>
 
         <div class="col-lg-7 mb-4">
@@ -530,29 +529,29 @@
 </div>
 <!-- /.container-fluid -->
 
-@section scripts{ 
+@section scripts{
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $("#addNotifButton").click(function () {
-            var data = {
-                type: $("#type").val(),
-                relative: $("#relative").val(),
-                value: $("#value").val(),
-            };
+    <script>
+        $(document).ready(function () {
+            $("#addNotifButton").click(function () {
+                var data = {
+                    type: $("#type").val(),
+                    relative: $("#relative").val(),
+                    value: $("#value").val(),
+                };
 
-            $.post("/Details/AddNotification", {
-                symbol: $("#symbol").text(),
-                type: $("#type").val(),
-                relative: $("#relative").val(),
-                value: $("#threshold").val(),
-                currentCurrency: $("#currency").text()
+                $.post("/Details/AddNotification", {
+                    symbol: $("#symbol").text(),
+                    type: $("#type").val(),
+                    relative: $("#relative").val(),
+                    value: $("#threshold").val(),
+                    currentCurrency: $("#currency").text()
+                });
+
+                location.reload();
             });
-
-            location.reload();
         });
-    });
-</script>
+    </script>
 }
