@@ -343,7 +343,7 @@ Użytkownicy zalogowani mają ponadto możliwość skonfigurowania powiadomień 
 
 5) Stronę obserwowanych kryptowalut, przedstawioną na rysunku 3.9.
 
-![]()
+![](./docimages/view_subscriptions.PNG)
 
 <div style="text-align: center"> Rysunek 3.9. - Strona obserwowanych kryptowalut </div>
 
