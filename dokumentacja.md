@@ -353,7 +353,7 @@ Kryptowalutę z listy obserwowanych użytkownik może usunąć poprzez naciśni�
 
 6) Stronę przelicznika kryptowalut, przedstawioną na rysunku 3.10.
 
-![]()
+![](./docimages/view_calculator.PNG)
 
 <div style="text-align: center"> Rysunek 3.10. - Strona przelicznika kryptowalut </div>
 
