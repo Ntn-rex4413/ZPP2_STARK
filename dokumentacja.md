@@ -409,6 +409,8 @@ Dostęp do strony uzyskać może każdy użytkownik po wybraniu zakładki "Crypt
 
 
 
+---
+
 
 
 ### 4. Opis wersji systemu
@@ -460,6 +462,30 @@ Pliki:
 - STARK_Project.csproj - plik głównego projektu programu,
 - ScaffoldingReadMe.txt - plik readme generowany przez Entity Framework,
 - appsettings.Development.json oraz appsettings.json - pliki konfiguracyjne programu,
+
+
+
+#### 4.2. Zależności
+
+Do zależności projektu należą następujące pakiety NuGet:
+
+- Hangfire.MemoryStorage,
+- Hangfire.SqlServer,
+- Microsoft.AspNetCore.Identity,
+- Microsoft.EntityFrameworkCore,
+- Newtonsoft.Json,
+
+Dodatkowo - do zależności testu należą pakiety:
+
+- Microsoft.NET.Test.Sdk,
+- NUnit,
+- NUnit3TestAdapter,
+- Selenium.WebDriver,
+- Selenium.WebDriver.GeckoDriver,
+- coverlet.collector,
+- MSTest.TestFramework,
+
+---
 
 
 
