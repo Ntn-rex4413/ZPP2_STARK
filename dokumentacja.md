@@ -426,12 +426,6 @@ Dostęp do strony uzyskać może każdy użytkownik po wybraniu zakładki "Crypt
 
 
 
-#### Struktura komponentowa budowanego projektu
-
-[//diagram komponentów]
-
-
-
 ---
 
 
