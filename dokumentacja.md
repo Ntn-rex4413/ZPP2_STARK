@@ -301,7 +301,7 @@ Interfejs obejmuje następujące strony aplikacji:
 
 1) Stronę startową, przedstawioną na rysunku 3.5.
 
-![]()
+![](./docimages/view_summary.PNG)
 
 <div style="text-align: center"> Rysunek 3.5. - Strona startowa programu </div>
 
