@@ -23,6 +23,8 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 - Jodkowski Natan - frontend, dokumentacja projektu,
 - Mysłajek Łukasz - backend, pobieranie danych z API cryptocompare,
 
+---
+
 
 
 ### 2. Specyfikacja wymagań projektu
@@ -42,6 +44,8 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | Nazwa: | Kalkulator walutowy                                          |
 | ------ | ------------------------------------------------------------ |
 | Opis:  | Wewnętrzny serwis platformy, umożliwiający przeliczanie wartości kryptowalut względem walut tradycyjnych, w oparciu o aktualne kursy. |
+
+---
 
 
 
@@ -185,6 +189,10 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 - Hangfire - narzędzie wykorzystane w ramach obsługi powiadomień; zadań "fire-and-forget", opóźnionych i powtarzanych,
 - MSTEST - framework, w którym zaimplementowano testy jednostkowe,
 - Selenium - framework, w którym zaimplementowano testy wyższego poziomu,
+
+---
+
+
 
 ### 3. Projekt systemu
 
@@ -462,6 +470,8 @@ Pliki:
 - STARK_Project.csproj - plik głównego projektu programu,
 - ScaffoldingReadMe.txt - plik readme generowany przez Entity Framework,
 - appsettings.Development.json oraz appsettings.json - pliki konfiguracyjne programu,
+
+---
 
 
 
