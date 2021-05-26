@@ -222,7 +222,7 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
 
     
 
-  ![](./docimages/db_aspNetTables.png)
+  ![](./docimages/db_aspNetTables.PNG)
 
   <div style="text-align: center">Rysunek 3.2. - Diagram tabel Entity Framework / Identity Framework</div>
 
@@ -237,7 +237,7 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
   - Cryptocurrenies - tabela zawierająca sygnatury oraz pełne nazwy kryptowalut,
   - Notifications - tabela zawierająca dane powiadomień,
 
-![](./docimages/db_cryptoTables.png)
+![](./docimages/db_cryptoTables.PNG)
 
 <div style="text-align: center">Rysunek 3.3. - Diagram tabel obiektów biznesowych aplikacji </div>
 
@@ -256,7 +256,7 @@ Tabele bazy danych logicznie podzielić można na 3 następujące kategorie:
   - HangFire.Set,
   - HangFire.State,
 
-![](./docimages/db_hangFireTables.png)
+![](./docimages/db_hangFireTables.PNG)
 
 <div style="text-align: center">Rysunek 3.4. - Diagram tabel HangFire</div>
 
