@@ -363,7 +363,7 @@ Po wpisaniu interesujących użytkownika wartości w pola formularza; odpowiedni
 
 7) Stronę wiadomości, przedstawioną na rysunku 3.11.
 
-![]()
+![](./docimages/view_cryptonews.PNG)
 
 <div style="text-align: center"> Rysunek 3.11. - Strona wiadomości na temat kryptowalut </div>
 
