@@ -27,9 +27,9 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 ### 2. Specyfikacja wymagań projektu
 
-### 2. Model procesów biznesowych
+#### 2.1. Model procesów biznesowych
 
-#### 2.1. Obiekty biznesowe
+#### 2.1.1. Obiekty biznesowe
 
 | Nazwa: | Kryptowaluta                                                 |
 | ------ | ------------------------------------------------------------ |
@@ -45,7 +45,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 
 
-#### 2.2. Aktorzy biznesowi
+#### 2.1.2. Aktorzy biznesowi
 
 | Nazwa: | Użytkownik tymczasowy                                        |
 | ------ | ------------------------------------------------------------ |
@@ -59,7 +59,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 ---
 
-#### 2.3. Wymagania funkcjonalne
+#### 2.2. Wymagania funkcjonalne
 
 | ID:        | 1                                                            |
 | ---------- | ------------------------------------------------------------ |
@@ -136,7 +136,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 ---
 
-#### 2.4. Wymagania niefunkcjonalne
+#### 2.3. Wymagania niefunkcjonalne
 
 | ID:        | 1                                                            |
 | ---------- | ------------------------------------------------------------ |
@@ -174,7 +174,7 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 | Priorytet: | ŚREDNI                                                       |
 | Opis:      | Wskazane jest zaprojektowanie szaty graficznej interfejsu pod kątem wyraźnego zaznaczania istotnych informacji, ale również zastosowania gamy barw i proporcji elementów sprawiających wrażenie spójnego, przyjaznego wizerunku platformy. |
 
-#### 2.5. Wykorzystane narzędzia programistyczne i technologie
+#### 2.4. Wykorzystane narzędzia programistyczne i technologie
 
 - git - wersjonowanie oprogramowania, repozytorium projektu na platformie GitHub,
 - Microsoft Visual Studio - środowisko programistyczne wykorzystywane na każdym etapie implementacji,
