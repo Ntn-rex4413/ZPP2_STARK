@@ -196,9 +196,24 @@ Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub ko
 
 ### 3. Projekt systemu
 
-#### Statyczna struktura budowanego systemu
+Program zaprojektowano w oparciu o wyraźny podział na część frontendową i backendową. Na rysunku 3.1. przedstawiono diagram przepływu danych w projektowanym systemie.
 
-[//diagram klas]
+![](./docimages/spec_dfd_v1.png)
+
+<div style="text-align: center">Rysunek 3.1. - Diagram przepływu danych</div>
+
+
+
+Część backendowa realizuje poszczególne ze swoich zadań przez zaimplementowane serwisy:
+
+- ApplicationDbService - obsługa bazy danych,
+- CryptoService - komunikacja z API Cryptocompare,
+- HangFireNotificationService - obserwacja zmian wartości cen kryptowalut i uruchamiania działań z nimi związanych,
+- SMTPService - tworzenie wiadomości e-mail wskutek określonych przez użytkowników zmian cen,
+
+> Uwaga: W celu wysyłania wiadomości e-mail użytkownikom konieczne jest skorzystanie z zewnętrznego dostawcy usług w tym zakresie. SMTPService przygotowuje jedynie te wiadomości w formie plików .eml.
+
+Część frontendowa zbudowana jest w oparciu o wzorzec MVC. Kontrolery Summary, Details, Subscriptions, Calculator oraz News wykorzystują specjalne modele utworzone w oparciu o dane otrzymane z części backendowej w przygotowywaniu i sterowaniu widokami.
 
 ---
 
