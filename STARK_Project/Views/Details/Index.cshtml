@@ -36,10 +36,6 @@
         <a href="https://www.binance.com/en/buy-sell-crypto" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-4">
             <i class="fas fa-money-bill-wave fa-sm text-white-50"></i> Kup / Sprzedaj
         </a>
-        @*<a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-4" asp-controller="Details" asp-action="AddToWatchlist" asp-route-cryptocurrency="@Model.CryptoModel.FromSymbol" asp-route-currency="@Model.CryptoModel.ToSymbol">
-                <i class="fas fa-star fa-sm text-white-50"></i> Obserwuj
-            </a>*@
-        @*DO WYKORZYSTANIA W PRZYPADKU IMPLEMENTACJI ABY ZMINIC PRZYCISK POMIEDZY OBSERWOWANIE A ODOBSERWOWANIEM!!!!!!*@
         @if (ViewBag.IsSubscribed == false)
         {
 
