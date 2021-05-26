@@ -327,7 +327,7 @@ Za pośrednictwem tej strony użytkownik może utworzyć konto w aplikacji podaj
 
 4) Stronę danych szczegółowych wybranej kryptowaluty, przedstawioną na rysunku 3.8.
 
-![]()
+![](./docimages/view_details.PNG)
 
 <div style="text-align: center"> Rysunek 3.8. - Strona informacji szczegółowych </div>
 
