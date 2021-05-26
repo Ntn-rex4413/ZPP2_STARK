@@ -66,7 +66,13 @@ namespace STARK_Project.Controllers
         }
         public IActionResult Alerts()
         {
-            return View();
+            if (_userId != null)
+            {
+                var userConditions = _dbService.GetConditions(_userId);
+
+                return View(userConditions);
+            }
+            return RedirectToAction("Summary", "Index", new { currency = "PLN" });
         }
 
     }
