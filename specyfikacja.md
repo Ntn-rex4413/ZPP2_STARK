@@ -48,7 +48,7 @@ Po wyszukaniu na platformie danej kryptowaluty użytkownikowi prezentowane będz
 
 Użytkownicy posiadający konto będą ponadto mogli skonfigurować dostosowane do swoich potrzeb powiadomienia związane z określonymi przez siebie ruchami określonych kryptowalut, jak na przykład przekroczenie pewnego progu cenowego. Program komponować będzie adekwatne wiadomości e-mail, które będą mogły być wysyłane za pośrednictwem zewnętrznego dostawcy usług poczty elektronicznej.
 
-Prostym w obsłudze, intuicyjny interfejs prezentujący w przejrzysty sposób interesujące użytkownika informacje ma uczynić projektowaną platformę efektywnym narzędziem porównawczym ułatwiającym użytkownikowi podejmowanie decyzji inwestycyjnych na rynku kryptowalut.
+Prosty w obsłudze, intuicyjny interfejs prezentujący w przejrzysty sposób interesujące użytkownika informacje ma uczynić projektowaną platformę efektywnym narzędziem porównawczym ułatwiającym użytkownikowi podejmowanie decyzji inwestycyjnych na rynku kryptowalut.
 
 #### 1.2. Słownik pojęć
 
