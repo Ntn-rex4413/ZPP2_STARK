@@ -398,11 +398,27 @@ Dostęp do tej strony posiadają jedynie użytkownicy zalogowani. Posiada ona li
 
 Kryptowalutę z listy obserwowanych użytkownik może usunąć poprzez naciśnięcie przycisku "Odobserwuj".
 
-6) Stronę przelicznika kryptowalut, przedstawioną na rysunku 3.10.
+
+
+6) Stronę zawierającą listę aktywnych powiadomień, przedstawioną na rysunku 3.10.
+
+
+
+![](./docimages/view_alerts.PNG)
+
+<div style="text-align: center"> Rysunek 3.10. - Strona aktywnych powiadomień </div>
+
+
+
+Strona ta również dostępna jest jedynie dla użytkowników zalogowanych, którzy wejść na nią mogą przez naciśnięcie sekcji "Powiadomienia" znajdującej się na bocznym pasku nawigacyjnym. Przedstawia ona listę wszystkich aktywnych powiadomień (których warunki nie zostały spełnione), dając użytkownikowi możliwość wyłączenia ich przez naciśnięcie czerwonego przycisku z przekreśloną ikoną dzwonka.
+
+
+
+7) Stronę przelicznika kryptowalut, przedstawioną na rysunku 3.11.
 
 ![](./docimages/view_calculator.PNG)
 
-<div style="text-align: center"> Rysunek 3.10. - Strona przelicznika kryptowalut </div>
+<div style="text-align: center"> Rysunek 3.11. - Strona przelicznika kryptowalut </div>
 
 
 
@@ -412,11 +428,11 @@ Dostęp do strony uzyskać może każdy użytkownik, po wybraniu zakładki "Kalk
 
 Po wpisaniu interesujących użytkownika wartości w pola formularza; odpowiednio: ilości, kryptowaluty, docelowej waluty tradycyjnej, zostanie wyświetlony wynik przeliczenia.
 
-7) Stronę wiadomości, przedstawioną na rysunku 3.11.
+8) Stronę wiadomości, przedstawioną na rysunku 3.12.
 
 ![](./docimages/view_cryptonews.PNG)
 
-<div style="text-align: center"> Rysunek 3.11. - Strona wiadomości na temat kryptowalut </div>
+<div style="text-align: center"> Rysunek 3.12. - Strona wiadomości na temat kryptowalut </div>
 
 
 
