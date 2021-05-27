@@ -18,10 +18,10 @@ Prosty w obsłudze, intuicyjny interfejs prezentujący w przejrzysty sposób int
 
 #### Skład zespołu i podział zadań
 
-- Boryczko Jan - modele danych, mechanizmy komunikacji frontend-backend,
+- Boryczko Jan - mechanizmy komunikacji frontend-backend, testy aplikacji,
 - Goc Michał - design i implementacja frontendu,
-- Jodkowski Natan - frontend, dokumentacja projektu,
-- Mysłajek Łukasz - backend, pobieranie danych z API cryptocompare,
+- Jodkowski Natan - frontend, dokumentacja projektu, kierowanie pracami (lider zespołu),
+- Mysłajek Łukasz - backend, pobieranie danych z API Cryptocompare,
 
 ---
 
