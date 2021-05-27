@@ -342,7 +342,7 @@ Po wpisaniu frazy w polu wyszukiwania w górnym menu nawigacyjnym lista najpopul
 
 2) Stronę logowania, przedstawioną na rysunku 3.6.
 
-![]()
+![](./docimages/view_login.PNG)
 
 <div style="text-align: center"> Rysunek 3.6. - Strona logowania </div>
 
@@ -354,7 +354,7 @@ Za pośrednictwem tej strony użytkownik posiadający konto może zalogować si�
 
 3) Stronę rejestracji, przedstawioną na rysunku 3.7.
 
-![]()
+![](./docimages/view_register.PNG)
 
 <div style="text-align: center"> Rysunek 3.7. - Strona rejestracji </div>
 
