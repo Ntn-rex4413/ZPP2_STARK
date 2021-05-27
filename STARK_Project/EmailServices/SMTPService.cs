@@ -1,5 +1,6 @@
 ﻿using FluentEmail.Core;
 using FluentEmail.Smtp;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,14 +12,21 @@ namespace STARK_Project.EmailServices
 {
     public class SMTPService : IEmailService
     {
+        private readonly IHostingEnvironment _hostingEnvironment;
+
+        public SMTPService(IHostingEnvironment hostingEnvironment)
+        {
+            _hostingEnvironment = hostingEnvironment;
+        }
+
         public async Task SendEmail(string senderEmail, string recipientEmail,string title, string message)
         {
             var sender = new SmtpSender(() => new SmtpClient("localhost")
             {
                 EnableSsl = false,
                 DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory,
-                PickupDirectoryLocation = @"./Emails"
-            });
+                PickupDirectoryLocation = _hostingEnvironment.WebRootPath + @"\Emails"
+        });
 
             Email.DefaultSender = sender;
 

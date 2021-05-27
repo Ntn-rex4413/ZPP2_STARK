@@ -65,6 +65,8 @@ namespace STARK_Project.Controllers
                 {
                     ViewBag.CurrencyConditions = currentConditions;
                 }
+
+                ViewBag.IsSubscribed = _dbService.GetWatchlist(_userId).Result.Where(x => x.Symbol == cryptocurrency).Count() > 0 ? true : false;
             }
             else
             {
