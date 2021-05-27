@@ -46,7 +46,7 @@ Celem jest utworzenie platformy dla osób inwestujących i zainteresowanych rynk
 
 Po wyszukaniu na platformie danej kryptowaluty użytkownikowi prezentowane będzie zestawienie informacji na jej temat, takich jak: wykresy ukazujące w czytelny sposób zmiany cen, podsumowanie najistotniejszych cech waluty (aktualna cena, odnotowana zmiana w przeciągu 24h; najniższa i najwyższa wartość). Użytkownik posiadający konto na platformie będzie mógł utworzyć osobistą listę obserwowanych kryptowalut, dzięki czemu interesujące go informacje będą łatwo dostępne od chwili zalogowania się.
 
-Użytkownicy posiadający konto będą ponadto mogli skonfigurować dostosowane do swoich potrzeb powiadomienia wysyłane w formie mailowej, związane z określonymi przez siebie ruchami określonych kryptowalut, jak przekroczenie pewnego progu cenowego.
+Użytkownicy posiadający konto będą ponadto mogli skonfigurować dostosowane do swoich potrzeb powiadomienia związane z określonymi przez siebie ruchami określonych kryptowalut, jak na przykład przekroczenie pewnego progu cenowego. Program komponować będzie adekwatne wiadomości e-mail, które będą mogły być wysyłane za pośrednictwem zewnętrznego dostawcy usług poczty elektronicznej.
 
 Utworzenie konta poprzez zalogowanie za pomocą konta społecznościowego lub konta Google, w połączeniu z prostym w obsłudze, intuicyjnym interfejsem prezentującym w przejrzysty sposób interesujące użytkownika informacje mają uczynić projektowaną platformę efektywnym narzędziem porównawczym ułatwiającym użytkownikowi podejmowanie decyzji inwestycyjnych na rynku kryptowalut.
 
