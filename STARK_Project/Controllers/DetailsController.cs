@@ -49,7 +49,6 @@ namespace STARK_Project.Controllers
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
             ViewBag.ConditionTypes = new List<SelectListItem> {
-                new SelectListItem("Procent", "percentage"),
                 new SelectListItem("Wartość", "value")};
 
             ViewBag.ConditionRelativities = new List<SelectListItem>
