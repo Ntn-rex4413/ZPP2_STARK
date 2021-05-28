@@ -67,5 +67,47 @@ namespace STARK_UnitTests
             Assert.IsNotNull(data);
             Assert.AreEqual(amount, data.Count());
         }
+
+        [TestMethod]
+        public void GetHistoricalData_ConnectionAndData_isValid()
+        {
+            var service = new CryptoService();
+            var symbol = "BTC";
+            var currency = "PLN";
+
+            var dataDaily =  service.GetHistoricalData(HistoricalDataTypes.Daily, symbol, currency,null, null).Result;
+            var dataHourly =  service.GetHistoricalData(HistoricalDataTypes.Hourly, symbol, currency,null, null).Result;
+            var dataMinute =  service.GetHistoricalData(HistoricalDataTypes.Minute, symbol, currency,null, null).Result;
+
+            Assert.IsNotNull(dataDaily);
+            Assert.IsNotNull(dataHourly);
+            Assert.IsNotNull(dataMinute);
+
+            Assert.IsTrue(dataDaily.Data.Length > 0);
+            Assert.IsTrue(dataHourly.Data.Length > 0);
+            Assert.IsTrue(dataMinute.Data.Length > 0);
+
+        }
+
+        [TestMethod]
+        public void GetHistoricalData_limit_isValid()
+        {
+            var service = new CryptoService();
+            var symbol = "BTC";
+            var currency = "PLN";
+
+            var dataDaily = service.GetHistoricalData(HistoricalDataTypes.Daily, symbol, currency, 10, null).Result;
+            var dataHourly = service.GetHistoricalData(HistoricalDataTypes.Hourly, symbol, currency, 12, null).Result;
+            var dataMinute = service.GetHistoricalData(HistoricalDataTypes.Minute, symbol, currency, 25, null).Result;
+
+            Assert.IsNotNull(dataDaily);
+            Assert.IsNotNull(dataHourly);
+            Assert.IsNotNull(dataMinute);
+
+            Assert.IsTrue(dataDaily.Data.Length == 11);
+            Assert.IsTrue(dataHourly.Data.Length == 13);
+            Assert.IsTrue(dataMinute.Data.Length == 26);
+
+        }
     }
 }
