@@ -2,4 +2,8 @@
 
 ## System Taktycznej Analizy Rynku Kryptowalut
 
-Projekt - zespołowe przedsięwzięcie programistyczne
+Aplikacja internetowa przeznaczona do śledzenia ruchów na rynku kryptowalut pozwalająca na dostosowywanie zakresu wyświetlanych informacji do potrzeb użytkownika.
+
+- STARK_Project - główny folder rozwiązania,
+- dokumentacja.md - dokumentacja projektu,
+
