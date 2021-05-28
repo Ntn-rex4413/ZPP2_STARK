@@ -72,7 +72,7 @@ namespace STARK_Project.Controllers
 
                 return View(userConditions);
             }
-            return RedirectToAction("Summary", "Index", new { currency = "PLN" });
+            return RedirectToAction("Index", "Summary", new { currency = "PLN" });
         }
 
     }
