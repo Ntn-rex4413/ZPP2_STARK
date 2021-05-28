@@ -7,6 +7,7 @@ using STARK_Project.DBServices;
 using STARK_Project.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace STARK_Project.Controllers
 {
@@ -37,6 +38,7 @@ namespace STARK_Project.Controllers
             return View(data);
         }
 
+        [Authorize]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency)
         {
             if (_userId != null)
