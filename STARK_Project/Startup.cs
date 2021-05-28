@@ -47,7 +47,7 @@ namespace STARK_Project
                     .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                     .UseSimpleAssemblyNameTypeSerializer()
                     .UseRecommendedSerializerSettings());
-            services.AddHangfireServer();
+            //services.AddHangfireServer();
 
             services.AddScoped<IDbService, ApplicationDbService>();
             services.AddScoped<ICryptoService, CryptoService>();
@@ -90,15 +90,27 @@ namespace STARK_Project
             app.UseAuthorization();
 
             app.UseHangfireDashboard();
-            var monitor = Hangfire.JobStorage.Current.GetMonitoringApi();
-            if (monitor.ProcessingCount() > 0)
+
+            Hangfire.Storage.IMonitoringApi monitoringApi = JobStorage.Current.GetMonitoringApi();
+            JobStorage.Current.GetConnection().RemoveTimedOutServers(new TimeSpan(0, 0, 15));
+
+            app.UseHangfireServer(new BackgroundJobServerOptions
             {
-                foreach (var job in monitor.ProcessingJobs(0, (int)monitor.ProcessingCount()))
-                {
-                    BackgroundJob.Requeue(job.Key);
-                }
-            }
-            
+                WorkerCount = 1,
+                Queues = new[] { "jobqueue" },
+                ServerName = "HangfireJobServer",
+            });
+
+
+            //var monitor = Hangfire.JobStorage.Current.GetConnection().;
+            //if (monitor.ProcessingCount() > 0)
+            //{
+            //    foreach (var job in monitor.ProcessingJobs(0, (int)monitor.ProcessingCount()))
+            //    {
+            //        BackgroundJob.Requeue(job.Key);
+            //    }
+            //}
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
