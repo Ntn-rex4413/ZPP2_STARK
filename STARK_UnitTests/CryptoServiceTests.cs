@@ -66,8 +66,22 @@ namespace STARK_UnitTests
 
             Assert.IsNotNull(data);
             Assert.AreEqual(amount, data.Count());
+            
         }
+        /// <summary>
+        /// by MG
+        /// </summary>
+        [TestMethod]
+        public void TopCryptocurrenciesNames_HasValue_IsTrue()
+        {
+            int amount = 10;
+            var service = new CryptoService();
 
+            var data = service.GetRankingDataAsync(amount, "PLN").Result;
+
+            Assert.IsNotNull(data);
+            Assert.AreNotEqual(0, data.Count());
+        }
         [TestMethod]
         public void GetHistoricalData_ConnectionAndData_isValid()
         {
