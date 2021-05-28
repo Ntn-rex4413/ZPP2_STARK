@@ -71,6 +71,8 @@ namespace STARK_Project.Controllers
             else
             {
                 ViewBag.CurrencyConditions = new List<Condition>();
+
+                ViewBag.IsSubscribed = false;
             }
             return View(data);
         }
