@@ -13,6 +13,7 @@ using STARK_Project.DatabaseModel;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using STARK_Project.NotificationServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace STARK_Project.Controllers
 {
@@ -48,7 +49,6 @@ namespace STARK_Project.Controllers
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
             ViewBag.ConditionTypes = new List<SelectListItem> {
-                new SelectListItem("Procent", "percentage"),
                 new SelectListItem("Wartość", "value")};
 
             ViewBag.ConditionRelativities = new List<SelectListItem>
@@ -71,6 +71,8 @@ namespace STARK_Project.Controllers
             else
             {
                 ViewBag.CurrencyConditions = new List<Condition>();
+
+                ViewBag.IsSubscribed = false;
             }
             return View(data);
         }
@@ -81,6 +83,7 @@ namespace STARK_Project.Controllers
             return dtDateTime;
         }
 
+        [Authorize]
         public async Task<IActionResult> AddToWatchList(string cryptocurrency = "BTC", string currency = "USD")
         {
             if (_userId != null)
@@ -92,6 +95,7 @@ namespace STARK_Project.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddNotification(string symbol, string type, string relative, string value, string currentCurrency)
         {
             // TODO: może przydać się walidacja

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using STARK_Project.DatabaseModel;
 using STARK_Project.DBServices;
 using STARK_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace STARK_Project.Controllers
 {
@@ -26,6 +27,7 @@ namespace STARK_Project.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Index(string currency = "USD")
         {
             if (false)
@@ -64,6 +66,8 @@ namespace STARK_Project.Controllers
             }
             return RedirectToAction("Index", new { currency = currency });
         }
+
+        [Authorize]
         public IActionResult Alerts()
         {
             if (_userId != null)
@@ -72,7 +76,7 @@ namespace STARK_Project.Controllers
 
                 return View(userConditions);
             }
-            return RedirectToAction("Summary", "Index", new { currency = "PLN" });
+            return RedirectToAction("Index", "Summary", new { currency = "PLN" });
         }
 
     }
