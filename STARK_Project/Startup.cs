@@ -97,7 +97,7 @@ namespace STARK_Project
             app.UseHangfireServer(new BackgroundJobServerOptions
             {
                 WorkerCount = 1,
-                Queues = new[] { "jobqueue" },
+               // Queues = new[] { "jobqueue" },
                 ServerName = "HangfireJobServer",
             });
 
