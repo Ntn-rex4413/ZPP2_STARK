@@ -452,6 +452,10 @@ Dostęp do strony uzyskać może każdy użytkownik po wybraniu zakładki "Crypt
 
 #### 4.1. Struktura katalogowa projektu
 
+Repozytorium projektu:
+
+https://github.com/Ntn-rex4413/ZPP2_STARK
+
 Branch **main** repozytorium ZPP2_STARK zawiera:
 
 Pliki:
